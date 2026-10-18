@@ -24,11 +24,13 @@ metadata:
 
 ## Procedimiento
 1. **Intención primero**: define qué comunica el sonido (éxito, error, transición, atmósfera); si no comunica, no existe (YAGNI).
-2. **Síntesis Web Audio**: `AudioContext` tras gesto del usuario; osciladores (sine/triangle/square/sawtooth) y ruido; filtros (lowpass/highpass) para timbre.
-3. **Envolventes ADSR**: attack corto (5-20 ms) para lo percusivo, release suave (80-300 ms) para evitar clics; `setTargetAtTime` para transiciones sin chasquido.
-4. **Micro-interacciones**: < 100 ms de latencia percibida; el sonido acompaña `transform`/`opacity`, nunca los reemplaza.
-5. **Voz**: TTS para narración (velocidad y pausas explícitas); Whisper para transcripción con idioma y formato de salida declarados.
-6. **Análisis y verificación**: `AnalyserNode` para el espectro; pico ≤ -3 dBFS (headroom), sin clipping; prueba en navegador real sin errores de consola.
+2. **La mezcla es relaciones, no una pila de procesadores** (heurística HeyGen): dos pistas que suenan bien por separado pueden ser insoportables juntas; el arreglo casi nunca es «bajar una», es encontrar por qué compiten (frecuencia, espacio) y dárselo a quien lo necesita.
+3. **Síntesis Web Audio**: `AudioContext` tras gesto del usuario; osciladores (sine/triangle/square/sawtooth) y ruido; filtros (lowpass/highpass) para timbre.
+4. **Envolventes ADSR**: attack corto (5-20 ms) para lo percusivo, release suave (80-300 ms) para evitar clics; `setTargetAtTime` para transiciones sin chasquido. Micro-interacciones: < 100 ms de latencia percibida; el sonido acompaña `transform`/`opacity`, nunca los reemplaza.
+5. **Cadenas de efectos por familias**: ganancia, EQ (paso alto/bajo, shelving, peaking), compresor, limitador, gate, saturación, delay, reverb, chorus, phaser, bitcrush — en orden de señal deliberado, no apilado.
+6. **Ducking / carve de voz en off**: cuando la música pelea con la voz, automatiza la ganancia de la música bajo la voz en lugar de bajarla a mano.
+7. **Voz**: TTS para narración (velocidad y pausas explícitas); Whisper para transcripción con idioma y formato de salida declarados.
+8. **Análisis y verificación**: `AnalyserNode` para el espectro; pico ≤ -3 dBFS (headroom), sin clipping; lo que oyes al previsualizar debe ser exactamente lo que se renderiza; prueba en navegador real sin errores de consola.
 
 ## Ejemplo
 ```js
@@ -49,3 +51,9 @@ osc.start(t); osc.stop(t + 0.3);
 - Clics por cortes de muestra abruptos (sin envolvente).
 - Sonidos largos para feedback instantáneo.
 - Entregar con clipping o sin headroom.
+
+## Referencias comunitarias validadas (find-skills)
+- `heygen-com/hyperframes@hyperframes-audio` — **HeyGen oficial, 615 K instalaciones**: mezcla como relaciones, familias de efectos (EQ, compresor, limitador, gate, saturación, delay, reverb), automatización y ducking de voz en off.
+- `aahl/skills@edge-tts` — TTS con Edge sin costo de API.
+- `theplasmak/faster-whisper@faster-whisper` — transcripción local acelerada con Whisper.
+- Cuando la tarea lo exija, profundiza con `npx -y skills find <término>`.

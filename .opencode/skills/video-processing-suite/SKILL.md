@@ -25,10 +25,11 @@ metadata:
 ## Procedimiento
 1. **Captura con Playwright**: `record_video_dir` + `record_video_size` al viewport exacto; espera por condición (nunca `sleep` fijo); cierra el contexto para volcar el archivo.
 2. **Verificar la captura**: duración, resolución y FPS reales con `ffprobe` antes de editar.
-3. **Componer**: MoviePy para timelines legibles (cortes, overlays, texto); FFmpeg directo para operaciones simples y rápidas.
+3. **Componer por capas** (heurística comunitaria): cada capa tiene un solo trabajo — captura → FFmpeg → composición/timeline → voz/música → pulido final; no saltes capas ni pidas a una herramienta el trabajo de otra. El valor está en comprimir y estructurar material real, no en generar desde cero.
 4. **Sincronización audiovisual**: ancla el audio al primer frame; una desincronización perceptible (> 40 ms) se corrige, no se entrega.
-5. **Exportar ligero**: un solo re-encode; CRF 18-23 (H.264/VP9) según destino; `+faststart` para web en MP4.
-6. **Verificación final**: `ffprobe` del archivo entregado (duración, FPS, peso) + reproducción de control.
+5. **Checkpoints versionados**: guarda y verifica un checkpoint del proyecto antes y después de cada cambio estructural; una lectura de API demuestra el estado en memoria, no que se guardó en disco.
+6. **Exportar ligero**: un solo re-encode; CRF 18-23 (H.264/VP9) según destino; `+faststart` para web en MP4.
+7. **Verificación final nativa**: `ffprobe` del archivo entregado (duración, FPS, peso) + reproducción de control — parsear un XML o un contenedor no demuestra que la salida es audible y visible; revísala como la vería el usuario.
 
 ## Ejemplo
 ```python
@@ -42,3 +43,9 @@ ctx = nav.new_context(viewport={"width": 1280, "height": 720},
 - Re-encodar en cada paso (degradación acumulada).
 - Recortar sin respetar keyframes al copiar directo.
 - Entregar sin verificar FPS y duración reales.
+
+## Referencias comunitarias validadas (find-skills)
+- `affaan-m/ecc@video-editing` — pipeline por capas (captura → FFmpeg → Remotion → voz → pulido) con checkpoints versionados y validación nativa de exportes.
+- `currents-dev/playwright-best-practices-skill@playwright-best-practices` — Currents (95 K instalaciones): monitoreo de errores de consola, regresión visual y canvas/WebGL en pruebas de navegador.
+- `microsoft/playwright-cli@playwright-cli` — Microsoft oficial: CLI de Playwright para flujos de captura.
+- Cuando la tarea lo exija, profundiza con `npx -y skills find <término>`.

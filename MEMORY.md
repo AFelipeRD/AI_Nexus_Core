@@ -42,7 +42,7 @@
 - 2026-10-18 · Adoptar la Constitución Maestra de Ingeniería Frontier Level · blindar razonamiento, hardware, diseño y seguridad · [[#Constitución Maestra (Frontier Level)]]
 - 2026-10-18 · Homologación total Frontier: herencia dinámica del modelo activo global en los 12 agentes y estándar de razonamiento Staff AI Engineer · desacoplamiento total del proveedor y máxima calidad · [[#Constitución Maestra (Frontier Level)]]
 - 2026-10-18 · Hito: AI Nexus Core Autonomous Operating System (Model-Agnostic & Self-Evolving) · enrutador de tiers abstractos, radar de modelos IA, auto-evolución de skills/MCP y neuro-enrutador cognitivo · [[#Constitución Maestra (Frontier Level)]]
-- 2026-10-18 · Expansión de Cuadrilla a 17 Agentes: Fullstack y Estudio Multimodal · amplificadores adaptativos de capacidad, no jaulas estáticas · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-18 · Expansión de Cuadrilla a 17 Agentes Multimodales con validación previa en find-skills · amplificadores adaptativos; heurísticas comunitarias de autoridad integradas (Vercel, LangChain, Anthropic, HeyGen, Currents) · [[#Constitución Maestra (Frontier Level)]]
 
 ## Grafo de entidades
 | Entidad | Relación | Detalle |
@@ -59,7 +59,7 @@
 - 2026-10-18 · Publicación del portafolio en GitHub y registro de la Constitución Maestra Frontier Level.
 - 2026-10-18 · Homologación de frontera completada: agentes desacoplados del modelo (herencia dinámica) y skills elevadas (Arrow zero-copy, Clean/Hexagonal, CUDA fp16, OWASP+mypy, E2E 60 FPS).
 - 2026-10-18 · Arquitectura cognitiva definitiva sellada: tiers abstractos agnósticos (Tier 0 local / Tier 1 velocidad / Tier 2 frontera), radar de mercado IA en `output/radar_modelos_ia.md`, auto-evolución con `find-skills` y ciclo neuro-cognitivo obligatorio.
-- 2026-10-18 · Expansión a 17 agentes y 19 skills: fullstack-developer, ai-multimodal-engineer, video-media-engineer, image-generative-designer y audio-sound-engineer con sus 5 suites. `find-skills` consultado antes de crearlas: sin habilidades mantenidas aplicables en el registro (solo convex/agent-skills para fullstack, ajeno a nuestra arquitectura).
+- 2026-10-18 · Expansión a 17 agentes y 19 skills con validación profunda en find-skills: 7 skills comunitarias de autoridad inspeccionadas en laboratorio temporal (Vercel React 813 K, LangChain RAG, Anthropic canvas-design, HeyGen audio 615 K, Currents Playwright 95 K, prompt-engineering-patterns, video-editing) e integradas como heurísticas con atribución en las 5 suites nativas.
 
 ## Cómo actualizar esta memoria
 1. Añade decisiones con fecha y enlace a la fuente.
