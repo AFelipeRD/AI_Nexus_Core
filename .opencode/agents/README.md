@@ -133,16 +133,21 @@ Cada agente es un archivo `.md` con frontmatter YAML (`description`, `mode`, `mo
 <!-- CATALOGO:INICIO -->
 | Agente | Modo | Modelo | Descripción |
 |---|---|---|---|
+| `ai-multimodal-engineer` | subagent | heredado | Ingeniero de IA multimodal y LLMOps. IA generativa de frontera, flujos agénticos avanzados, RAG multimodal (texto + imagen + audio), prompts estructurales y Hugging Face. |
 | `arena-arbiter` | subagent | heredado | Juez de la Arena. Modera el debate entre soluciones candidatas, puntúa con la rúbrica (simplicidad, velocidad, seguridad, robustez) y emite el dictamen final o la síntesis óptima. |
+| `audio-sound-engineer` | subagent | heredado | Ingeniero de audio y sonido. Síntesis con Web Audio API, TTS, transcripción con Whisper, diseño sonoro micro-táctil, audio reactivo de baja latencia y análisis espectral. |
 | `auto-researcher` | subagent | heredado | Investigador autónomo y radar de modelos IA. Valida documentación oficial, vigila nuevos modelos de frontera, benchmarks, servidores MCP y habilidades comunitarias antes de aprobar integraciones. |
 | `automation-browser` | subagent | heredado | Automatización de navegador. Pruebas E2E con Playwright, scraping con Crawl4AI y flujos de trabajo en n8n. |
 | `code-reviewer-security` | subagent | heredado | Auditor de código y seguridad. Análisis estático, OWASP Top 10, detección de fugas de credenciales y auditoría de pruebas. |
 | `data-engineer` | subagent | heredado | Ingeniero de datos. Pipelines analíticos OLAP con DuckDB y Polars a hipervelocidad sobre CSV y Parquet locales. |
+| `fullstack-developer` | subagent | heredado | Desarrollador fullstack moderno. Next.js, React, TypeScript, Tailwind, FastAPI/Node, SQLite/PostgreSQL/DuckDB y APIs REST/GraphQL: integración reactiva y desacoplada de extremo a extremo. |
 | `github-scout` | subagent | heredado | Centinela de tendencias en GitHub. Detecta repositorios virales de IA, releases de nuevos modelos y benchmarks, y servidores MCP; dispara notificaciones Toast de Windows. |
+| `image-generative-designer` | subagent | heredado | Diseñador generativo de imágenes. Dirección artística, prompt engineering para Flux/Midjourney/SDXL/DALL-E, manipulación con Pillow/Canvas, SVG paramétrico y optimización WebP/AVIF. |
 | `knowledge-graph-agent` | subagent | heredado | Guardián de contexto. LightRAG, Claude-Mem y Graphify: mantiene el grafo de dependencias, la memoria persistente y el mapa visual de Obsidian. |
 | `ml-deeplearning-specialist` | subagent | heredado | Ingeniero de redes neuronales y Deep Learning. PyTorch, Hugging Face MCP, optimización de VRAM/CUDA, embeddings locales y diseño de arquitecturas. |
 | `orchestrator` | primary | heredado | Enrutador maestro y neuro-enrutador del ecosistema. Destila la intención pura, clasifica cada petición por tier abstracto de capacidad, aplica YAGNI y Headroom, y convoca /arena o al subagente especialista en lo complejo. |
 | `portfolio-git` | subagent | heredado | Gestor de portafolio Git. Genera commits semánticos en español (feat, fix, docs, security, perf) y sincroniza el portafolio en GitHub. |
 | `software-architect` | subagent | heredado | Arquitecto de software. Arquitectura limpia, principios SOLID y desarrollo minimalista guiado por la escalera YAGNI de Ponytail. |
 | `ui-ux-director` | subagent | heredado | Director de diseño. Integra UI/UX Pro Max, Frontend Design, Awesome Design Patterns, Impeccable, Taste y Emil Kowalski para interfaces modernas con Tailwind CSS, micro-animaciones fluidas y Figma MCP. |
+| `video-media-engineer` | subagent | heredado | Ingeniero de video y medios. Captura automatizada con Playwright, composición con MoviePy/FFmpeg, timelines de animación y exportación WebM/MP4 optimizada a 60 FPS. |
 <!-- CATALOGO:FIN -->

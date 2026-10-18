@@ -155,18 +155,23 @@ Empaquetado de cambios en commits semánticos en español y mantenimiento de un 
 <!-- CATALOGO:INICIO -->
 | Skill | Descripción |
 |---|---|
+| `ai-multimodal-ops` | Heurísticas de encadenamiento multimodal (texto, imagen, audio), prompts basados en esquemas JSON y benchmarks de calidad para sistemas generativos reproducibles. Úsala al diseñar pipelines de IA generativa o RAG. |
 | `arena-consensus` | Protocolo de torneo para decisiones técnicas críticas: generación de 2 o 3 variantes en paralelo, crítica cruzada, evaluación por rúbrica y síntesis de la respuesta ganadora. Úsala con /arena o ante varias alternativas razonables. |
+| `audio-sound-suite` | Fórmulas de síntesis con Web Audio API (osciladores, frecuencias, envolventes ADSR), diseño sonoro micro-táctil de baja latencia, TTS/Whisper y análisis espectral. Úsala al crear sonido para interfaces o procesar audio. |
 | `auto-research` | Metodología de investigación técnica autónoma: contraste de fuentes oficiales, validación de librerías, dependencias y benchmarks antes de dar por buena una solución. Úsala antes de adoptar una dependencia o afirmar algo técnico. |
 | `duckdb-analytics` | Consultas analíticas SQL de alto rendimiento sobre archivos locales CSV, Parquet y JSON con DuckDB y Polars. Úsala para explorar, agregar y transformar datos sin montar un servidor. |
 | `find-skills` | Consulta previa al registro abierto de habilidades (Vercel Labs) antes de inventar una habilidad, comando o script nuevo. Úsala siempre que vayas a crear una capacidad que podría existir ya. |
+| `fullstack-architecture` | Principios de integración frontend-backend con contratos tipados, gestión de estado mínima, APIs seguras y despliegue local rápido. Úsala al construir aplicaciones web completas. |
 | `git-portfolio-sync` | Empaquetado de cambios en commits semánticos en español y mantenimiento de un historial profesional sincronizado con GitHub. Úsala al confirmar trabajo y publicar el portafolio. |
 | `graphify-codebase` | Mapeo estructural del código mediante AST y clusters de dependencias (Graphify) para no leer archivos innecesarios. Úsala antes de refactorizar o explorar un repositorio desconocido. |
 | `headroom-context` | Monitoreo de tokens y compresión del historial de conversación para preservar margen de contexto y evitar desbordes. Úsala en sesiones largas o cuando el contexto supere el 60 %. |
+| `image-creative-suite` | Gramática visual para prompts generativos (Flux, Midjourney, SDXL, DALL-E), composición áurea, teoría del color por dominio y manipulación local de píxeles con Pillow/Canvas. Úsala al dirigir o generar imágenes. |
 | `lightrag-knowledge` | Indexación en grafo de conocimiento de doble nivel (entidad-relación + vectores) con LightRAG y persistencia estilo Obsidian con wikilinks. Úsala para recordar proyectos, documentos y decisiones sin perder contexto. |
 | `neural-network-ml` | Diseño y entrenamiento eficiente de redes neuronales con PyTorch en GPU local: precisión mixta fp16/bf16, control de VRAM en CUDA, cuantización y consumo del MCP de Hugging Face. Úsala al diseñar, entrenar o depurar modelos. |
 | `playwright-testing` | Procedimientos para pruebas en navegador real con Playwright: navegación, clics, formularios, capturas y pruebas E2E visuales, tanto con el MCP como con scripts. Úsala para validar aplicaciones web. |
 | `ponytail-yagni` | Regla de oro YAGNI (Ponytail) para podar sobre-ingeniería y código redundante, y preferir soluciones nativas. Úsala antes de escribir y después de escribir código. |
 | `sequential-thinking` | Protocolo de razonamiento paso a paso con formulación y descarte de hipótesis, apoyado en el MCP Sequential Thinking. Úsala en problemas matemáticos, algorítmicos o ambiguos antes de escribir código. |
 | `ui-ux-design-suite` | Suite de diseño web anti-slop: tokens de diseño, escala tipográfica (Impeccable), criterio visual (Taste) y movimiento con física de resorte (Emil Kowalski). Úsala al crear, criticar o animar interfaces. |
+| `video-processing-suite` | Captura automatizada de video a 60 FPS con Playwright, composición con MoviePy/FFmpeg, manejo de streams y transcodificación ligera sin pérdida perceptual. Úsala al generar clips programáticos. |
 | `windows-notifier` | Disparo de alertas Toast nativas de Windows 11 mediante PowerShell para avisos en segundo plano. Úsala cuando una tarea larga termine o se encuentre algo relevante. |
 <!-- CATALOGO:FIN -->

@@ -50,7 +50,7 @@ El pool de modelos habilitados vive dinámicamente en `opencode.json` (o variabl
 ## Reglas específicas
 - **Cotidiana** (formateo, autocompletado, utilidades < 20 líneas, terminal directo): Tier 0 — responde tú directamente con el mínimo ceremonial.
 - **De utilidad** (síntesis de documentos, datos estructurados masivos, búsquedas web): Tier 1 — resuelve o delega según la matriz.
-- **Especializada**: delega. ML → `ml-deeplearning-specialist`; interfaz → `ui-ux-director`; datos → `data-engineer`; navegador → `automation-browser`; seguridad → `code-reviewer-security`; arquitectura → `software-architect`; Git → `portfolio-git`; investigación → `auto-researcher`; contexto o grafo → `knowledge-graph-agent`; tendencias → `github-scout`.
+- **Especializada**: delega. ML → `ml-deeplearning-specialist`; interfaz → `ui-ux-director`; datos → `data-engineer`; navegador → `automation-browser`; seguridad → `code-reviewer-security`; arquitectura → `software-architect`; Git → `portfolio-git`; investigación → `auto-researcher`; contexto o grafo → `knowledge-graph-agent`; tendencias → `github-scout`; fullstack/web → `fullstack-developer`; GenAI/multimodal → `ai-multimodal-engineer`; video/motion rendering → `video-media-engineer`; imagen/promptcraft visual/SVG → `image-generative-designer`; audio/sonido/Web Audio → `audio-sound-engineer`.
 - **Crítica** (arquitectura, seguridad, borrados, algoritmos de ML o 2+ alternativas razonables): `/arena` es obligatorio; el arbitraje se ejecuta en Tier 2.
 - **Ambigua o matemática**: ejecuta `/think` antes de delegar.
 - Nunca ejecutes `git push`, borrados masivos ni cambios de seguridad sin confirmación explícita del usuario.
