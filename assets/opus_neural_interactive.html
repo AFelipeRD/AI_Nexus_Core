@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Nexus Core — Opus Neural Interactive</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  /* ===== Tokens de diseño (Constitución Frontier Level) ===== */
+  :root {
+    --oled: #030712;
+    --violeta: #a78bfa;
+    --violeta-hondo: #8b5cf6;
+    --esmeralda: #34d399;
+    --esmeralda-hondo: #10b981;
+    --texto: #e2e8f0;
+    --tenue: #94a3b8;
+    --ease-resorte: cubic-bezier(0.16, 1, 0.3, 1);
+    --dur-micro: 180ms;
+  }
+  html, body { margin: 0; height: 100%; background: var(--oled); color: var(--texto);
+               font-family: "Segoe UI", system-ui, sans-serif; overflow: hidden; }
+
+  /* ===== Malla radial de gradientes (violeta + esmeralda, sutil) ===== */
+  #malla-fondo {
+    position: fixed; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(640px circle at 18% 22%, rgba(139, 92, 246, 0.16), transparent 62%),
+      radial-gradient(760px circle at 82% 18%, rgba(52, 211, 153, 0.11), transparent 62%),
+      radial-gradient(920px circle at 50% 96%, rgba(139, 92, 246, 0.09), transparent 66%),
+      radial-gradient(520px circle at 88% 78%, rgba(16, 185, 129, 0.09), transparent 60%);
+    animation: respirar 9s ease-in-out infinite;
+  }
+  @keyframes respirar { 0%, 100% { opacity: 0.85; } 50% { opacity: 1; } }
+
+  /* ===== Lienzo y halo del cursor (composición acelerada por GPU) ===== */
+  #lienzo { position: fixed; inset: 0; cursor: crosshair; }
+  #halo-cursor {
+    position: fixed; top: 0; left: 0; width: 340px; height: 340px;
+    margin: -170px 0 0 -170px; pointer-events: none; border-radius: 50%;
+    background: radial-gradient(closest-side,
+      rgba(139, 92, 246, 0.20), rgba(52, 211, 153, 0.08) 46%, transparent 72%);
+    mix-blend-mode: screen; will-change: transform; opacity: 0;
+    transition: opacity 400ms var(--ease-resorte);
+  }
+
+  /* ===== Panel glassmórfico (backdrop-blur-xl bg-slate-900/60 border-white/10) ===== */
+  .glass {
+    background: rgba(15, 23, 42, 0.60);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    will-change: transform;
+  }
+
+  /* ===== Interruptores de modo (micro-animaciones < 200 ms) ===== */
+  #indicador-modo {
+    position: absolute; inset: 0; width: 33.333%;
+    background: rgba(139, 92, 246, 0.22);
+    border: 1px solid rgba(167, 139, 250, 0.45);
+    border-radius: 10px;
+    transition: transform var(--dur-micro) var(--ease-resorte);
+    will-change: transform;
+  }
+  .boton-modo {
+    transition: color var(--dur-micro) var(--ease-resorte), transform 120ms var(--ease-resorte);
+    will-change: transform;
+  }
+  .boton-modo:active { transform: scale(0.97); }
+
+  .punto-estado { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .verde { background: var(--esmeralda); box-shadow: 0 0 10px rgba(52, 211, 153, 0.9); }
+  .ambar { background: #fbbf24; box-shadow: 0 0 10px rgba(251, 191, 36, 0.9); }
+  .rojo  { background: #f87171; box-shadow: 0 0 10px rgba(248, 113, 113, 0.9); }
+  .latido { animation: latido 1.6s ease-in-out infinite; }
+  @keyframes latido { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+  .num { font-variant-numeric: tabular-nums; font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; }
+
+  /* ===== Barras (solo transform: sin reflujo, 60 FPS) ===== */
+  .marco-barra { height: 8px; border-radius: 999px; background: rgba(148, 163, 184, 0.15); overflow: hidden; }
+  .nivel-barra { height: 100%; border-radius: 999px; transform-origin: left center; transform: scaleX(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    #malla-fondo, .latido { animation: none; }
+    #halo-cursor { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="malla-fondo"></div>
+<canvas id="lienzo"></canvas>
+<div id="halo-cursor"></div>
+
+<!-- Marca -->
+<header class="fixed top-5 left-6 z-10 select-none">
+  <h1 class="text-lg font-bold tracking-[0.30em] text-slate-100 m-0">AI NEXUS CORE</h1>
+  <p class="text-[11px] tracking-[0.42em] m-0 mt-1" style="color: var(--violeta);">OPUS · NEURAL INTERACTIVE</p>
+</header>
+
+<!-- Ayuda -->
+<p class="fixed bottom-5 right-6 z-10 text-[11px] text-slate-500 select-none m-0">
+  Cursor — gravedad magnética &nbsp;·&nbsp; Clic — onda de choque
+</p>
+
+<!-- Panel de control glassmórfico -->
+<aside class="glass fixed bottom-5 left-5 z-10 rounded-2xl p-5 w-[calc(100%-2.5rem)] max-w-[360px]">
+
+  <p class="text-[10px] tracking-[0.34em] m-0" style="color: var(--violeta);">TELEMETRÍA EN TIEMPO REAL</p>
+
+  <!-- FPS · Nodos · GPU -->
+  <div class="grid grid-cols-3 gap-3 mt-3">
+    <div>
+      <p class="text-[10px] text-slate-500 m-0">FPS</p>
+      <p class="flex items-center gap-1.5 m-0 mt-0.5"><span id="punto-fps" class="punto-estado verde latido"></span><span id="valor-fps" class="num text-lg font-semibold text-slate-100">60</span></p>
+    </div>
+    <div>
+      <p class="text-[10px] text-slate-500 m-0">NODOS ACTIVOS</p>
+      <p class="num text-lg font-semibold text-slate-100 m-0 mt-0.5"><span id="valor-nodos">45</span><span class="text-xs text-slate-500">/45</span></p>
+    </div>
+    <div>
+      <p class="text-[10px] text-slate-500 m-0">GPU</p>
+      <p class="flex items-center gap-1.5 m-0 mt-0.5"><span class="punto-estado verde latido"></span><span id="valor-gpu" class="num text-lg font-semibold text-slate-100">34%</span></p>
+    </div>
+  </div>
+  <p class="text-[10px] text-slate-500 m-0 mt-1.5">NVIDIA GeForce GTX 1050 Ti · 4 GB GDDR5 · <span style="color: var(--esmeralda);">OPERATIVA</span></p>
+
+  <hr class="border-white/10 my-4">
+
+  <!-- Motor DuckDB + Polars -->
+  <p class="text-[10px] tracking-[0.34em] m-0" style="color: var(--esmeralda);">MOTOR DUCKDB + POLARS</p>
+  <div class="flex justify-between items-baseline mt-2.5">
+    <span class="text-[11px] text-slate-500">Registros en streaming</span>
+    <span id="valor-registros" class="num text-base font-semibold" style="color: var(--esmeralda);">0</span>
+  </div>
+  <div class="marco-barra mt-1.5"><div id="barra-registros" class="nivel-barra" style="background: linear-gradient(90deg, var(--esmeralda-hondo), var(--esmeralda));"></div></div>
+  <div class="flex justify-between items-baseline mt-3">
+    <span class="text-[11px] text-slate-500">Memoria RAM</span>
+    <span id="valor-ram" class="num text-xs" style="color: var(--esmeralda);">268 MB / 500 MB</span>
+  </div>
+  <div class="marco-barra mt-1.5"><div id="barra-ram" class="nivel-barra" style="background: linear-gradient(90deg, var(--violeta-hondo), var(--violeta));"></div></div>
+
+  <hr class="border-white/10 my-4">
+
+  <!-- Interruptores de modo de renderizado -->
+  <p class="text-[10px] tracking-[0.34em] m-0" style="color: var(--violeta);">MODO DE RENDERIZADO</p>
+  <div id="selector-modo" class="relative grid grid-cols-3 mt-2.5 rounded-xl p-1" style="background: rgba(2, 6, 23, 0.55); border: 1px solid rgba(255,255,255,0.08);">
+    <div id="indicador-modo"></div>
+    <button data-modo="cuantica" class="boton-modo relative z-10 text-[10px] tracking-wider py-2 rounded-lg bg-transparent border-0 cursor-pointer text-slate-400">FÍSICA CUÁNTICA</button>
+    <button data-modo="neural"  class="boton-modo relative z-10 text-[10px] tracking-wider py-2 rounded-lg bg-transparent border-0 cursor-pointer text-slate-100">RED NEURONAL</button>
+    <button data-modo="malla"   class="boton-modo relative z-10 text-[10px] tracking-wider py-2 rounded-lg bg-transparent border-0 cursor-pointer text-slate-400">MALLA DE DATOS</button>
+  </div>
+</aside>
+
+<script>
+'use strict';
+/* =====================================================================
+   OPUS NEURAL INTERACTIVE — AI Nexus Core
+   Canvas 2D · física de partículas · 45 nodos · 60 FPS
+   Constitución Frontier Level: OLED #030712, resortes < 250 ms,
+   will-change: transform, composición acelerada por GPU.
+   ===================================================================== */
+
+/** @returns {HTMLElement} primer elemento que coincide con el selector */
+const $ = (sel) => document.querySelector(sel);
+/** Limita un valor al rango [min, max] */
+const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+const MOV_REDUCIDO = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ===== Lienzo con densidad de píxeles (nitidez sin coste) ===== */
+const lienzo = $('#lienzo');
+const ctx = lienzo.getContext('2d');
+let W = 0, H = 0;
+
+function redimensionar() {
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  W = innerWidth; H = innerHeight;
+  lienzo.width = W * dpr; lienzo.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+addEventListener('resize', redimensionar);
+redimensionar();
+
+/* ===== Sprites de resplandor pre-renderizados (rápidos: drawImage) ===== */
+function crearSprite(color) {
+  const s = document.createElement('canvas');
+  s.width = s.height = 64;
+  const g = s.getContext('2d');
+  const grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+  grad.addColorStop(0, 'rgba(255,255,255,0.95)');
+  grad.addColorStop(0.25, color);
+  grad.addColorStop(1, 'rgba(0,0,0,0)');
+  g.fillStyle = grad;
+  g.fillRect(0, 0, 64, 64);
+  return s;
+}
+const SPRITE_VIOLETA = crearSprite('rgba(167,139,250,0.85)');
+const SPRITE_ESMERALDA = crearSprite('rgba(52,211,153,0.85)');
+
+/* ===== Estado de la simulación ===== */
+const NODOS = 45;
+const DIST_ENLACE = 150;   // px — umbral de proximidad para enlaces elásticos
+const DESCANSO = 105;      // px — longitud de reposo del resorte
+const K_ENLACE = 0.012;    // rigidez del resorte de proximidad
+const G_CURSOR = MOV_REDUCIDO ? 0.0012 : 0.0042; // gravedad magnética al cursor
+const FRICCION = 0.955;    // desaceleración orgánica por frame
+const MAX_VEL = 7;         // px/frame — tope de velocidad
+
+/** @type {{x:number,y:number,vx:number,vy:number,color:string,sprite:HTMLCanvasElement,orbitas:{r:number,v:number,f:number}[],activo:boolean}[]} */
+const nodos = Array.from({ length: NODOS }, (_, i) => {
+  const esmeralda = i % 2 === 0;
+  return {
+    x: Math.random() * W, y: Math.random() * H,
+    vx: (Math.random() - 0.5) * 1.2, vy: (Math.random() - 0.5) * 1.2,
+    color: esmeralda ? '#34d399' : '#a78bfa',
+    sprite: esmeralda ? SPRITE_ESMERALDA : SPRITE_VIOLETA,
+    orbitas: [
+      { r: 13 + Math.random() * 8, v: 0.05 + Math.random() * 0.07, f: Math.random() * 6.28 },
+      { r: 20 + Math.random() * 8, v: -(0.04 + Math.random() * 0.06), f: Math.random() * 6.28 }
+    ],
+    activo: false
+  };
+});
+
+const cursor = { x: W / 2, y: H / 2, activo: true };
+const halo = { x: W / 2, y: H / 2 };
+const haloEl = $('#halo-cursor');
+/** @type {{x:number,y:number,t:number,fuerza:number}[]} */
+let ondas = [];
+/** @type {{a:object,b:object,t:number}[]} */
+let pulsos = [];
+/** @type {{a:object,b:object,t:number}[]} */
+let paquetes = [];
+let modo = 'neural';
+let tiempoGlobal = 0;
+
+/* ===== Física: resortes, gravedad magnética y ondas de choque ===== */
+function paso(escala) {
+  // Gravedad magnética hacia el cursor (aceleración suave)
+  if (cursor.activo) {
+    for (const n of nodos) {
+      n.vx += (cursor.x - n.x) * G_CURSOR * escala;
+      n.vy += (cursor.y - n.y) * G_CURSOR * escala;
+    }
+  }
+  // Enlaces elásticos de proximidad (ley de Hooke entre pares cercanos)
+  for (const n of nodos) n.activo = false;
+  for (let i = 0; i < nodos.length; i++) {
+    const a = nodos[i];
+    for (let j = i + 1; j < nodos.length; j++) {
+      const b = nodos[j];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const d2 = dx * dx + dy * dy;
+      if (d2 < DIST_ENLACE * DIST_ENLACE) {
+        a.activo = b.activo = true;
+        const d = Math.sqrt(d2) || 1;
+        const f = (d - DESCANSO) * K_ENLACE * escala / d;
+        const fx = dx * f, fy = dy * f;
+        a.vx += fx; a.vy += fy;
+        b.vx -= fx; b.vy -= fy;
+      }
+    }
+  }
+  // Ondas de choque: impulso radial con caída cuadrática y decaimiento orgánico
+  for (const onda of ondas) {
+    for (const n of nodos) {
+      const dx = n.x - onda.x, dy = n.y - onda.y;
+      const d2 = dx * dx + dy * dy;
+      const d = Math.sqrt(d2) || 1;
+      const impulso = 6000 * onda.fuerza / (d2 + 9000);
+      n.vx += (dx / d) * impulso * escala;
+      n.vy += (dy / d) * impulso * escala;
+    }
+    onda.fuerza *= Math.pow(0.86, escala);
+    onda.t += escala;
+  }
+  ondas = ondas.filter(o => o.fuerza > 0.12 && o.t < 34);
+  // Fronteras elásticas (empuje suave hacia el interior)
+  const M = 56, K_BORDE = 0.05;
+  for (const n of nodos) {
+    if (n.x < M) n.vx += (M - n.x) * K_BORDE * escala;
+    if (n.x > W - M) n.vx -= (n.x - (W - M)) * K_BORDE * escala;
+    if (n.y < M) n.vy += (M - n.y) * K_BORDE * escala;
+    if (n.y > H - M) n.vy -= (n.y - (H - M)) * K_BORDE * escala;
+  }
+  // Integración: fricción orgánica + tope de velocidad
+  const fr = Math.pow(FRICCION, escala);
+  for (const n of nodos) {
+    n.vx *= fr; n.vy *= fr;
+    const v = Math.hypot(n.vx, n.vy);
+    if (v > MAX_VEL) { const s = MAX_VEL / v; n.vx *= s; n.vy *= s; }
+    n.x += n.vx * escala; n.y += n.vy * escala;
+  }
+}
+
+/* ===== Render por modo ===== */
+function dibujarEnlacesNeural() {
+  ctx.lineWidth = 1;
+  for (let i = 0; i < nodos.length; i++) {
+    const a = nodos[i];
+    for (let j = i + 1; j < nodos.length; j++) {
+      const b = nodos[j];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const d2 = dx * dx + dy * dy;
+      if (d2 < DIST_ENLACE * DIST_ENLACE) {
+        const d = Math.sqrt(d2);
+        const alfa = (1 - d / DIST_ENLACE) * 0.45;
+        ctx.strokeStyle = a.color === b.color
+          ? hexA(a.color, alfa) : `rgba(148,163,184,${alfa.toFixed(3)})`;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      }
+    }
+  }
+}
+
+function dibujarEnlacesCuantica() {
+  ctx.lineWidth = 1;
+  for (let i = 0; i < nodos.length; i++) {
+    const a = nodos[i];
+    for (let j = i + 1; j < nodos.length; j++) {
+      const b = nodos[j];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const d2 = dx * dx + dy * dy;
+      if (d2 < DIST_ENLACE * DIST_ENLACE) {
+        const d = Math.sqrt(d2) || 1;
+        const alfa = (1 - d / DIST_ENLACE) * 0.40;
+        // Onda de probabilidad: segmento sinusoidal perpendicular
+        const nx = -dy / d, ny = dx / d, SEG = 7;
+        ctx.strokeStyle = hexA(a.color === b.color ? a.color : '#94a3b8', alfa);
+        ctx.beginPath(); ctx.moveTo(a.x, a.y);
+        for (let s = 1; s < SEG; s++) {
+          const t = s / SEG;
+          const off = Math.sin(t * Math.PI * 3 + tiempoGlobal * 0.004) * 4;
+          ctx.lineTo(a.x + dx * t + nx * off, a.y + dy * t + ny * off);
+        }
+        ctx.lineTo(b.x, b.y); ctx.stroke();
+      }
+    }
+  }
+}
+
+function dibujarEnlacesMalla() {
+  ctx.lineWidth = 1;
+  for (let i = 0; i < nodos.length; i++) {
+    const a = nodos[i];
+    for (let j = i + 1; j < nodos.length; j++) {
+      const b = nodos[j];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      if (dx * dx + dy * dy < DIST_ENLACE * DIST_ENLACE) {
+        const alfa = 0.30 * (1 - Math.hypot(dx, dy) / DIST_ENLACE) + 0.08;
+        ctx.strokeStyle = hexA('#64748b', alfa);
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(a.x, b.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      }
+    }
+  }
+}
+
+/** Convierte #rrggbb + alfa en rgba() */
+function hexA(hex, alfa) {
+  const n = parseInt(hex.slice(1), 16);
+  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${alfa.toFixed(3)})`;
+}
+
+function dibujarNodos() {
+  for (const n of nodos) {
+    if (modo === 'malla') {
+      // Rombo de datos, nítido
+      ctx.save();
+      ctx.translate(n.x, n.y); ctx.rotate(Math.PI / 4);
+      ctx.strokeStyle = n.color; ctx.lineWidth = 1.4;
+      ctx.strokeRect(-5, -5, 10, 10);
+      ctx.fillStyle = hexA(n.color, 0.25);
+      ctx.fillRect(-5, -5, 10, 10);
+      ctx.restore();
+    } else {
+      // Resplandor (sprite pre-renderizado) + núcleo
+      const t = 26 + Math.sin(tiempoGlobal * 0.003 + n.x) * 3;
+      ctx.drawImage(n.sprite, n.x - t / 2, n.y - t / 2, t, t);
+      ctx.fillStyle = '#f8fafc';
+      ctx.beginPath(); ctx.arc(n.x, n.y, 2.2, 0, 6.283); ctx.fill();
+      if (modo === 'cuantica') {
+        // Electrones en órbita (incertidumbre cuántica)
+        for (const o of n.orbitas) {
+          const ang = o.f + tiempoGlobal * 0.001 * o.v * 60;
+          ctx.fillStyle = hexA(n.color, 0.9);
+          ctx.beginPath();
+          ctx.arc(n.x + Math.cos(ang) * o.r, n.y + Math.sin(ang) * o.r, 1.6, 0, 6.283);
+          ctx.fill();
+        }
+      }
+    }
+  }
+}
+
+function dibujarFlujos() {
+  if (modo === 'neural') {
+    for (const p of pulsos) {
+      const x = p.a.x + (p.b.x - p.a.x) * p.t;
+      const y = p.a.y + (p.b.y - p.a.y) * p.t;
+      ctx.drawImage(SPRITE_ESMERALDA, x - 9, y - 9, 18, 18);
+    }
+  } else if (modo === 'malla') {
+    ctx.fillStyle = 'rgba(52,211,153,0.95)';
+    for (const p of paquetes) {
+      const esq = { x: p.a.x, y: p.b.y };
+      const x = p.t < 0.5
+        ? p.a.x + (esq.x - p.a.x) * (p.t * 2)
+        : esq.x + (p.b.x - esq.x) * ((p.t - 0.5) * 2);
+      const y = p.t < 0.5
+        ? p.a.y + (esq.y - p.a.y) * (p.t * 2)
+        : esq.y + (p.b.y - esq.y) * ((p.t - 0.5) * 2);
+      ctx.fillRect(x - 2, y - 2, 4, 4);
+    }
+  }
+}
+
+function dibujarOndas() {
+  for (const o of ondas) {
+    const radio = o.t * 22;
+    const alfa = Math.max(0, 1 - o.t / 32);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = `rgba(167,139,250,${(alfa * 0.55).toFixed(3)})`;
+    ctx.beginPath(); ctx.arc(o.x, o.y, radio, 0, 6.283); ctx.stroke();
+    ctx.strokeStyle = `rgba(52,211,153,${(alfa * 0.35).toFixed(3)})`;
+    ctx.beginPath(); ctx.arc(o.x, o.y, radio * 0.72, 0, 6.283); ctx.stroke();
+  }
+}
+
+/* ===== Panel: telemetría y motor de datos ===== */
+const elFps = $('#valor-fps'), elPuntoFps = $('#punto-fps');
+const elNodos = $('#valor-nodos'), elGpu = $('#valor-gpu');
+const elRegistros = $('#valor-registros'), barraRegistros = $('#barra-registros');
+const elRam = $('#valor-ram'), barraRam = $('#barra-ram');
+
+let fpsMedia = 60, tPanel = 0;
+let registros = 0, enPausa = 0;
+const TASA_REGISTROS = 14000; // registros/segundo
+
+function actualizarPanel(dtMs, escala) {
+  // Motor DuckDB + Polars: streaming continuo de 100 000 registros
+  if (enPausa > 0) { enPausa -= dtMs; if (enPausa <= 0) registros = 0; }
+  else {
+    registros += TASA_REGISTROS * dtMs / 1000;
+    if (registros >= 100000) { registros = 100000; enPausa = 900; }
+  }
+  const prog = registros / 100000;
+  elRegistros.textContent = Math.floor(registros).toLocaleString('es-ES');
+  barraRegistros.style.transform = `scaleX(${prog.toFixed(4)})`;
+  const ram = 268 + prog * 150 + Math.sin(tiempoGlobal / 700) * 14;
+  elRam.textContent = `${Math.round(ram)} MB / 500 MB`;
+  barraRam.style.transform = `scaleX(${(ram / 500).toFixed(4)})`;
+
+  // Telemetría cada 400 ms (sin thrashing de layout)
+  tPanel += dtMs;
+  if (tPanel >= 400) {
+    tPanel = 0;
+    elFps.textContent = String(Math.round(fpsMedia));
+    elPuntoFps.className = 'punto-estado latido ' + (fpsMedia >= 55 ? 'verde' : fpsMedia >= 30 ? 'ambar' : 'rojo');
+    const activos = nodos.filter(n => n.activo).length;
+    elNodos.textContent = String(activos);
+    const carga = clamp(28 + activos * 0.9 + ondas.length * 6 + (60 - fpsMedia) * 1.5, 12, 97);
+    elGpu.textContent = `${Math.round(carga)}%`;
+  }
+}
+
+/* ===== Bucle principal · requestAnimationFrame ===== */
+let tPrev = performance.now();
+function cuadro(t) {
+  const dtMs = clamp(t - tPrev, 1, 50);
+  tPrev = t;
+  const escala = clamp(dtMs / 16.667, 0.25, 3);
+  tiempoGlobal = t;
+  fpsMedia = fpsMedia * 0.92 + (1000 / dtMs) * 0.08;
+
+  // Halo del cursor: interpolación orgánica (composición GPU)
+  halo.x += (cursor.x - halo.x) * Math.min(0.18 * escala, 1);
+  halo.y += (cursor.y - halo.y) * Math.min(0.18 * escala, 1);
+  haloEl.style.transform = `translate3d(${halo.x}px, ${halo.y}px, 0)`;
+
+  paso(escala);
+
+  // Emisión de flujos según el modo
+  if (!MOV_REDUCIDO && Math.random() < 0.10 * escala) {
+    const a = nodos[(Math.random() * NODOS) | 0];
+    const b = nodos[(Math.random() * NODOS) | 0];
+    if (a !== b && Math.hypot(a.x - b.x, a.y - b.y) < DIST_ENLACE) {
+      if (modo === 'neural' && pulsos.length < 14) pulsos.push({ a, b, t: 0 });
+      if (modo === 'malla' && paquetes.length < 14) paquetes.push({ a, b, t: 0 });
+    }
+  }
+  for (const p of pulsos) p.t += 0.028 * escala;
+  pulsos = pulsos.filter(p => p.t < 1);
+  for (const p of paquetes) p.t += 0.022 * escala;
+  paquetes = paquetes.filter(p => p.t < 1);
+
+  // Render
+  ctx.clearRect(0, 0, W, H);
+  if (modo === 'cuantica') dibujarEnlacesCuantica();
+  else if (modo === 'neural') dibujarEnlacesNeural();
+  else dibujarEnlacesMalla();
+  dibujarFlujos();
+  dibujarNodos();
+  dibujarOndas();
+
+  actualizarPanel(dtMs, escala);
+  requestAnimationFrame(cuadro);
+}
+requestAnimationFrame(cuadro);
+
+/* ===== Eventos: cursor, ondas de choque y modos ===== */
+lienzo.addEventListener('pointermove', (e) => {
+  cursor.x = e.clientX; cursor.y = e.clientY; cursor.activo = true;
+  haloEl.style.opacity = '1';
+});
+lienzo.addEventListener('pointerleave', () => { cursor.activo = false; haloEl.style.opacity = '0'; });
+lienzo.addEventListener('pointerdown', (e) => {
+  ondas.push({ x: e.clientX, y: e.clientY, t: 0, fuerza: 1 });
+});
+
+const botonesModo = document.querySelectorAll('[data-modo]');
+const indicador = $('#indicador-modo');
+const orden = ['cuantica', 'neural', 'malla'];
+function fijarModo(m) {
+  modo = m;
+  indicador.style.transform = `translateX(${orden.indexOf(m) * 100}%)`;
+  botonesModo.forEach(b => {
+    const activo = b.dataset.modo === m;
+    b.classList.toggle('text-slate-100', activo);
+    b.classList.toggle('text-slate-400', !activo);
+    b.setAttribute('aria-pressed', String(activo));
+  });
+}
+botonesModo.forEach(b => b.addEventListener('click', () => fijarModo(b.dataset.modo)));
+fijarModo('neural');
+
+/* Gancho de inspección para pruebas E2E (Playwright) */
+window.__opus = { get modo() { return modo; }, nodos, get ondas() { return ondas; }, get registros() { return registros; } };
+</script>
+</body>
+</html>

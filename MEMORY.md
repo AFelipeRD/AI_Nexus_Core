@@ -11,9 +11,35 @@
 - Modelo local: [[Ollama]] (`qwen2.5-coder:7b`).
 - Entorno de terminal y rutas: [[Windows-Warp]].
 
+## Constitución Maestra (Frontier Level)
+
+> ⚠️ **Sección inmutable** — no derogable por ningún agente sin autorización explícita del usuario. Directivas operativas obligatorias para toda la cuadrilla de subagentes.
+
+### CONSTITUCIÓN MAESTRA DE INGENIERÍA, RAZONAMIENTO Y ARQUITECTURA (FRONTIER LEVEL)
+
+1. **Protocolo de Razonamiento Profundo y Auto-Sanación (Self-Healing)**
+   - Prohibido generar código sin validación. Si un script o comando falla durante la ejecución, el agente responsable debe capturar el traceback, formular hipótesis mediante Sequential Thinking y auto-corregir el archivo antes de solicitar confirmación.
+   - Todo módulo nuevo debe incluir pruebas unitarias y validación de tipos estricta (mypy / type hinting completo).
+
+2. **Aceleración por Hardware y Cómputo Local (NVIDIA GeForce GTX 1050 Ti 4GB + Ryzen 5)**
+   - ML / Redes Neuronales: delegación forzada a CUDA (`device=cuda`) con precisión mixta (fp16) y limpieza explícita de VRAM (`torch.cuda.empty_cache()`) para operar fluidamente en 4 GB.
+   - Procesamiento de datos: datasets en streaming in-memory con DuckDB y Polars, límite estricto de 500 MB de RAM.
+   - Web / Canvas / Frontend: composición acelerada por GPU mediante capas 3D y `will-change: transform` para garantizar 60 FPS estables.
+
+3. **Estándar de Diseño y Motion Design (Opus Artifact Level)**
+   - Prohibido el AI-slop: paletas OLED profundas (`#020617` / `#030712`), mallas de gradiente radial difusas y glassmorphism real (`backdrop-blur-xl border-white/10`).
+   - Dinámica de fluidos y física de resortes: transiciones < 250 ms, `cubic-bezier(0.16, 1, 0.3, 1)`, micro-interacciones de retroalimentación inmediata y simulaciones en HTML5 Canvas reactivas al cursor.
+
+4. **Gobernanza Multiagente y Modo Arena**
+   - Ante decisiones arquitectónicas críticas, el Orquestador convoca `/arena`: los subagentes generan variantes (minimalista, robusta, ultra-rápida) y `arena-arbiter` sintetiza la solución óptima.
+
+5. **Seguridad y Zero-Leaks**
+   - Tolerancia cero a fugas de credenciales. Ningún agente modificará `.gitignore` para incluir archivos sensibles ni expondrá claves de `.env` en código o documentación.
+
 ## Decisiones (formato: fecha · decisión · motivo · fuente)
 - 2026-10-16 · Adoptar ecosistema 100 % Markdown nativo de OpenCode · simplicidad y portabilidad · [[01_MANUAL_ECOSISTEMA_OPENCODE]]
 - 2026-10-16 · Decisiones críticas pasan por [[Arena-Consensus]] · reducir errores de un modelo pequeño · [[06_PROTOCOLO_ARENA_Y_CONSENSO]]
+- 2026-10-18 · Adoptar la Constitución Maestra de Ingeniería Frontier Level · blindar razonamiento, hardware, diseño y seguridad · [[#Constitución Maestra (Frontier Level)]]
 
 ## Grafo de entidades
 | Entidad | Relación | Detalle |
@@ -27,6 +53,7 @@
 
 ## Registro de sesiones
 - 2026-10-16 · Creación del espacio de trabajo con `scaffold_nexus_workspace.py`.
+- 2026-10-18 · Publicación del portafolio en GitHub y registro de la Constitución Maestra Frontier Level.
 
 ## Cómo actualizar esta memoria
 1. Añade decisiones con fecha y enlace a la fuente.

@@ -22,6 +22,7 @@ data/raw/*
 data/processed/*
 output/*
 logs/*
+*.log
 !.gitkeep
 
 # Modelos y pesos
