@@ -133,16 +133,16 @@ Cada agente es un archivo `.md` con frontmatter YAML (`description`, `mode`, `mo
 <!-- CATALOGO:INICIO -->
 | Agente | Modo | Modelo | Descripción |
 |---|---|---|---|
-| `orchestrator` | primary | `ollama/qwen2.5-coder:7b` | Enrutador maestro y triage del ecosistema. Clasifica cada petición, aplica YAGNI y Headroom, resuelve lo cotidiano con Ollama local y convoca /arena o al subagente especialista en lo complejo. |
-| `arena-arbiter` | subagent | `ollama/qwen2.5-coder:7b` | Juez de la Arena. Modera el debate entre soluciones candidatas, puntúa con la rúbrica (simplicidad, velocidad, seguridad, robustez) y emite el dictamen final o la síntesis óptima. |
-| `ml-deeplearning-specialist` | subagent | `ollama/qwen2.5-coder:7b` | Ingeniero de redes neuronales y Deep Learning. PyTorch, Hugging Face MCP, optimización de VRAM/CUDA, embeddings locales y diseño de arquitecturas. |
-| `code-reviewer-security` | subagent | `ollama/qwen2.5-coder:7b` | Auditor de código y seguridad. Análisis estático, OWASP Top 10, detección de fugas de credenciales y auditoría de pruebas. |
-| `ui-ux-director` | subagent | `ollama/qwen2.5-coder:7b` | Director de diseño. Integra UI/UX Pro Max, Frontend Design, Awesome Design Patterns, Impeccable, Taste y Emil Kowalski para interfaces modernas con Tailwind CSS, micro-animaciones fluidas y Figma MCP. |
-| `software-architect` | subagent | `ollama/qwen2.5-coder:7b` | Arquitecto de software. Arquitectura limpia, principios SOLID y desarrollo minimalista guiado por la escalera YAGNI de Ponytail. |
-| `data-engineer` | subagent | `ollama/qwen2.5-coder:7b` | Ingeniero de datos. Pipelines analíticos OLAP con DuckDB y Polars a hipervelocidad sobre CSV y Parquet locales. |
-| `knowledge-graph-agent` | subagent | `ollama/qwen2.5-coder:7b` | Guardián de contexto. LightRAG, Claude-Mem y Graphify: mantiene el grafo de dependencias, la memoria persistente y el mapa visual de Obsidian. |
-| `automation-browser` | subagent | `ollama/qwen2.5-coder:7b` | Automatización de navegador. Pruebas E2E con Playwright, scraping con Crawl4AI y flujos de trabajo en n8n. |
-| `auto-researcher` | subagent | `ollama/qwen2.5-coder:7b` | Investigador autónomo. Valida documentación oficial, compatibilidad de librerías y solidez técnica antes de aprobar integraciones. |
-| `github-scout` | subagent | `ollama/qwen2.5-coder:7b` | Centinela de tendencias en GitHub. Usa el PAT para detectar repositorios virales de IA y dispara notificaciones Toast de Windows. |
-| `portfolio-git` | subagent | `ollama/qwen2.5-coder:7b` | Gestor de portafolio Git. Genera commits semánticos en español (feat, fix, docs, security, perf) y sincroniza el portafolio en GitHub. |
+| `arena-arbiter` | subagent | heredado | Juez de la Arena. Modera el debate entre soluciones candidatas, puntúa con la rúbrica (simplicidad, velocidad, seguridad, robustez) y emite el dictamen final o la síntesis óptima. |
+| `auto-researcher` | subagent | heredado | Investigador autónomo. Valida documentación oficial, compatibilidad de librerías y solidez técnica antes de aprobar integraciones. |
+| `automation-browser` | subagent | heredado | Automatización de navegador. Pruebas E2E con Playwright, scraping con Crawl4AI y flujos de trabajo en n8n. |
+| `code-reviewer-security` | subagent | heredado | Auditor de código y seguridad. Análisis estático, OWASP Top 10, detección de fugas de credenciales y auditoría de pruebas. |
+| `data-engineer` | subagent | heredado | Ingeniero de datos. Pipelines analíticos OLAP con DuckDB y Polars a hipervelocidad sobre CSV y Parquet locales. |
+| `github-scout` | subagent | heredado | Centinela de tendencias en GitHub. Usa el PAT para detectar repositorios virales de IA y dispara notificaciones Toast de Windows. |
+| `knowledge-graph-agent` | subagent | heredado | Guardián de contexto. LightRAG, Claude-Mem y Graphify: mantiene el grafo de dependencias, la memoria persistente y el mapa visual de Obsidian. |
+| `ml-deeplearning-specialist` | subagent | heredado | Ingeniero de redes neuronales y Deep Learning. PyTorch, Hugging Face MCP, optimización de VRAM/CUDA, embeddings locales y diseño de arquitecturas. |
+| `orchestrator` | primary | heredado | Enrutador maestro y triage del ecosistema. Clasifica cada petición, aplica YAGNI y Headroom, resuelve lo cotidiano con el modelo activo global y convoca /arena o al subagente especialista en lo complejo. |
+| `portfolio-git` | subagent | heredado | Gestor de portafolio Git. Genera commits semánticos en español (feat, fix, docs, security, perf) y sincroniza el portafolio en GitHub. |
+| `software-architect` | subagent | heredado | Arquitecto de software. Arquitectura limpia, principios SOLID y desarrollo minimalista guiado por la escalera YAGNI de Ponytail. |
+| `ui-ux-director` | subagent | heredado | Director de diseño. Integra UI/UX Pro Max, Frontend Design, Awesome Design Patterns, Impeccable, Taste y Emil Kowalski para interfaces modernas con Tailwind CSS, micro-animaciones fluidas y Figma MCP. |
 <!-- CATALOGO:FIN -->

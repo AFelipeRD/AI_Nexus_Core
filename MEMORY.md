@@ -38,8 +38,9 @@
 
 ## Decisiones (formato: fecha · decisión · motivo · fuente)
 - 2026-10-16 · Adoptar ecosistema 100 % Markdown nativo de OpenCode · simplicidad y portabilidad · [[01_MANUAL_ECOSISTEMA_OPENCODE]]
-- 2026-10-16 · Decisiones críticas pasan por [[Arena-Consensus]] · reducir errores de un modelo pequeño · [[06_PROTOCOLO_ARENA_Y_CONSENSO]]
+- 2026-10-16 · Decisiones críticas pasan por [[Arena-Consensus]] · reducir el error de un único modelo · [[06_PROTOCOLO_ARENA_Y_CONSENSO]]
 - 2026-10-18 · Adoptar la Constitución Maestra de Ingeniería Frontier Level · blindar razonamiento, hardware, diseño y seguridad · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-18 · Homologación total Frontier: herencia dinámica del modelo activo global en los 12 agentes y estándar de razonamiento Staff AI Engineer · desacoplamiento total del proveedor y máxima calidad · [[#Constitución Maestra (Frontier Level)]]
 
 ## Grafo de entidades
 | Entidad | Relación | Detalle |
@@ -54,6 +55,7 @@
 ## Registro de sesiones
 - 2026-10-16 · Creación del espacio de trabajo con `scaffold_nexus_workspace.py`.
 - 2026-10-18 · Publicación del portafolio en GitHub y registro de la Constitución Maestra Frontier Level.
+- 2026-10-18 · Homologación de frontera completada: agentes desacoplados del modelo (herencia dinámica) y skills elevadas (Arrow zero-copy, Clean/Hexagonal, CUDA fp16, OWASP+mypy, E2E 60 FPS).
 
 ## Cómo actualizar esta memoria
 1. Añade decisiones con fecha y enlace a la fuente.

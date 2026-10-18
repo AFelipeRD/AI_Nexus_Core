@@ -45,21 +45,21 @@ En OpenCode escribe `/` seguido del nombre. Ejemplos:
 <!-- CATALOGO:INICIO -->
 | Comando | Agente | Descripción |
 |---|---|---|
+| `/analyze-data` | `data-engineer` | Lanza análisis SQL local con DuckDB y Polars. |
+| `/animate` | `ui-ux-director` | Inyecta micro-animaciones con curvas de resorte estilo Emil Kowalski. |
 | `/arena` | `orchestrator` | Somete un problema a debate entre subagentes; arena-arbiter determina la mejor solución o una síntesis. |
-| `/think` | `orchestrator` | Activa el pensamiento secuencial estructurado para problemas complejos. |
-| `/train-model` | `ml-deeplearning-specialist` | Genera y lanza plantillas de redes neuronales optimizadas en PyTorch para la GPU local. |
+| `/browser-test` | `automation-browser` | Lanza Playwright para validar la aplicación en un navegador real. |
+| `/commit` | `portfolio-git` | Redacta un commit semántico en español y actualiza el portafolio en GitHub. |
 | `/craft` | `ui-ux-director` | Orquesta el flujo completo de diseño visual: UI/UX Pro Max, Tailwind y animación. |
 | `/critique` | `ui-ux-director` | Audita la interfaz aplicando las heurísticas de Taste e Impeccable. |
-| `/taste` | `ui-ux-director` | Refina estética, espaciado y contraste visual. |
-| `/animate` | `ui-ux-director` | Inyecta micro-animaciones con curvas de resorte estilo Emil Kowalski. |
-| `/browser-test` | `automation-browser` | Lanza Playwright para validar la aplicación en un navegador real. |
-| `/research` | `auto-researcher` | Ejecuta investigación técnica autónoma para contrastar una solución con fuentes oficiales. |
-| `/yagni` | `software-architect` | Audita el código recién escrito para recortar líneas superfluas con Ponytail. |
-| `/headroom` | `knowledge-graph-agent` | Inspecciona el uso de tokens y comprime el contexto activo. |
 | `/graphify` | `knowledge-graph-agent` | Genera o actualiza el grafo de dependencias del repositorio. |
-| `/security-audit` | `code-reviewer-security` | Ejecuta una auditoría estricta de seguridad y parámetros antes de confirmar cambios. |
-| `/analyze-data` | `data-engineer` | Lanza análisis SQL local con DuckDB y Polars. |
+| `/headroom` | `knowledge-graph-agent` | Inspecciona el uso de tokens y comprime el contexto activo. |
+| `/research` | `auto-researcher` | Ejecuta investigación técnica autónoma para contrastar una solución con fuentes oficiales. |
 | `/scout` | `github-scout` | Busca repositorios virales de IA en GitHub y emite una notificación Toast. |
-| `/commit` | `portfolio-git` | Redacta un commit semántico en español y actualiza el portafolio en GitHub. |
+| `/security-audit` | `code-reviewer-security` | Ejecuta una auditoría estricta de seguridad y parámetros antes de confirmar cambios. |
 | `/sync-catalog` | `orchestrator` | Re-escanea las carpetas y actualiza los README.md e índices automáticamente. |
+| `/taste` | `ui-ux-director` | Refina estética, espaciado y contraste visual. |
+| `/think` | `orchestrator` | Activa el pensamiento secuencial estructurado para problemas complejos. |
+| `/train-model` | `ml-deeplearning-specialist` | Genera y lanza plantillas de redes neuronales optimizadas en PyTorch para la GPU local. |
+| `/yagni` | `software-architect` | Audita el código recién escrito para recortar líneas superfluas con Ponytail. |
 <!-- CATALOGO:FIN -->

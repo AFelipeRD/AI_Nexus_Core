@@ -4,7 +4,7 @@
 
 ## 1. Contexto del proyecto
 - Raíz: `D:\AI_Nexus_Core` · Windows 11 · terminal Warp · abierta también como bóveda de Obsidian.
-- Modelo por defecto: `ollama/qwen2.5-coder:7b` en `http://127.0.0.1:11434/v1` (local, costo cero).
+- Modelo activo global: definido en `opencode.json`; todos los agentes heredan dinámicamente ese modelo (sin anclaje rígido a un proveedor). Fallback local a costo cero: Ollama en `http://127.0.0.1:11434/v1`.
 - Idioma: **todo en español** (prompts, documentación, comentarios, commits). Los identificadores de código pueden ir en inglés si el ecosistema lo exige.
 - Todo el ecosistema son archivos Markdown: agentes, habilidades, comandos, memoria y contexto. Python solo existe como utilería en `scripts/`.
 
@@ -74,8 +74,8 @@ Checklist obligatorio (`/security-audit` lo automatiza):
 Nunca pegues un token en una URL remota ni en un archivo versionado.
 
 ## 10. Enrutamiento de modelos
-- **Por defecto:** `ollama/qwen2.5-coder:7b` (tareas cotidianas, código, edición).
-- **Fallback a costo cero:** proveedor `omniroute` (OmniRoute, puerta de enlace compatible con OpenAI) cuando el modelo local no alcance la calidad o el contexto necesarios.
+- **Por defecto:** el modelo activo global de `opencode.json` — herencia dinámica en todos los agentes (tareas cotidianas, código, edición); ningún agente ancla un modelo propio.
+- **Fallback a costo cero:** Ollama local o proveedor `omniroute` (puerta de enlace compatible con OpenAI) cuando el modelo activo no alcance la calidad o el contexto necesarios.
 - Elegir un modelo más potente es una decisión del usuario: propónlo, no lo asumas.
 
 ## 11. Commits semánticos en español

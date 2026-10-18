@@ -29,8 +29,9 @@ metadata:
 4. **Selectores**: prefiere `get_by_role`, `get_by_label` y `get_by_text` antes que CSS.
 5. **Esperas**: por condición (`expect(...).to_be_visible()`), nunca `sleep` fijo.
 6. **Cubrir** camino feliz, un error de validación y un estado vacío; repetir en móvil y escritorio.
-7. **Evidencias**: guarda capturas en `output/capturas/` y reporta URL, pasos y resultado.
-8. **Limpiar**: cierra navegador y servidores levantados.
+7. **Rendimiento**: verifica 60 FPS estables en animaciones y canvas, y cero errores en la consola del navegador.
+8. **Evidencias**: guarda capturas en `output/capturas/` y reporta URL, pasos y resultado.
+9. **Limpiar**: cierra navegador y servidores levantados.
 
 ## Ejemplo
 ```python
@@ -48,5 +49,6 @@ with sync_playwright() as p:
 
 ## Errores a evitar
 - Esperas fijas con `sleep`.
+- Declarar éxito con errores en consola o con menos de 60 FPS en pantallas animadas.
 - Selectores CSS frágiles.
 - Declarar éxito sin captura ni aserción.

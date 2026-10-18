@@ -27,12 +27,12 @@ metadata:
 1. **Detectar hardware**: `torch.cuda.is_available()` y `torch.cuda.get_device_properties(0).total_memory`.
 2. **Buscar antes de construir**: con el MCP `huggingface` busca arquitectura, modelo preentrenado y dataset. Prefiere fine-tuning a entrenar desde cero.
 3. **Línea base mínima**: modelo pequeño y prueba de sobreajuste de un solo batch para validar la tubería.
-4. **Precisión mixta**: `torch.autocast` con fp16 y `GradScaler`; usa bf16 (sin scaler) en GPU Ampere o superior.
-5. **Control de VRAM**: batch dinámico, acumulación de gradientes, gradient checkpointing, `pin_memory=True`; `torch.cuda.empty_cache()` solo entre fases.
+4. **Precisión mixta (obligatoria en CUDA)**: delegación forzada `device=cuda` cuando esté disponible; `torch.autocast` con fp16 y `GradScaler`; usa bf16 (sin scaler) en GPU Ampere o superior.
+5. **Control de VRAM**: batch dinámico, acumulación de gradientes, gradient checkpointing, `pin_memory=True`; `torch.cuda.empty_cache()` tras cada fase para operar fluidamente en 4 GB.
 6. **Cuantización**: `torch.ao.quantization.quantize_dynamic` para inferencia en CPU; para LLM usa modelos cuantizados GGUF vía Ollama.
 7. **Reproducibilidad**: semilla fija, división train/val/test, checkpoints en `output/`.
 8. **Windows**: protege el punto de entrada con `if __name__ == "__main__":` si usas `num_workers > 0`.
-9. **Reportar**: curva de pérdida, métrica en validación y consumo máximo de VRAM (`torch.cuda.max_memory_allocated()`).
+9. **Reportar métricas formales**: curva de pérdida por época, métrica en validación, semilla fija, división train/val/test y consumo máximo de VRAM (`torch.cuda.max_memory_allocated()`).
 
 ## Ejemplo
 ```python

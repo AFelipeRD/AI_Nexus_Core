@@ -63,7 +63,8 @@ def main():
         d = frontmatter(f)
         if not d.get("description"):
             avisos.append("Agente sin description: %s" % f.name)
-        filas.append(("`%s`" % f.stem, d.get("mode", "?"), "`%s`" % d.get("model", "?"), d.get("description", "")))
+        modelo = "`%s`" % d["model"] if d.get("model") else "heredado"
+        filas.append(("`%s`" % f.stem, d.get("mode", "?"), modelo, d.get("description", "")))
     escribir_bloque(BASE / "agents" / "README.md", tabla(["Agente", "Modo", "Modelo", "Descripción"], filas), a.dry_run)
     n_ag = len(filas)
 
