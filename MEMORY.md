@@ -62,6 +62,7 @@
 - 2026-10-18 · Arquitectura cognitiva definitiva sellada: tiers abstractos agnósticos (Tier 0 local / Tier 1 velocidad / Tier 2 frontera), radar de mercado IA en `output/radar_modelos_ia.md`, auto-evolución con `find-skills` y ciclo neuro-cognitivo obligatorio.
 - 2026-10-18 · Expansión a 17 agentes y 19 skills con validación profunda en find-skills: 7 skills comunitarias de autoridad inspeccionadas en laboratorio temporal (Vercel React 813 K, LangChain RAG, Anthropic canvas-design, HeyGen audio 615 K, Currents Playwright 95 K, prompt-engineering-patterns, video-editing) e integradas como heurísticas con atribución en las 5 suites nativas.
 - 2026-10-18 · Barrido profundo del resto del proyecto + flujo de auto-evolución: heurísticas oficiales integradas en 7 skills nativas (DuckDB org, PyTorch org, Kepano/Obsidian, Anthropic frontend-design 1 M, Matt Pocock code-review 756 K, setup-pre-commit 468 K, webapp-testing 180 K); creado `scripts/evolve_ecosystem.py` + skill `ecosystem-evolution` + `/evolve` + disparador de arranque, cubriendo skills, MCP, conectores y plugins (radar actualizado con candidatos: open-connector, ffmpeg-skill, aoci-code, codebase-memory-mcp, okf-agent-memory).
+- 2026-10-18 · Tarea programada `AI_Nexus_Evolve` registrada en Windows (lunes 09:00, `StartWhenAvailable`, log en `logs/evolve_task.log`) y validada con una ejecución real completa bajo Task Scheduler.
 
 ## Cómo actualizar esta memoria
 1. Añade decisiones con fecha y enlace a la fuente.

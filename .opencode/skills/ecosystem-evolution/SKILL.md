@@ -28,8 +28,7 @@ metadata:
 4. **Integrar con atribución**: traducir y fusionar las heurísticas valiosas en la skill nativa correspondiente, añadiendo la sección «Referencias comunitarias validadas (find-skills)»; nunca copiar skills comunitarias tal cual al repositorio (rompe idioma y estructura).
 5. **Podar (YAGNI)**: si una herramienta nativa queda obsoleta ante una comunitaria superior, redúcela a lo esencial o elimínala; registra la decisión en `MEMORY.md`.
 6. **Registrar**: catálogos con `/sync-catalog`, hito en `MEMORY.md` y commit vía `portfolio-git` — **solo tras confirmación explícita del usuario**.
-7. **Programación automática** (opcional, decisión del usuario): tarea semanal de Windows para el barrido:
-   `schtasks /create /tn "AI_Nexus_Evolve" /tr "python D:\AI_Nexus_Core\scripts\evolve_ecosystem.py" /sc weekly /d MON /st 09:00`
+7. **Programación automática**: tarea de Windows **`AI_Nexus_Evolve`** registrada en esta máquina (lunes 09:00, `StartWhenAvailable` para recuperar ejecuciones perdidas, límite de 1 hora, log en `logs/evolve_task.log`). Para recrearla en otra máquina: `Register-ScheduledTask` con acción `cmd /c "<python> <script> >> logs\evolve_task.log 2>&1"`, disparador `New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday -At 09:00` y `New-ScheduledTaskSettingsSet -StartWhenAvailable`.
 
 ## Evaluación de servidores MCP, conectores y plugins
 1. **Seguridad primero**: un servidor MCP se ejecuta localmente con los permisos de la sesión — revisa qué permisos solicita, exige código auditable y mantenedor confiable; oficial (`@modelcontextprotocol/servers`) > comunidad estable > desconocidos.
