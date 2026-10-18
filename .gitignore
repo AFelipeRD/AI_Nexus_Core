@@ -1,0 +1,50 @@
+# Secretos
+.env
+.env.*
+*.env
+!.env.example
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+.opencode/node_modules/
+.opencode/package-lock.json
+
+# Datos y salidas (se conservan las carpetas con .gitkeep)
+data/raw/*
+data/processed/*
+output/*
+logs/*
+!.gitkeep
+
+# Modelos y pesos
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.gguf
+*.onnx
+
+# Grafos y memoria generada por herramientas
+.lightrag/
+.graphify/
+graphify-out/
+
+# Obsidian (estado local)
+.obsidian/workspace*.json
+.obsidian/cache
+
+# Uniones para Claude Code
+.claude/
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store

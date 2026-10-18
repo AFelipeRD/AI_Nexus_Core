@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>AI Nexus Core — Showcase Motion</title>
+<script src="vendor/tailwind.js"></script>
+<style>
+  /* ===== Tokens de diseño (ui-ux-design-suite) ===== */
+  :root {
+    --fondo: #020617;
+    --panel: #0b1220;
+    --borde: #1e293b;
+    --texto: #e2e8f0;
+    --tenue: #94a3b8;
+    --cian: #22d3ee;
+    --verde: #34d399;
+    --ambar: #fbbf24;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --dur-entrada: 420ms;
+    --radio: 14px;
+  }
+  html, body { margin: 0; padding: 0; background: var(--fondo); overflow: hidden; }
+  body { width: 1280px; height: 720px; font-family: "Segoe UI", system-ui, sans-serif; color: var(--texto); }
+
+  /* ===== Escenario fijo 1280x720 ===== */
+  #escenario { position: relative; width: 1280px; height: 720px; background: var(--fondo); }
+  .capa { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+          opacity: 0; transform: translateY(14px); pointer-events: none;
+          transition: opacity var(--dur-entrada) var(--ease-out), transform var(--dur-entrada) var(--ease-out); }
+  .capa.activa { opacity: 1; transform: translateY(0); }
+
+  /* Rejilla de fondo sutil */
+  #rejilla { position: absolute; inset: 0; opacity: 0.35;
+    background-image: linear-gradient(var(--borde) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--borde) 1px, transparent 1px);
+    background-size: 64px 64px; }
+
+  /* ===== Fase 1: cuadrilla de subagentes ===== */
+  .tarjeta { background: var(--panel); border: 1px solid var(--borde); border-radius: var(--radio);
+             padding: 36px 44px; box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+  .agente { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-radius: 10px;
+            background: rgba(34, 211, 238, 0.06); border: 1px solid rgba(34, 211, 238, 0.18);
+            opacity: 0; transform: translateY(10px) scale(0.95);
+            transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out); }
+  .capa.activa .agente { opacity: 1; transform: translateY(0) scale(1); }
+  .punto-agente { width: 8px; height: 8px; border-radius: 50%; background: var(--cian); flex: none; }
+
+  /* ===== Fase 2: panel analítico ===== */
+  .barra-progreso { height: 14px; border-radius: 999px; background: var(--borde); overflow: hidden; }
+  .barra-progreso > div { height: 100%; border-radius: 999px; background: var(--cian);
+    transform-origin: left center; transform: scaleX(0); }
+  .medidor-ram .marco { height: 10px; border-radius: 999px; background: var(--borde); overflow: hidden; }
+  .medidor-ram .nivel { height: 100%; background: var(--verde); transform-origin: left center; }
+
+  /* ===== Fase 3: telemetría + veredicto ===== */
+  .dato { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--borde); }
+  .veredicto { border-color: rgba(52, 211, 153, 0.4); background: rgba(52, 211, 153, 0.08); }
+
+  /* ===== Fase 4: logo + MCP ===== */
+  #logo { font-weight: 800; letter-spacing: 0.28em; }
+  .pulso { position: absolute; border-radius: 50%; border: 1px solid rgba(34, 211, 238, 0.5);
+           animation: pulso 2s var(--ease-out) infinite; }
+  @keyframes pulso {
+    0%   { transform: scale(0.55); opacity: 0.9; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+  .mcp-punto { width: 10px; height: 10px; border-radius: 50%; background: var(--verde);
+               box-shadow: 0 0 12px rgba(52, 211, 153, 0.8);
+               animation: latido 1.4s ease-in-out infinite; }
+  @keyframes latido { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+  /* Línea de tiempo inferior */
+  #linea-tiempo { position: absolute; bottom: 0; left: 0; height: 4px; width: 100%;
+                  background: var(--borde); }
+  #linea-tiempo > div { height: 100%; background: var(--cian); transform-origin: left center;
+                        transform: scaleX(0); }
+</style>
+</head>
+<body>
+<div id="escenario">
+  <div id="rejilla"></div>
+
+  <!-- FASE 1 · 0s–3s · Cuadrilla de 12 subagentes -->
+  <section id="fase1" class="capa">
+    <div class="tarjeta" style="width: 880px;">
+      <p style="color: var(--cian); font-size: 13px; letter-spacing: 0.3em; margin: 0 0 6px;">FASE 01 · ORQUESTACIÓN</p>
+      <h2 style="font-size: 30px; font-weight: 700; margin: 0 0 24px;">Cuadrilla de 12 subagentes</h2>
+      <div class="grid grid-cols-3 gap-3" id="cuadrilla"></div>
+    </div>
+  </section>
+
+  <!-- FASE 2 · 3s–6s · DuckDB + Polars -->
+  <section id="fase2" class="capa">
+    <div class="tarjeta" style="width: 820px;">
+      <p style="color: var(--cian); font-size: 13px; letter-spacing: 0.3em; margin: 0 0 6px;">FASE 02 · INGENIERÍA DE DATOS</p>
+      <h2 style="font-size: 30px; font-weight: 700; margin: 0 0 20px;">DuckDB + Polars · streaming</h2>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+        <span style="color: var(--tenue); font-size: 14px;">Registros procesados</span>
+        <span id="contador-registros" style="font-size: 26px; font-weight: 700; color: var(--cian); font-variant-numeric: tabular-nums;">0</span>
+      </div>
+      <div class="barra-progreso"><div id="progreso-datos"></div></div>
+      <div class="medidor-ram" style="margin-top: 26px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: var(--tenue); font-size: 14px;">RAM en uso</span>
+          <span id="lectura-ram" style="font-size: 14px; color: var(--verde); font-variant-numeric: tabular-nums;">312 MB</span>
+        </div>
+        <div class="marco"><div class="nivel" id="nivel-ram" style="transform: scaleX(0.62);"></div></div>
+        <p style="color: var(--tenue); font-size: 12px; margin: 6px 0 0;">Límite operativo: < 500 MB</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FASE 3 · 6s–8s · Telemetría + Arena Arbiter -->
+  <section id="fase3" class="capa">
+    <div style="display: flex; gap: 28px; align-items: stretch;">
+      <div class="tarjeta" style="width: 430px;">
+        <p style="color: var(--cian); font-size: 13px; letter-spacing: 0.3em; margin: 0 0 6px;">FASE 03 · TELEMETRÍA</p>
+        <h2 style="font-size: 26px; font-weight: 700; margin: 0 0 14px;">Hardware local</h2>
+        <div class="dato"><span style="color: var(--tenue);">GPU</span><span>NVIDIA GTX 1050 Ti</span></div>
+        <div class="dato"><span style="color: var(--tenue);">VRAM</span><span>4 GB GDDR5</span></div>
+        <div class="dato"><span style="color: var(--tenue);">Uso de GPU</span><span id="uso-gpu" style="color: var(--ambar);">—</span></div>
+        <div class="dato" style="border-bottom: none;"><span style="color: var(--tenue);">Temp. GPU</span><span id="temp-gpu" style="color: var(--ambar);">—</span></div>
+      </div>
+      <div class="tarjeta veredicto" style="width: 360px; display: flex; flex-direction: column; justify-content: center; border: 1px solid;">
+        <p style="color: var(--verde); font-size: 13px; letter-spacing: 0.3em; margin: 0 0 10px;">ARENA ARBITER</p>
+        <p style="font-size: 34px; font-weight: 800; color: var(--verde); margin: 0 0 10px;">APROBADO</p>
+        <p style="color: var(--tenue); font-size: 14px; margin: 0;">Simplicidad 5 · Velocidad 4 · Seguridad 5 · Robustez 4</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FASE 4 · 8s–10s · Logo + MCP -->
+  <section id="fase4" class="capa">
+    <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
+      <div class="pulso" style="width: 420px; height: 420px;"></div>
+      <div class="pulso" style="width: 420px; height: 420px; animation-delay: 1s;"></div>
+      <p style="color: var(--cian); font-size: 13px; letter-spacing: 0.4em; margin: 0 0 14px;">ECOSISTEMA MARKDOWN NATIVO</p>
+      <h1 id="logo" style="font-size: 64px; margin: 0;">AI NEXUS CORE</h1>
+      <div style="display: flex; gap: 34px; margin-top: 34px;">
+        <div style="display: flex; align-items: center; gap: 8px;"><span class="mcp-punto"></span><span style="font-size: 14px; color: var(--tenue);">sequential-thinking</span></div>
+        <div style="display: flex; align-items: center; gap: 8px;"><span class="mcp-punto" style="animation-delay: 0.2s;"></span><span style="font-size: 14px; color: var(--tenue);">filesystem</span></div>
+        <div style="display: flex; align-items: center; gap: 8px;"><span class="mcp-punto" style="animation-delay: 0.4s;"></span><span style="font-size: 14px; color: var(--tenue);">playwright</span></div>
+        <div style="display: flex; align-items: center; gap: 8px;"><span class="mcp-punto" style="animation-delay: 0.6s;"></span><span style="font-size: 14px; color: var(--tenue);">github</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="linea-tiempo"><div id="linea-avance"></div></div>
+</div>
+
+<script>
+  // ===== Línea de tiempo maestra · 10 s exactos =====
+  const AGENTES = [
+    "orchestrator", "data-engineer", "arena-arbiter", "ui-ux-director",
+    "code-reviewer", "ml-specialist", "knowledge-graph", "automation-browser",
+    "auto-researcher", "github-scout", "software-architect", "portfolio-git"
+  ];
+
+  const cuadrilla = document.getElementById("cuadrilla");
+  AGENTES.forEach(nombre => {
+    const item = document.createElement("div");
+    item.className = "agente";
+    item.innerHTML = `<span class="punto-agente"></span><span style="font-size: 15px;">${nombre}</span>`;
+    cuadrilla.appendChild(item);
+  });
+
+  const fases = [document.getElementById("fase1"), document.getElementById("fase2"),
+                 document.getElementById("fase3"), document.getElementById("fase4")];
+  const INICIOS = [0, 3000, 6000, 8000]; // ms — estricto
+  const DURACION_TOTAL = 10000;
+
+  const t0 = performance.now();
+  let faseActual = -1;
+
+  function activarFase(i) {
+    fases.forEach((f, idx) => f.classList.toggle("activa", idx === i));
+    if (i === 0) {
+      // Entrada escalonada de los 12 agentes (dentro de la ventana de 3 s)
+      document.querySelectorAll(".agente").forEach((el, n) => {
+        el.style.transitionDelay = (120 + n * 90) + "ms";
+      });
+    }
+  }
+
+  function actualizarContadores(elapsed) {
+    if (faseActual === 1) {
+      const t = Math.min(Math.max((elapsed - 3000) / 3000, 0), 1);      // 0→1 en 3 s
+      const eased = 1 - Math.pow(1 - t, 3);                              // ease-out cúbico
+      const registros = Math.round(eased * 100000);
+      document.getElementById("contador-registros").textContent = registros.toLocaleString("es-ES");
+      document.getElementById("progreso-datos").style.transform = `scaleX(${eased})`;
+      // RAM oscila bajo el límite de 500 MB
+      const ram = 312 + Math.sin(elapsed / 180) * 28 + eased * 96;
+      document.getElementById("lectura-ram").textContent = Math.round(ram) + " MB";
+      document.getElementById("nivel-ram").style.transform = `scaleX(${Math.min(ram / 500, 0.96)})`;
+    }
+    if (faseActual === 2) {
+      const t = Math.min(Math.max((elapsed - 6000) / 2000, 0), 1);
+      document.getElementById("uso-gpu").textContent = Math.round(34 + t * 41) + " %";
+      document.getElementById("temp-gpu").textContent = Math.round(52 + t * 16) + " °C";
+    }
+    // Línea de tiempo global
+    document.getElementById("linea-avance").style.transform =
+      `scaleX(${Math.min(elapsed / DURACION_TOTAL, 1)})`;
+  }
+
+  function tick(now) {
+    const elapsed = now - t0;
+    for (let i = INICIOS.length - 1; i >= 0; i--) {
+      if (elapsed >= INICIOS[i]) {
+        if (faseActual !== i) { faseActual = i; activarFase(i); }
+        break;
+      }
+    }
+    actualizarContadores(elapsed);
+    if (elapsed < DURACION_TOTAL + 200) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+</script>
+</body>
+</html>

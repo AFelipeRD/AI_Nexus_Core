@@ -1,0 +1,19 @@
+# Dependencias de las utilerías de AI_Nexus_Core (Python 3.10+)
+# Instalación recomendada en un entorno virtual:
+#   python -m venv .venv && .venv\Scripts\activate && pip install -r requirements.txt
+#
+# NOTA GPU: para CUDA en Windows instala torch/torchvision ANTES con el índice oficial, p. ej.:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+# (elige la versión de CUDA en https://pytorch.org/get-started/locally/)
+duckdb
+polars
+pandas
+torch
+torchvision
+litellm
+playwright
+crawl4ai
+rich
+pydantic
+graphifyy
+# Después de instalar: `playwright install chromium`

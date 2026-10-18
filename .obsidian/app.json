@@ -1,0 +1,13 @@
+{
+  "userIgnoreFilters": [
+    "data/",
+    "output/",
+    "logs/",
+    ".venv/",
+    "node_modules/"
+  ],
+  "useMarkdownLinks": false,
+  "newLinkFormat": "shortest",
+  "alwaysUpdateLinks": true,
+  "showFrontmatter": true
+}
