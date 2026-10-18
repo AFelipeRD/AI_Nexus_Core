@@ -28,6 +28,7 @@ metadata:
 4. **Mensaje**: `tipo(ámbito): descripción` en español, ≤ 72 caracteres, sin punto final; cuerpo opcional con el porqué.
 5. **Confirmar**: `git commit -m "..."`.
 6. **Sincronizar** solo con confirmación del usuario: `git push` (credenciales del Administrador de credenciales de Git; nunca el token en la URL). Usa el MCP `github` para crear el repositorio o el PR.
+7. **Automatiza la puerta de calidad** (patrón comunitario): cuando el proyecto gane hooks de git, monta pre-commit con formateo, verificación de tipos y pruebas — la auditoría de secretos nunca debe depender de la memoria del agente.
 7. **Portafolio**: mantén un `README.md` claro por repositorio (qué hace, cómo se ejecuta, captura o demo).
 
 ## Ejemplo
@@ -42,3 +43,9 @@ perf(datos): leer Parquet en modo lazy
 - Mensajes en inglés o vagos («cambios», «arreglos»).
 - `git push --force` sin orden expresa.
 - Commits gigantes que mezclan propósitos.
+
+## Referencias comunitarias validadas (find-skills)
+- `mattpocock/skills@setup-pre-commit` — 468 K instalaciones: hooks pre-commit con Husky, lint-staged, typecheck y tests.
+- `getsentry/skills@commit` — Sentry oficial: convenciones de commit de producción.
+- `github/awesome-copilot@conventional-commit` — GitHub oficial: formato conventional commits.
+- Cuando la tarea lo exija, profundiza con `npx -y skills find <término>`.

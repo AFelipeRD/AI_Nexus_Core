@@ -52,6 +52,7 @@ En OpenCode escribe `/` seguido del nombre. Ejemplos:
 | `/commit` | `portfolio-git` | Redacta un commit semántico en español y actualiza el portafolio en GitHub. |
 | `/craft` | `ui-ux-director` | Orquesta el flujo completo de diseño visual: UI/UX Pro Max, Tailwind y animación. |
 | `/critique` | `ui-ux-director` | Audita la interfaz aplicando las heurísticas de Taste e Impeccable. |
+| `/evolve` | `auto-researcher` | Barrido de evolución del ecosistema: busca oro comunitario en find-skills, lo evalúa e integra con atribución. |
 | `/graphify` | `knowledge-graph-agent` | Genera o actualiza el grafo de dependencias del repositorio. |
 | `/headroom` | `knowledge-graph-agent` | Inspecciona el uso de tokens y comprime el contexto activo. |
 | `/research` | `auto-researcher` | Ejecuta investigación técnica autónoma para contrastar una solución con fuentes oficiales. |

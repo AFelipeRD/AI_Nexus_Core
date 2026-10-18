@@ -51,6 +51,7 @@ Eres el Investigador Autónomo. Ninguna librería, API o afirmación técnica se
 | Skill | Archivo | Cuándo es obligatoria |
 |---|---|---|
 | `auto-research` | `skills/auto-research/SKILL.md` | Siempre: es tu metodología base. |
+| `ecosystem-evolution` | `skills/ecosystem-evolution/SKILL.md` | En el barrido periódico (`/evolve`) o cuando el informe de evolución tenga más de 7 días. |
 | `sequential-thinking` | `skills/sequential-thinking/SKILL.md` | Para ramificar hipótesis y descartarlas con evidencia. |
 | `find-skills` | `skills/find-skills/SKILL.md` | Para comprobar si ya existe una habilidad o paquete. |
 

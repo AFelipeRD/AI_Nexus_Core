@@ -50,5 +50,11 @@ with sync_playwright() as p:
 ## Errores a evitar
 - Esperas fijas con `sleep`.
 - Declarar éxito con errores en consola o con menos de 60 FPS en pantallas animadas.
+
+## Referencias comunitarias validadas (find-skills)
+- `anthropics/skills@webapp-testing` — **Anthropic oficial, 180 K instalaciones**: pruebas E2E de aplicaciones web con Playwright.
+- `currents-dev/playwright-best-practices-skill@playwright-best-practices` — Currents: POM, fixtures, autenticación, regresión visual, canvas/WebGL.
+- `microsoft/playwright-cli@playwright-cli` — Microsoft oficial, 188 K: CLI de Playwright.
+- Cuando la tarea lo exija, profundiza con `npx -y skills find <término>`.
 - Selectores CSS frágiles.
 - Declarar éxito sin captura ni aserción.

@@ -43,6 +43,7 @@
 - 2026-10-18 · Homologación total Frontier: herencia dinámica del modelo activo global en los 12 agentes y estándar de razonamiento Staff AI Engineer · desacoplamiento total del proveedor y máxima calidad · [[#Constitución Maestra (Frontier Level)]]
 - 2026-10-18 · Hito: AI Nexus Core Autonomous Operating System (Model-Agnostic & Self-Evolving) · enrutador de tiers abstractos, radar de modelos IA, auto-evolución de skills/MCP y neuro-enrutador cognitivo · [[#Constitución Maestra (Frontier Level)]]
 - 2026-10-18 · Expansión de Cuadrilla a 17 Agentes Multimodales con validación previa en find-skills · amplificadores adaptativos; heurísticas comunitarias de autoridad integradas (Vercel, LangChain, Anthropic, HeyGen, Currents) · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-18 · Sistema de Auto-Evolución Periódica: barrido semanal de skills, MCP, conectores y plugins (find-skills + GitHub) con integración con atribución y poda YAGNI · el ecosistema se mantiene al día del mercado por diseño · [[#Constitución Maestra (Frontier Level)]]
 
 ## Grafo de entidades
 | Entidad | Relación | Detalle |
@@ -60,6 +61,7 @@
 - 2026-10-18 · Homologación de frontera completada: agentes desacoplados del modelo (herencia dinámica) y skills elevadas (Arrow zero-copy, Clean/Hexagonal, CUDA fp16, OWASP+mypy, E2E 60 FPS).
 - 2026-10-18 · Arquitectura cognitiva definitiva sellada: tiers abstractos agnósticos (Tier 0 local / Tier 1 velocidad / Tier 2 frontera), radar de mercado IA en `output/radar_modelos_ia.md`, auto-evolución con `find-skills` y ciclo neuro-cognitivo obligatorio.
 - 2026-10-18 · Expansión a 17 agentes y 19 skills con validación profunda en find-skills: 7 skills comunitarias de autoridad inspeccionadas en laboratorio temporal (Vercel React 813 K, LangChain RAG, Anthropic canvas-design, HeyGen audio 615 K, Currents Playwright 95 K, prompt-engineering-patterns, video-editing) e integradas como heurísticas con atribución en las 5 suites nativas.
+- 2026-10-18 · Barrido profundo del resto del proyecto + flujo de auto-evolución: heurísticas oficiales integradas en 7 skills nativas (DuckDB org, PyTorch org, Kepano/Obsidian, Anthropic frontend-design 1 M, Matt Pocock code-review 756 K, setup-pre-commit 468 K, webapp-testing 180 K); creado `scripts/evolve_ecosystem.py` + skill `ecosystem-evolution` + `/evolve` + disparador de arranque, cubriendo skills, MCP, conectores y plugins (radar actualizado con candidatos: open-connector, ffmpeg-skill, aoci-code, codebase-memory-mcp, okf-agent-memory).
 
 ## Cómo actualizar esta memoria
 1. Añade decisiones con fecha y enlace a la fuente.

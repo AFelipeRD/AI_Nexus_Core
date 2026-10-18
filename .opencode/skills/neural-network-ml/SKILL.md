@@ -30,7 +30,7 @@ metadata:
 4. **Precisión mixta (obligatoria en CUDA)**: delegación forzada `device=cuda` cuando esté disponible; `torch.autocast` con fp16 y `GradScaler`; usa bf16 (sin scaler) en GPU Ampere o superior.
 5. **Control de VRAM**: batch dinámico, acumulación de gradientes, gradient checkpointing, `pin_memory=True`; `torch.cuda.empty_cache()` tras cada fase para operar fluidamente en 4 GB.
 6. **Cuantización**: `torch.ao.quantization.quantize_dynamic` para inferencia en CPU; para LLM usa modelos cuantizados GGUF vía Ollama.
-7. **Reproducibilidad**: semilla fija, división train/val/test, checkpoints en `output/`.
+7. **Reproducibilidad** (patrón comunitario): semilla completa — `torch.manual_seed(seed)` + `torch.cuda.manual_seed_all(seed)` — división train/val/test, checkpoints en `output/`; código agnóstico de dispositivo (`torch.device("cuda" if torch.cuda.is_available() else "cpu")`), nunca `.cuda()` incrustado.
 8. **Windows**: protege el punto de entrada con `if __name__ == "__main__":` si usas `num_workers > 0`.
 9. **Reportar métricas formales**: curva de pérdida por época, métrica en validación, semilla fija, división train/val/test y consumo máximo de VRAM (`torch.cuda.max_memory_allocated()`).
 
@@ -58,3 +58,8 @@ for x, y in cargador:
 - Evaluar sin `model.eval()` y `torch.no_grad()`.
 - Entrenar desde cero cuando existe un modelo preentrenado adecuado.
 - Dar una métrica sin conjunto de validación separado.
+
+## Referencias comunitarias validadas (find-skills)
+- `pytorch/pytorch` — **PyTorch oficial**: convenciones de contribución, docstrings y revisión de PRs del propio framework.
+- `affaan-m/ecc@pytorch-patterns` — patrones de entrenamiento reproducible, código agnóstico de dispositivo y gestión de VRAM.
+- Cuando la tarea lo exija, profundiza con `npx -y skills find <término>`.

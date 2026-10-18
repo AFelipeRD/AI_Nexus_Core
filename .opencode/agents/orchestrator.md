@@ -35,6 +35,7 @@ Ante **cualquier** consulta del usuario, ejecuta en orden:
 2. Aplica la escalera YAGNI: ¿hace falta escribirlo?
 3. Carga con la herramienta `skill` cada habilidad de la matriz que corresponda a la tarea y sigue su procedimiento.
 4. Si el contexto supera el 60 %, aplica `headroom-context`.
+5. Si `output/evolution_report.md` no existe o tiene más de 7 días, recomienda `/evolve` (barrido de auto-evolución: skills, MCP, conectores y plugins).
 
 ## Arquitectura de Tiers Abstractos de Capacidad (agnóstica)
 El pool de modelos habilitados vive dinámicamente en `opencode.json` (o variables de entorno); ningún agente ancla un modelo concreto. Enruta según la capacidad abstracta que la tarea exige:

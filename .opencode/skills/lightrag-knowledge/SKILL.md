@@ -27,7 +27,7 @@ metadata:
 2. **Directorio de trabajo**: `.lightrag/` (ignorado por Git).
 3. **Insertar** textos con `rag.insert(...)`; indexa Markdown de `docs/`, `memoria/` y `MEMORY.md`.
 4. **Consultar** con `QueryParam(mode="hybrid")`: *local* para entidades concretas, *global* para temas amplios.
-5. **Espejo en Obsidian**: por cada entidad relevante crea o actualiza `memoria/<Entidad>.md` con relaciones como `[[OtraEntidad]]` y fecha de la fuente.
+5. **Espejo en Obsidian**: por cada entidad relevante crea o actualiza `memoria/<Entidad>.md` con relaciones como `[[OtraEntidad]]` y fecha de la fuente. Sintaxis validada por el CEO de Obsidian: `[[wikilinks]]` para notas internas (Obsidian rastrea renombres automáticamente) y `[texto](url)` solo para URLs externas; callouts `> [!tipo]` para destacados; IDs de bloque `^id` para referencias puntuales; frontmatter con propiedades (title, tags, aliases).
 6. **Higiene**: sin secretos en lo indexado; reindexa solo archivos cambiados.
 
 ## Ejemplo
@@ -62,3 +62,9 @@ asyncio.run(main())
 - Indexar secretos o `.env`.
 - Usar un modelo de embeddings distinto al del índice existente.
 - Duplicar contenido en lugar de enlazar con wikilinks.
+
+## Referencias comunitarias validadas (find-skills)
+- `kepano/obsidian-skills` — **Steph Ango (CEO de Obsidian) oficial**: `obsidian-markdown` (90 K), `obsidian-cli`, `obsidian-bases`, `json-canvas` — sintaxis autoritativa de wikilinks, embeds, callouts y propiedades.
+- `mattpocock/skills@obsidian-vault` — 195 K instalaciones: gestión de bóvedas Obsidian.
+- `graphify-labs/graphify@graphify` — **Graphify oficial** (la herramienta estructural que ya usa este ecosistema).
+- Cuando la tarea lo exija, profundiza con `npx -y skills find <término>`.

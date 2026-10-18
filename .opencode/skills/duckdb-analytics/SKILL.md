@@ -30,6 +30,7 @@ metadata:
 5. **Convertir a Parquet** para repetir análisis rápido: `COPY (SELECT * FROM datos) TO 'data/processed/x.parquet' (FORMAT parquet)`.
 6. **Validar esquema y resultados**: nombres y tipos de columnas, conteo de filas, nulos y una muestra; compara con la fuente.
 7. **Rendimiento**: `EXPLAIN ANALYZE`, selecciona solo las columnas necesarias y filtra pronto.
+8. **Sesiones con estado** (DuckDB oficial): para análisis repetidos, mantén un `state.sql` con `ATTACH` de bases y verifícalo con `SHOW DATABASES;` antes de reutilizarlo; si un `ATTACH` falla, cae a modo ad-hoc contra los archivos.
 
 ## Ejemplo
 ```sql
@@ -44,5 +45,10 @@ ORDER BY ingresos DESC;
 - `SELECT *` sobre archivos enormes.
 - Exceder 500 MB de RAM: particiona en lotes y procesa en streaming.
 - Copiar datos entre DuckDB y Polars sin Apache Arrow (copia materializada).
+
+## Referencias comunitarias validadas (find-skills)
+- `duckdb/duckdb-skills` — **DuckDB oficial** (`query`, `duckdb-docs`, `read-file`, `attach-db`): SQL Friendly, sesiones con estado vía `ATTACH` y verificación de accesibilidad.
+- `k-dense-ai/scientific-agent-skills@polars` — patrones Polars para computación científica.
+- Cuando la tarea lo exija, profundiza con `npx -y skills find <término>`.
 - Concatenar entradas del usuario dentro del SQL.
 - Escribir en `data/raw/`.

@@ -44,8 +44,26 @@ metadata:
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 ```
 
+## Señales de AI-slop (calibración Anthropic — frontend-design, 1 M instalaciones)
+Los diseños generados por IA hoy se agrupan en rasgos reconocibles. Todos son legítimos si el brief los pide; son sospechosos cuando aparecen por defecto, sin decisión:
+1. Fondo crema cálido (≈ `#F4F1EA`) con serif de alto contraste y acento terracota (≈ `#D97757`).
+2. Fondo casi negro con un único acento verde ácido o vermellón.
+3. Layout broadsheet: reglas finas, radio cero, columnas densas tipo periódico.
+4. Kit SaaS: contenido troceado en tarjetas idénticas, un solo `border-radius` para todo, la misma sombra gris suave, degradados como decoración.
+5. Chrome de plantilla: eyebrow en MAYÚSCULAS sobre cada título, metadatos unidos con puntos medios, `→` añadido a cada enlace.
+
+Contramedidas validadas: **ancla el diseño en el dominio real** (la industria, los materiales y el lenguaje del sujeto son de donde salen las decisiones distintivas); tipografía deliberada (1-2 familias, < 80 caracteres por línea, prohibido acentuar una sola palabra del titular); un solo momento orquestado de motion vale más que efectos dispersos en cada tarjeta; los dispositivos estructurales (números, divisores, etiquetas) deben codificar información real, no decorar.
+
 ## Errores a evitar
 - Valores de color o tamaño sueltos fuera de los tokens.
 - Animar `width`, `height` o `top` (provoca reflujo).
 - Más de dos familias tipográficas.
 - No probar en móvil.
+
+## Referencias comunitarias validadas (find-skills)
+- `anthropics/skills@frontend-design` — **Anthropic oficial, 1 M instalaciones**: la skill de diseño que usa Claude; calibración anti-slop y anclaje en el dominio.
+- `pbakaus/impeccable@impeccable` — Paul Bakaus (Google): escala tipográfica y criterio de acabado.
+- `emilkowalski/skills` — Emil Kowalski oficial: `animation-vocabulary` (218 K), `pick-ui-library`, `animate-expo`.
+- `shadcn-ui/ui@shadcn` — 384 K: sistema de componentes de referencia.
+- `nextlevelbuilder/ui-ux-pro-max-skill` — 402 K y `leonxlnx/taste-skill` — 633 K: criterio visual de alto nivel.
+- Cuando la tarea lo exija, profundiza con `npx -y skills find <término>`.
