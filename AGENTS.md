@@ -17,7 +17,7 @@ D:\AI_Nexus_Core\
 │   ├── skills\     19 habilidades (<slug>\SKILL.md, especificación Anthropic)
 │   ├── commands\   17 comandos slash (.md)
 │   └── context\    contexto estable (rúbrica, convenciones, stack)
-├── docs\           6 manuales numerados
+├── docs\           7 manuales numerados
 ├── memoria\        notas de entidades para el grafo de Obsidian
 ├── scripts\        notifier.ps1 · github_api.py · duckdb_helper.py · update_catalog.py
 └── data\ output\ logs\
@@ -54,7 +54,7 @@ Es **obligatorio** (`/arena`) cuando la decisión: (a) define arquitectura o eli
 5. Registrar el dictamen en `MEMORY.md` (sección Decisiones).
 
 ## 7. Compresión de contexto (Headroom)
-- Vigila el consumo de tokens. Al llegar al **60 %** de la ventana: resume. Al **80 %**: compacta de forma obligatoria con `/headroom`.
+- Vigila el consumo de tokens en tiempo real. Al llegar al **50 %** de la ventana: resume las interacciones previas. Al **80 %**: compacta de forma obligatoria con `/headroom`, reteniendo solo el objetivo, las decisiones inmutables y las variables activas.
 - Conserva: objetivo, decisiones, rutas de archivos, errores abiertos y próximos pasos. Descarta: salidas largas de herramientas, logs repetidos, borradores descartados.
 - Con el modelo local de 7B la ventana efectiva es corta: prefiere resúmenes, rutas y fragmentos en lugar de archivos completos.
 

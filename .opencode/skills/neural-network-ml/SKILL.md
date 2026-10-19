@@ -1,6 +1,6 @@
 ---
 name: neural-network-ml
-description: "Diseño y entrenamiento eficiente de redes neuronales con PyTorch en GPU local: precisión mixta fp16/bf16, control de VRAM en CUDA, cuantización y consumo del MCP de Hugging Face. Úsala al diseñar, entrenar o depurar modelos."
+description: "Diseño y entrenamiento eficiente de redes neuronales con PyTorch en GPU local: selector probabilístico de algoritmos (LightGBM/XGBoost/PyTorch), precisión mixta fp16/bf16, control de VRAM en CUDA, cuantización y consumo del MCP de Hugging Face. Úsala al elegir algoritmo, entrenar o depurar modelos."
 license: MIT
 compatibility: opencode
 metadata:
@@ -14,6 +14,7 @@ metadata:
 - Al diseñar o elegir una arquitectura neuronal.
 - Al entrenar, afinar (fine-tuning) o depurar un modelo.
 - Al quedarse sin VRAM o al acelerar un entrenamiento lento.
+- Al elegir entre LightGBM, XGBoost y redes neuronales PyTorch con el selector probabilístico.
 
 ## Parámetros de entrada
 | Parámetro | Descripción |
@@ -23,6 +24,10 @@ metadata:
 | `vram_gb` | VRAM disponible (si se omite, detectarla con torch.cuda) |
 | `objetivo` | métrica y valor que se desea alcanzar |
 
+## Selector probabilístico de algoritmos (Laya)
+- Analiza el dataset en `data/processed/` (dimensionalidad, volumen, tipo de objetivo) y estima la probabilidad de éxito y rendimiento entre **LightGBM**, **XGBoost** y redes neuronales **PyTorch**; entrena el argmax.
+- Heurística: datos tabulares de volumen medio → gradient boosting (más rápido y menor VRAM); alta dimensionalidad no estructurada (texto, imagen) o gran volumen → PyTorch en GPU (CUDA fp16).
+
 ## Procedimiento
 1. **Detectar hardware**: `torch.cuda.is_available()` y `torch.cuda.get_device_properties(0).total_memory`.
 2. **Buscar antes de construir**: con el MCP `huggingface` busca arquitectura, modelo preentrenado y dataset. Prefiere fine-tuning a entrenar desde cero.
@@ -30,7 +35,7 @@ metadata:
 4. **Precisión mixta (obligatoria en CUDA)**: delegación forzada `device=cuda` cuando esté disponible; `torch.autocast` con fp16 y `GradScaler`; usa bf16 (sin scaler) en GPU Ampere o superior.
 5. **Control de VRAM**: batch dinámico, acumulación de gradientes, gradient checkpointing, `pin_memory=True`; `torch.cuda.empty_cache()` tras cada fase para operar fluidamente en 4 GB.
 6. **Cuantización**: `torch.ao.quantization.quantize_dynamic` para inferencia en CPU; para LLM usa modelos cuantizados GGUF vía Ollama.
-7. **Reproducibilidad** (patrón comunitario): semilla completa — `torch.manual_seed(seed)` + `torch.cuda.manual_seed_all(seed)` — división train/val/test, checkpoints en `output/`; código agnóstico de dispositivo (`torch.device("cuda" if torch.cuda.is_available() else "cpu")`), nunca `.cuda()` incrustado.
+7. **Reproducibilidad** (patrón comunitario): semilla completa — `torch.manual_seed(seed)` + `torch.cuda.manual_seed_all(seed)` — división train/val/test, checkpoints y métricas en `output/modelos/`; código agnóstico de dispositivo (`torch.device("cuda" if torch.cuda.is_available() else "cpu")`), nunca `.cuda()` incrustado.
 8. **Windows**: protege el punto de entrada con `if __name__ == "__main__":` si usas `num_workers > 0`.
 9. **Reportar métricas formales**: curva de pérdida por época, métrica en validación, semilla fija, división train/val/test y consumo máximo de VRAM (`torch.cuda.max_memory_allocated()`).
 

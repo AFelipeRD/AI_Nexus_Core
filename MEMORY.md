@@ -36,6 +36,11 @@
 5. **Seguridad y Zero-Leaks**
    - Tolerancia cero a fugas de credenciales. Ningún agente modificará `.gitignore` para incluir archivos sensibles ni expondrá claves de `.env` en código o documentación.
 
+6. **Motor de Decisión Laya y Criterio Firme (Anti-Sycophancy)**
+   - Clasificación de tareas, selección de rutas y triage de intenciones: evaluación probabilística y matriz de decisión en un solo paso (milisegundos), sin texto conversacional redundante.
+   - Prohibido aceptar por complacencia: toda estructura ineficiente, librería deprecada, código que sature la RAM (> 500 MB) o arquitectura frágil se señala con fundamento técnico y se propone la alternativa superior.
+   - En `/arena`, `arena-arbiter` puntúa con criterios métricos objetivos (eficiencia de memoria, latencia, seguridad), neutralizando sesgos narrativos.
+
 ## Decisiones (formato: fecha · decisión · motivo · fuente)
 - 2026-10-16 · Adoptar ecosistema 100 % Markdown nativo de OpenCode · simplicidad y portabilidad · [[01_MANUAL_ECOSISTEMA_OPENCODE]]
 - 2026-10-16 · Decisiones críticas pasan por [[Arena-Consensus]] · reducir el error de un único modelo · [[06_PROTOCOLO_ARENA_Y_CONSENSO]]
@@ -44,6 +49,11 @@
 - 2026-10-18 · Hito: AI Nexus Core Autonomous Operating System (Model-Agnostic & Self-Evolving) · enrutador de tiers abstractos, radar de modelos IA, auto-evolución de skills/MCP y neuro-enrutador cognitivo · [[#Constitución Maestra (Frontier Level)]]
 - 2026-10-18 · Expansión de Cuadrilla a 17 Agentes Multimodales con validación previa en find-skills · amplificadores adaptativos; heurísticas comunitarias de autoridad integradas (Vercel, LangChain, Anthropic, HeyGen, Currents) · [[#Constitución Maestra (Frontier Level)]]
 - 2026-10-18 · Sistema de Auto-Evolución Periódica: barrido semanal de skills, MCP, conectores y plugins (find-skills + GitHub) con integración con atribución y poda YAGNI · el ecosistema se mantiene al día del mercado por diseño · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-19 · Motor de Decisión Laya AI: triage probabilístico de un paso y Anti-Sycophancy obligatorio; árbitro matemático en /arena · eliminar deliberación narrativa, complacencia y sesgos · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-19 · Compositor Multi-Skill con find-skills: encadenar ≥ 2 skills sinérgicas con poda YAGNI activa y registro en `.opencode/skills/README.md` · tareas complejas como pipelines continuos · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-19 · RAG local no destructivo: `data/raw/` y `data/inbox/` en solo lectura estricta; índices y salidas solo en `data/processed/` u `output/`, con DuckDB (VSS) como base vectorial local · integridad de originales y privacidad (cero servicios externos) · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-19 · Auto-ML con selector probabilístico de algoritmos (LightGBM vs XGBoost vs PyTorch) y CUDA fp16 en GTX 1050 Ti; artefactos en `output/modelos/` · decisión por datos, no por costumbre · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-19 · Headroom endurecido: resumir al 50 % de la ventana, compactación obligatoria al 80 % · máxima velocidad y ahorro de tokens · [[#Constitución Maestra (Frontier Level)]]
 
 ## Grafo de entidades
 | Entidad | Relación | Detalle |
@@ -63,6 +73,7 @@
 - 2026-10-18 · Expansión a 17 agentes y 19 skills con validación profunda en find-skills: 7 skills comunitarias de autoridad inspeccionadas en laboratorio temporal (Vercel React 813 K, LangChain RAG, Anthropic canvas-design, HeyGen audio 615 K, Currents Playwright 95 K, prompt-engineering-patterns, video-editing) e integradas como heurísticas con atribución en las 5 suites nativas.
 - 2026-10-18 · Barrido profundo del resto del proyecto + flujo de auto-evolución: heurísticas oficiales integradas en 7 skills nativas (DuckDB org, PyTorch org, Kepano/Obsidian, Anthropic frontend-design 1 M, Matt Pocock code-review 756 K, setup-pre-commit 468 K, webapp-testing 180 K); creado `scripts/evolve_ecosystem.py` + skill `ecosystem-evolution` + `/evolve` + disparador de arranque, cubriendo skills, MCP, conectores y plugins (radar actualizado con candidatos: open-connector, ffmpeg-skill, aoci-code, codebase-memory-mcp, okf-agent-memory).
 - 2026-10-18 · Tarea programada `AI_Nexus_Evolve` registrada en Windows (lunes 09:00, `StartWhenAvailable`, log en `logs/evolve_task.log`) y validada con una ejecución real completa bajo Task Scheduler.
+- 2026-10-19 · Hito: AI Nexus Core: Laya Decision Engine, Multi-Skill Aggregator, Non-Destructive Local RAG, and GPU Auto-ML. Arquitectura cognitiva definitiva activa en los 17 agentes: decisión probabilística de un paso, anti-sycophancy, compositor multi-skill con find-skills, RAG no destructivo en `data/` con DuckDB VSS, Auto-ML GPU (fp16, `output/modelos/`) y compresión Headroom 50/80.
 
 ## Cómo actualizar esta memoria
 1. Añade decisiones con fecha y enlace a la fuente.

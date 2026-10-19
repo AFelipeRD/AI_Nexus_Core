@@ -22,7 +22,7 @@ Cada habilidad es una carpeta `.opencode/skills/<slug>/` con un `SKILL.md` (espe
 
 ## Parámetros por habilidad
 ### `neural-network-ml`
-Diseño y entrenamiento eficiente de redes neuronales con PyTorch en GPU local: precisión mixta fp16/bf16, control de VRAM en CUDA, cuantización y consumo del MCP de Hugging Face. Úsala al diseñar, entrenar o depurar modelos.
+Diseño y entrenamiento eficiente de redes neuronales con PyTorch en GPU local: selector probabilístico de algoritmos (LightGBM/XGBoost/PyTorch), precisión mixta fp16/bf16, control de VRAM en CUDA, cuantización y consumo del MCP de Hugging Face. Úsala al elegir algoritmo, entrenar o depurar modelos.
 
 | Parámetro | Descripción |
 |---|---|
@@ -65,7 +65,7 @@ Regla de oro YAGNI (Ponytail) para podar sobre-ingeniería y código redundante,
 | `alcance` | archivos, diff o descripción del cambio a auditar |
 
 ### `headroom-context`
-Monitoreo de tokens y compresión del historial de conversación para preservar margen de contexto y evitar desbordes. Úsala en sesiones largas o cuando el contexto supere el 60 %.
+Monitoreo de tokens en tiempo real y compresión del historial de conversación para preservar margen de contexto y evitar desbordes: al 50 % de la ventana se resume, al 80 % compactación obligatoria. Úsala en sesiones largas o cuando el contexto supere el 50 %.
 
 | Parámetro | Descripción |
 |---|---|
@@ -100,7 +100,7 @@ Metodología de investigación técnica autónoma: contraste de fuentes oficiale
 | `profundidad` | rápida o exhaustiva |
 
 ### `lightrag-knowledge`
-Indexación en grafo de conocimiento de doble nivel (entidad-relación + vectores) con LightRAG y persistencia estilo Obsidian con wikilinks. Úsala para recordar proyectos, documentos y decisiones sin perder contexto.
+Indexación en grafo de conocimiento de doble nivel (entidad-relación + vectores) con LightRAG y persistencia estilo Obsidian con wikilinks. Ingestión no destructiva: data/raw/ y data/inbox/ en solo lectura estricta; índices y salidas solo en data/processed/ u output/. Úsala para recordar proyectos, documentos y decisiones sin perder contexto.
 
 | Parámetro | Descripción |
 |---|---|
@@ -150,6 +150,7 @@ Empaquetado de cambios en commits semánticos en español y mantenimiento de un 
 4. Documenta: cuándo usar, parámetros, procedimiento, ejemplo y errores a evitar.
 5. Añádela a la matriz del agente que la necesite y, si procede, crea un comando que la invoque.
 6. Ejecuta `/sync-catalog`.
+7. Registro automático: toda agrupación multi-skill, habilidad o conector incorporado durante una sesión se asienta aquí y en `MEMORY.md`.
 
 ## Catálogo (generado)
 <!-- CATALOGO:INICIO -->
@@ -165,10 +166,10 @@ Empaquetado de cambios en commits semánticos en español y mantenimiento de un 
 | `fullstack-architecture` | Principios de integración frontend-backend con contratos tipados, gestión de estado mínima, APIs seguras y despliegue local rápido. Úsala al construir aplicaciones web completas. |
 | `git-portfolio-sync` | Empaquetado de cambios en commits semánticos en español y mantenimiento de un historial profesional sincronizado con GitHub. Úsala al confirmar trabajo y publicar el portafolio. |
 | `graphify-codebase` | Mapeo estructural del código mediante AST y clusters de dependencias (Graphify) para no leer archivos innecesarios. Úsala antes de refactorizar o explorar un repositorio desconocido. |
-| `headroom-context` | Monitoreo de tokens y compresión del historial de conversación para preservar margen de contexto y evitar desbordes. Úsala en sesiones largas o cuando el contexto supere el 60 %. |
+| `headroom-context` | Monitoreo de tokens en tiempo real y compresión del historial de conversación para preservar margen de contexto y evitar desbordes: al 50 % de la ventana se resume, al 80 % compactación obligatoria. Úsala en sesiones largas o cuando el contexto supere el 50 %. |
 | `image-creative-suite` | Gramática visual para prompts generativos (Flux, Midjourney, SDXL, DALL-E), composición áurea, teoría del color por dominio y manipulación local de píxeles con Pillow/Canvas. Úsala al dirigir o generar imágenes. |
-| `lightrag-knowledge` | Indexación en grafo de conocimiento de doble nivel (entidad-relación + vectores) con LightRAG y persistencia estilo Obsidian con wikilinks. Úsala para recordar proyectos, documentos y decisiones sin perder contexto. |
-| `neural-network-ml` | Diseño y entrenamiento eficiente de redes neuronales con PyTorch en GPU local: precisión mixta fp16/bf16, control de VRAM en CUDA, cuantización y consumo del MCP de Hugging Face. Úsala al diseñar, entrenar o depurar modelos. |
+| `lightrag-knowledge` | Indexación en grafo de conocimiento de doble nivel (entidad-relación + vectores) con LightRAG y persistencia estilo Obsidian con wikilinks. Ingestión no destructiva: data/raw/ y data/inbox/ en solo lectura estricta; índices y salidas solo en data/processed/ u output/. Úsala para recordar proyectos, documentos y decisiones sin perder contexto. |
+| `neural-network-ml` | Diseño y entrenamiento eficiente de redes neuronales con PyTorch en GPU local: selector probabilístico de algoritmos (LightGBM/XGBoost/PyTorch), precisión mixta fp16/bf16, control de VRAM en CUDA, cuantización y consumo del MCP de Hugging Face. Úsala al elegir algoritmo, entrenar o depurar modelos. |
 | `playwright-testing` | Procedimientos para pruebas en navegador real con Playwright: navegación, clics, formularios, capturas y pruebas E2E visuales, tanto con el MCP como con scripts. Úsala para validar aplicaciones web. |
 | `ponytail-yagni` | Regla de oro YAGNI (Ponytail) para podar sobre-ingeniería y código redundante, y preferir soluciones nativas. Úsala antes de escribir y después de escribir código. |
 | `sequential-thinking` | Protocolo de razonamiento paso a paso con formulación y descarte de hipótesis, apoyado en el MCP Sequential Thinking. Úsala en problemas matemáticos, algorítmicos o ambiguos antes de escribir código. |

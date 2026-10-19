@@ -1,6 +1,6 @@
 ---
 name: lightrag-knowledge
-description: "Indexación en grafo de conocimiento de doble nivel (entidad-relación + vectores) con LightRAG y persistencia estilo Obsidian con wikilinks. Úsala para recordar proyectos, documentos y decisiones sin perder contexto."
+description: "Indexación en grafo de conocimiento de doble nivel (entidad-relación + vectores) con LightRAG y persistencia estilo Obsidian con wikilinks. Ingestión no destructiva: data/raw/ y data/inbox/ en solo lectura estricta; índices y salidas solo en data/processed/ u output/. Úsala para recordar proyectos, documentos y decisiones sin perder contexto."
 license: MIT
 compatibility: opencode
 metadata:
@@ -14,6 +14,11 @@ metadata:
 - Indexar documentación o notas nuevas.
 - Responder preguntas sobre el proyecto con contexto amplio.
 - Sincronizar entidades con `memoria/`.
+
+## Ingestión no destructiva (privacidad local)
+- **Solo lectura estricta**: todo archivo del usuario en `data/raw/` o `data/inbox/` (PDFs, CSVs, Parquet, código, notas) es inmutable; nunca se modifica, renombra ni elimina.
+- **Salidas segregadas**: índices vectoriales, optimizaciones y archivos transformados se escriben exclusivamente en `data/processed/` o `output/`, garantizando la integridad de los originales.
+- **Base vectorial embebida local**: búsqueda semántica e indexación en disco D: con DuckDB (VSS) u otro almacenamiento vectorial local; cero salida a servicios externos.
 
 ## Parámetros de entrada
 | Parámetro | Descripción |
@@ -62,6 +67,7 @@ asyncio.run(main())
 - Indexar secretos o `.env`.
 - Usar un modelo de embeddings distinto al del índice existente.
 - Duplicar contenido en lugar de enlazar con wikilinks.
+- Escribir, renombrar o eliminar archivos de `data/raw/` o `data/inbox/`: los originales son inmutables.
 
 ## Referencias comunitarias validadas (find-skills)
 - `kepano/obsidian-skills` — **Steph Ango (CEO de Obsidian) oficial**: `obsidian-markdown` (90 K), `obsidian-cli`, `obsidian-bases`, `json-canvas` — sintaxis autoritativa de wikilinks, embeds, callouts y propiedades.
