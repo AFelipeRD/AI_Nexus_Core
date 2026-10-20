@@ -14,8 +14,8 @@ D:\AI_Nexus_Core\
 ├── AGENTS.md  CLAUDE.md  MEMORY.md  opencode.json  requirements.txt
 ├── .opencode\
 │   ├── agents\     17 agentes (.md con frontmatter YAML)
-│   ├── skills\     19 habilidades (<slug>\SKILL.md, especificación Anthropic)
-│   ├── commands\   17 comandos slash (.md)
+│   ├── skills\     20 habilidades (<slug>\SKILL.md, especificación Anthropic)
+│   ├── commands\   18 comandos slash (.md)
 │   └── context\    contexto estable (rúbrica, convenciones, stack)
 ├── docs\           7 manuales numerados
 ├── memoria\        notas de entidades para el grafo de Obsidian
@@ -86,3 +86,18 @@ Los commits los redacta `portfolio-git` (`/commit`).
 
 ## 12. Mantenimiento del catálogo
 Tras añadir, renombrar o eliminar un agente, habilidad o comando ejecuta `/sync-catalog` (o `python scripts\update_catalog.py`) para regenerar los `README.md` de catálogo.
+
+## 13. Protocolo Constitucional de Auto-Mejora Recursiva y Propagación Holística
+
+> ⚠️ **Directiva inmutable** — espejo idéntico en `MEMORY.md` y `.opencode/context/convenciones-codigo.md`. No derogable por ningún agente sin autorización explícita del usuario.
+
+1. **Bucle de Auto-Mejora Continua (Self-Evolution Loop)**: cada vez que el usuario solicite una mejora o una nueva capacidad, o el sistema evolucione mediante `find-skills` o la ingesta de nuevos modelos, es **obligatorio** ejecutar un Mapeo de Impacto Holístico sobre todo el repositorio antes de dar la tarea por terminada.
+2. **Propagación en Cascada (prohibición total de herramientas huérfanas y archivos ciegos)**: cada cambio, herramienta, script en `scripts/`, conector o modelo se propaga de inmediato a los seis niveles del sistema:
+   1. Script/herramienta creada o mejorada.
+   2. Manual de procedimiento en el `SKILL.md` correspondiente.
+   3. `MATRIZ DE HERRAMIENTAS` de los subagentes (`.opencode/agents/*.md`) que puedan aprovecharla.
+   4. Catálogo central regenerado en `.opencode/skills/README.md` (`/sync-catalog`).
+   5. Capacidad y decisión registradas con fecha en `MEMORY.md`.
+   6. Manuales de arquitectura en `docs/` si cambia el flujo operativo.
+3. **Puerta de Coherencia del Repositorio**: ningún archivo puede quedar con suposiciones desactualizadas, herramientas rotas o parámetros deprecados; todo el ecosistema mantiene una comprensión unificada y sincronizada de su estado actual.
+4. **Directiva de Excelencia Proactiva**: ante cualquier tarea, la excelencia vence a la mediocridad — si una tarea sencilla puede enriquecerse con mejor tipado, validación de seguridad, aceleración en GPU (GTX 1050 Ti) o refinamiento estético sin sobrecoste absurdo, el sistema eleva la calidad por defecto.

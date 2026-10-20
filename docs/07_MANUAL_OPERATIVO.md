@@ -4,7 +4,7 @@ Enlaces: [[MEMORY]] · [[01_MANUAL_ECOSISTEMA_OPENCODE]] · [[06_PROTOCOLO_ARENA
 
 > Guía integral y manual operativo de AI Nexus Core, generada en la Sesión Maestra de Presentación (2026-10-19).
 > Raíz: `D:\AI_Nexus_Core` · Windows 11 · terminal Warp · bóveda de Obsidian.
-> **17 agentes · 20 skills · 18 comandos slash · 9 servidores MCP (5 activos) · 3 proveedores de modelos · 7 manuales**
+> **17 agentes · 20 skills · 18 comandos slash · 9 servidores MCP (5 activos) · 2 proveedores de modelos · 7 manuales**
 
 ## Contenido
 
@@ -53,6 +53,8 @@ El resultado: el ecosistema funciona igual en OpenCode, Cursor o Warp, y ninguna
 
 - La tarea programada de Windows `AI_Nexus_Evolve` (lunes 09:00, `StartWhenAvailable`) ejecuta `/evolve`: barrido semanal de skills, servidores MCP, conectores y plugins (find-skills + radar GitHub), con integración atribuida y poda YAGNI.
 - El informe del barrido vive en `output/evolution_report.md`.
+- **Ingesta de modelos**: la documentación de modelos o APIs depositada en `data/inbox/` es asimilada por `auto-researcher` (endpoints, ventanas de contexto, tool-calling), que propone la actualización de `opencode.json` y propaga el conocimiento en cascada (§13 de `AGENTS.md`).
+- **Poda activa**: los modelos caducados, deprecados o caídos (404) se remueven de la configuración activa y de todo catálogo o manual que los cite.
 
 ---
 
@@ -92,6 +94,12 @@ Ningún código se entrega sin validación. Si un script falla, el subagente res
 | Tier 1 | Alta velocidad y utilidad | pool dinámico |
 | Tier 2 | Frontera / razonamiento profundo | `model` (activo global) |
 
+El triage no usa reglas rígidas: el **Motor de Decisión Laya AI** evalúa en un solo paso (milisegundos) el **vector técnico** de cada mensaje — complejidad algorítmica, riesgo, dependencias, consumo de RAM y GPU, criticidad irreversible — y selecciona el modelo óptimo del pool de `opencode.json`. La generación de medios (imagen, video, audio) no pasa por un LLM: se delega a los scripts ejecutores del catálogo (`scripts/nvidia_flux.py` → `output/images/`, `scripts/nvidia_cosmos.py` → `output/videos/`).
+
+### Auto-mejora recursiva y propagación holística (§13 de `AGENTS.md`)
+
+Toda mejora, herramienta o modelo nuevo se propaga en cascada por los seis niveles del sistema antes de cerrar la tarea: script/herramienta → `SKILL.md` → matrices de los subagentes que la aprovechen → catálogo central (`.opencode/skills/README.md` vía `/sync-catalog`) → registro fechado en `MEMORY.md` → manuales de `docs/` si cambia el flujo operativo. La **Puerta de Coherencia** veta entregas con herramientas huérfanas, suposiciones desactualizadas o parámetros deprecados, y la **Directiva de Excelencia Proactiva** eleva la calidad por defecto (tipado, seguridad, GPU, estética) sin sobrecoste absurdo.
+
 ### Compresión de contexto (Headroom)
 
 Al 50 % de la ventana: resumir. Al 80 %: compactación obligatoria (`/headroom`). Se conserva el objetivo, las decisiones, las rutas de archivos, los errores abiertos y los próximos pasos; se descarta el ruido.
@@ -119,9 +127,9 @@ Al 50 % de la ventana: resumir. Al 80 %: compactación obligatoria (`/headroom`)
 | `data-engineer` | Datos | Pipelines OLAP con DuckDB + Polars sobre CSV/Parquet locales, streaming < 500 MB de RAM |
 | `ml-deeplearning-specialist` | ML | PyTorch, embeddings locales, CUDA fp16 y control de VRAM para la GTX 1050 Ti de 4 GB |
 | `ui-ux-director` | Diseño | Tokens, criterio visual, micro-animaciones con física de resorte. Adaptativo a cualquier dominio estilístico |
-| `image-generative-designer` | Imagen | Dirección artística, prompts para Flux/Midjourney/SDXL, Pillow/Canvas, SVG paramétrico |
+| `image-generative-designer` | Imagen | Dirección artística, generación FLUX en NVIDIA Build (`scripts/nvidia_flux.py` → `output/images/`), Pillow/Canvas, SVG paramétrico |
 | `audio-sound-engineer` | Audio | Web Audio API, TTS, Whisper, diseño sonoro micro-táctil de baja latencia |
-| `video-media-engineer` | Video | Captura automatizada con Playwright, composición MoviePy/FFmpeg a 60 FPS |
+| `video-media-engineer` | Video | Captura automatizada con Playwright, generación Cosmos (`scripts/nvidia_cosmos.py` → `output/videos/`), composición MoviePy/FFmpeg a 60 FPS |
 | `ai-multimodal-engineer` | GenAI | IA generativa de frontera, RAG multimodal (texto + imagen + audio), flujos agénticos avanzados |
 | `automation-browser` | Navegador | Pruebas E2E con Playwright, scraping con Crawl4AI, flujos de trabajo en n8n |
 | `knowledge-graph-agent` | Contexto | Grafo de dependencias y memoria persistente: LightRAG, Claude-Mem, Graphify, Obsidian, `MEMORY.md` |
@@ -184,9 +192,9 @@ Obligatorio (`/arena`) cuando la decisión: (a) define arquitectura o elige tecn
 ### Libertad de modelos — confirmada
 
 - El ecosistema **no tiene modelos fijos**: `opencode.json` es la única fuente de verdad (`model`, `small_model` y el pool de proveedores).
-- Proveedores configurados: NVIDIA Build NIM (GLM 5.3, Llama 3.3 70B), Ollama local (Qwen2.5 Coder 7B) y OmniRoute (pasarela de fallback).
+- Proveedores configurados: NVIDIA Build NIM (GLM 5.3, Nemotron 3.5 Super VL 120B, DeepSeek v4.1 Flash) y Ollama local (Qwen2.5 Coder 7B); el pool rota con `/evolve` y la ingesta desde `data/inbox/`.
 - Cambiar de proveedor: editar `opencode.json` → **todos los agentes heredan al instante**, sin tocar una línea de código de ningún agente.
-- Escalera de fallback: modelo activo → omniroute → Ollama local. El sistema nunca queda sin cerebro.
+- Escalera de fallback: modelo activo → Ollama local. El sistema nunca queda sin cerebro.
 - Tras editar `opencode.json`, reinicia el servicio (`opencode service restart`) o reabre la terminal para que el cambio surta efecto: la configuración la posee el servicio en segundo plano.
 
 ### Política Zero-Leaks de credenciales

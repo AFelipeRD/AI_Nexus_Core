@@ -14,6 +14,7 @@ litellm
 playwright
 crawl4ai
 rich
+requests
 pydantic
 graphifyy
 # Después de instalar: `playwright install chromium`

@@ -41,6 +41,14 @@
    - Prohibido aceptar por complacencia: toda estructura ineficiente, librería deprecada, código que sature la RAM (> 500 MB) o arquitectura frágil se señala con fundamento técnico y se propone la alternativa superior.
    - En `/arena`, `arena-arbiter` puntúa con criterios métricos objetivos (eficiencia de memoria, latencia, seguridad), neutralizando sesgos narrativos.
 
+7. **Protocolo de Auto-Mejora Recursiva y Propagación Holística**
+   - Bucle de auto-mejora: toda mejora, capacidad nueva, evolución vía `find-skills` o ingesta de modelos ejecuta un Mapeo de Impacto Holístico sobre el repositorio antes de cerrar la tarea.
+   - Propagación en cascada obligatoria (6 niveles): script/herramienta → `SKILL.md` → `MATRIZ DE HERRAMIENTAS` de los agentes que la aprovechen → catálogo `.opencode/skills/README.md` (`/sync-catalog`) → registro fechado en `MEMORY.md` → manuales de `docs/` si cambia el flujo operativo.
+   - Puerta de coherencia: prohibido cerrar una entrega con herramientas huérfanas, archivos ciegos, suposiciones desactualizadas o parámetros deprecados.
+
+8. **Directiva de Excelencia Proactiva**
+   - Ante cualquier tarea: si cabe mejor tipado, validación de seguridad, aceleración en GPU (GTX 1050 Ti) o refinamiento estético sin sobrecoste absurdo, se eleva la calidad por defecto. La mediocridad no es opción de entrega.
+
 ## Decisiones (formato: fecha · decisión · motivo · fuente)
 - 2026-10-16 · Adoptar ecosistema 100 % Markdown nativo de OpenCode · simplicidad y portabilidad · [[01_MANUAL_ECOSISTEMA_OPENCODE]]
 - 2026-10-16 · Decisiones críticas pasan por [[Arena-Consensus]] · reducir el error de un único modelo · [[06_PROTOCOLO_ARENA_Y_CONSENSO]]
@@ -54,6 +62,11 @@
 - 2026-10-19 · RAG local no destructivo: `data/raw/` y `data/inbox/` en solo lectura estricta; índices y salidas solo en `data/processed/` u `output/`, con DuckDB (VSS) como base vectorial local · integridad de originales y privacidad (cero servicios externos) · [[#Constitución Maestra (Frontier Level)]]
 - 2026-10-19 · Auto-ML con selector probabilístico de algoritmos (LightGBM vs XGBoost vs PyTorch) y CUDA fp16 en GTX 1050 Ti; artefactos en `output/modelos/` · decisión por datos, no por costumbre · [[#Constitución Maestra (Frontier Level)]]
 - 2026-10-19 · Headroom endurecido: resumir al 50 % de la ventana, compactación obligatoria al 80 % · máxima velocidad y ahorro de tokens · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-19 · Protocolo Constitucional de Auto-Mejora Recursiva y Propagación Holística (bucle de auto-mejora, cascada de 6 niveles y Puerta de Coherencia) inyectado en AGENTS.md, MEMORY.md y convenciones-codigo.md · cero herramientas huérfanas y cero archivos ciegos · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-19 · Laya AI v2: triage dinámico por vector técnico y selección autónoma desde el pool de opencode.json; generación de medios enrutada a scripts ejecutores del catálogo · agnosticismo y rotación total de modelos (cero anclajes en los 17 agentes) · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-19 · Ingesta autónoma de modelos desde data/inbox/ (auto-researcher) y poda activa de obsoletos/404 (auto-researcher + github-scout) · el pool rota sin dejar configuración muerta · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-19 · Suite multimodal conectada: scripts/nvidia_flux.py (FLUX 3 Klein 1024×1024 → output/images/) y scripts/nvidia_cosmos.py (Cosmos 3 Nano → output/videos/) reparado y sellado en skills y matrices de image-generative-designer y video-media-engineer · propagación en cascada aplicada sobre herramientas existentes · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-19 · Release v2.0.0 publicada en GitHub con tag anotado v2.0.0 · versionamiento semántico formal bajo Keep a Changelog · CHANGELOG.md
 
 ## Grafo de entidades
 | Entidad | Relación | Detalle |
@@ -74,6 +87,7 @@
 - 2026-10-18 · Barrido profundo del resto del proyecto + flujo de auto-evolución: heurísticas oficiales integradas en 7 skills nativas (DuckDB org, PyTorch org, Kepano/Obsidian, Anthropic frontend-design 1 M, Matt Pocock code-review 756 K, setup-pre-commit 468 K, webapp-testing 180 K); creado `scripts/evolve_ecosystem.py` + skill `ecosystem-evolution` + `/evolve` + disparador de arranque, cubriendo skills, MCP, conectores y plugins (radar actualizado con candidatos: open-connector, ffmpeg-skill, aoci-code, codebase-memory-mcp, okf-agent-memory).
 - 2026-10-18 · Tarea programada `AI_Nexus_Evolve` registrada en Windows (lunes 09:00, `StartWhenAvailable`, log en `logs/evolve_task.log`) y validada con una ejecución real completa bajo Task Scheduler.
 - 2026-10-19 · Hito: AI Nexus Core: Laya Decision Engine, Multi-Skill Aggregator, Non-Destructive Local RAG, and GPU Auto-ML. Arquitectura cognitiva definitiva activa en los 17 agentes: decisión probabilística de un paso, anti-sycophancy, compositor multi-skill con find-skills, RAG no destructivo en `data/` con DuckDB VSS, Auto-ML GPU (fp16, `output/modelos/`) y compresión Headroom 50/80.
+- 2026-10-19 · Reingeniería total v2.0.0: auto-mejora recursiva holística (§13 de AGENTS.md), Laya dinámico con enrutamiento autónomo de modelos, ingesta/poda de modelos desde `data/inbox/`, scripts multimodales conectados y reparados (`nvidia_cosmos.py` ya persiste el video), catálogos y manuales sincronizados, CHANGELOG v2.0.0, commit + tag anotado `v2.0.0` publicados en GitHub.
 
 ## Cómo actualizar esta memoria
 1. Añade decisiones con fecha y enlace a la fuente.

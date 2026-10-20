@@ -1,19 +1,36 @@
 ---
 name: video-processing-suite
-description: "Captura automatizada de video a 60 FPS con Playwright, composición con MoviePy/FFmpeg, manejo de streams y transcodificación ligera sin pérdida perceptual. Úsala al generar clips programáticos."
+description: "Captura automatizada de video a 60 FPS con Playwright, generación de video con NVIDIA Cosmos vía scripts/nvidia_cosmos.py, composición con MoviePy/FFmpeg, manejo de streams y transcodificación ligera sin pérdida perceptual. Úsala al generar clips programáticos."
 license: MIT
 compatibility: opencode
 metadata:
   idioma: es
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Video Processing Suite
 
 ## Cuándo usar esta skill
 - Grabar la pantalla o una escena web como video.
+- Generar un clip o simulación física desde cero (Cosmos en NVIDIA Build).
 - Componer, cortar o sincronizar clips.
 - Exportar WebM/MP4 optimizados.
+
+## Herramienta oficial de generación (Cosmos en NVIDIA Build)
+Cuando el clip nace generado (simulación física) y no capturado del navegador, invoca en terminal (`bash`) desde la raíz, con parámetros en inglés:
+
+```bash
+python scripts/nvidia_cosmos.py "<PROMPT_EN_INGLES>" "<NOMBRE_ARCHIVO.mp4>"
+```
+
+| Parámetro | Descripción |
+|---|---|
+| `PROMPT_EN_INGLES` | descripción de la simulación física o escena en inglés |
+| `NOMBRE_ARCHIVO.mp4` | archivo de salida (por defecto `cosmos_sim.mp4`) |
+
+- Requiere la clave en `.secrets/nvidia.key`; el destino es `output/videos/<NOMBRE_ARCHIVO.mp4>`.
+- Si la API devuelve solo metadatos sin artefacto descargable, el script avisa con `[AVISO]`: inspecciona la respuesta antes de prometer un archivo al usuario.
+- No mezcles este origen con la captura Playwright en un mismo re-encode (regla del único re-encode).
 
 ## Parámetros de entrada
 | Parámetro | Descripción |

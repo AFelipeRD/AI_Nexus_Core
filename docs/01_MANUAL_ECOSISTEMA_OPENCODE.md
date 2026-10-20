@@ -3,7 +3,7 @@
 Enlaces: [[MEMORY]] · [[02_REDES_NEURONALES_Y_DEEP_LEARNING]] · [[06_PROTOCOLO_ARENA_Y_CONSENSO]]
 
 ## Piezas
-- **Agentes** (`.opencode/agents/*.md`): `orchestrator` es el agente primario (se elige con `Tab`); los 11 restantes son subagentes que se invocan con `@nombre` o los delega el orquestador con la herramienta Task.
+- **Agentes** (`.opencode/agents/*.md`): `orchestrator` es el agente primario (se elige con `Tab`); los 16 restantes son subagentes que se invocan con `@nombre` o los delega el orquestador con la herramienta Task.
 - **Habilidades** (`.opencode/skills/<slug>/SKILL.md`): instrucciones reutilizables que el agente carga con la herramienta `skill`.
 - **Comandos** (`.opencode/commands/*.md`): atajos con `/nombre`; `$ARGUMENTS` recibe lo escrito tras el comando y `!`comando`` inserta la salida de un comando de shell.
 - **Reglas**: `AGENTS.md` (y `CLAUDE.md` para Claude Code). **Memoria**: `MEMORY.md`.
@@ -30,4 +30,4 @@ Cada servidor MCP añade herramientas al prompt. Con un modelo de 7B conviene **
 
 ## Notas
 - Los archivos `README.md` de `agents/` y `commands/` están pensados como catálogo; OpenCode puede listarlos como un agente o comando llamado `README`. Es inocuo; no lo invoques.
-- Modifica el modelo por defecto en `opencode.json` (`model`) o por agente en su frontmatter (`model`).
+- Modifica el modelo solo en `opencode.json` (`model`, `small_model` y el pool de proveedores): todos los agentes heredan dinámicamente. Prohibido anclar modelos por agente en el frontmatter (cero modelos quemados).

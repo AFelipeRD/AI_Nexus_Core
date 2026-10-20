@@ -39,3 +39,11 @@
    - Clasificación de tareas, selección de rutas y triage de intenciones: evaluación probabilística y matriz de decisión en un solo paso (milisegundos), sin texto conversacional redundante.
    - Prohibido aceptar por complacencia: toda estructura ineficiente, librería deprecada, código que sature la RAM (> 500 MB) o arquitectura frágil se señala con fundamento técnico y se propone la alternativa superior.
    - En `/arena`, `arena-arbiter` puntúa con criterios métricos objetivos (eficiencia de memoria, latencia, seguridad), neutralizando sesgos narrativos.
+
+7. **Protocolo de Auto-Mejora Recursiva y Propagación Holística**
+   - Bucle de auto-mejora: toda mejora, capacidad nueva, evolución vía `find-skills` o ingesta de modelos ejecuta un Mapeo de Impacto Holístico sobre el repositorio antes de cerrar la tarea.
+   - Propagación en cascada obligatoria (6 niveles): script/herramienta → `SKILL.md` → `MATRIZ DE HERRAMIENTAS` de los agentes que la aprovechen → catálogo `.opencode/skills/README.md` (`/sync-catalog`) → registro fechado en `MEMORY.md` → manuales de `docs/` si cambia el flujo operativo.
+   - Puerta de coherencia: prohibido cerrar una entrega con herramientas huérfanas, archivos ciegos, suposiciones desactualizadas o parámetros deprecados.
+
+8. **Directiva de Excelencia Proactiva**
+   - Ante cualquier tarea: si cabe mejor tipado, validación de seguridad, aceleración en GPU (GTX 1050 Ti) o refinamiento estético sin sobrecoste absurdo, se eleva la calidad por defecto. La mediocridad no es opción de entrega.
