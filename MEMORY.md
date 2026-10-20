@@ -67,6 +67,7 @@
 - 2026-10-19 · Ingesta autónoma de modelos desde data/inbox/ (auto-researcher) y poda activa de obsoletos/404 (auto-researcher + github-scout) · el pool rota sin dejar configuración muerta · [[#Constitución Maestra (Frontier Level)]]
 - 2026-10-19 · Suite multimodal conectada: scripts/nvidia_flux.py (FLUX 3 Klein 1024×1024 → output/images/) y scripts/nvidia_cosmos.py (Cosmos 3 Nano → output/videos/) reparado y sellado en skills y matrices de image-generative-designer y video-media-engineer · propagación en cascada aplicada sobre herramientas existentes · [[#Constitución Maestra (Frontier Level)]]
 - 2026-10-19 · Release v2.0.0 publicada en GitHub con tag anotado v2.0.0 · versionamiento semántico formal bajo Keep a Changelog · CHANGELOG.md
+- 2026-10-20 · Parallel Multi-Phase DAG Engine: descomposición de peticiones multi-punto en unidades atómicas (T1…Tn), encadenado de dependientes con paso de artefactos, concurrencia inmediata de independientes, matriz granular de recursos por fase (complejidad 1-10, aislamiento atómico de herramientas) y síntesis holística con auto-sanación · reducción radical de latencia en sesiones multi-tarea · [[#Constitución Maestra (Frontier Level)]]
 
 ## Grafo de entidades
 | Entidad | Relación | Detalle |
@@ -88,6 +89,7 @@
 - 2026-10-18 · Tarea programada `AI_Nexus_Evolve` registrada en Windows (lunes 09:00, `StartWhenAvailable`, log en `logs/evolve_task.log`) y validada con una ejecución real completa bajo Task Scheduler.
 - 2026-10-19 · Hito: AI Nexus Core: Laya Decision Engine, Multi-Skill Aggregator, Non-Destructive Local RAG, and GPU Auto-ML. Arquitectura cognitiva definitiva activa en los 17 agentes: decisión probabilística de un paso, anti-sycophancy, compositor multi-skill con find-skills, RAG no destructivo en `data/` con DuckDB VSS, Auto-ML GPU (fp16, `output/modelos/`) y compresión Headroom 50/80.
 - 2026-10-19 · Reingeniería total v2.0.0: auto-mejora recursiva holística (§13 de AGENTS.md), Laya dinámico con enrutamiento autónomo de modelos, ingesta/poda de modelos desde `data/inbox/`, scripts multimodales conectados y reparados (`nvidia_cosmos.py` ya persiste el video), catálogos y manuales sincronizados, CHANGELOG v2.0.0, commit + tag anotado `v2.0.0` publicados en GitHub.
+- 2026-10-20 · Hito: AI Nexus Core: Parallel Multi-Phase DAG Engine and Dynamic Granular Resource Routing. El Orquestador descompone peticiones multi-punto en DAG, ejecuta en paralelo lo independiente, puntúa cada fase (1-10) para asignar su paquete exclusivo (modelo + subagente + skills + MCPs) y consolida la salida con Self-Healing.
 
 ## Cómo actualizar esta memoria
 1. Añade decisiones con fecha y enlace a la fuente.

@@ -100,6 +100,10 @@ El triage no usa reglas rígidas: el **Motor de Decisión Laya AI** evalúa en u
 
 Toda mejora, herramienta o modelo nuevo se propaga en cascada por los seis niveles del sistema antes de cerrar la tarea: script/herramienta → `SKILL.md` → matrices de los subagentes que la aprovechen → catálogo central (`.opencode/skills/README.md` vía `/sync-catalog`) → registro fechado en `MEMORY.md` → manuales de `docs/` si cambia el flujo operativo. La **Puerta de Coherencia** veta entregas con herramientas huérfanas, suposiciones desactualizadas o parámetros deprecados, y la **Directiva de Excelencia Proactiva** eleva la calidad por defecto (tipado, seguridad, GPU, estética) sin sobrecoste absurdo.
 
+### Motor de orquestación concurrente por fases (DAG)
+
+Las peticiones multi-punto se descomponen en **unidades atómicas de trabajo (T1…Tn)** formando un grafo acíclico: las tareas con dependencia de datos se encadenan en secuencia pasando el artefacto resultante; las independientes se ejecutan **en paralelo de inmediato**, sin bloquear la sesión. Cada fase recibe una puntuación de complejidad (1-10) y su paquete exclusivo de recursos — **< 4**: acción directa con modelo ligero en segundos; **≥ 7**: subagente especialista con razonamiento profundo y Thinking — con **aislamiento atómico de herramientas** (solo los subagentes, skills y MCPs que esa fase exige). Las tareas ligeras de un mismo prompt corren en segundo plano mientras el flujo pesado continúa, y el Orquestador consolida todas las salidas con auto-sanación antes de entregar la respuesta unificada.
+
 ### Compresión de contexto (Headroom)
 
 Al 50 % de la ventana: resumir. Al 80 %: compactación obligatoria (`/headroom`). Se conserva el objetivo, las decisiones, las rutas de archivos, los errores abiertos y los próximos pasos; se descarta el ruido.

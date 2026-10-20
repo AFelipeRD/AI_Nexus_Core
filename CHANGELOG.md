@@ -3,6 +3,8 @@
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y versionado semántico.
 
 ## [Sin publicar]
+### Añadido
+- **Parallel Multi-Phase DAG Engine**: descomposición de peticiones multi-punto en unidades atómicas de trabajo (T1…Tn), análisis de dependencias (encadenado secuencial con paso de artefactos vs. ejecución concurrente inmediata de tareas independientes), matriz granular de recursos por fase (complejidad 1-10: < 4 acción directa con modelo ligero; ≥ 7 subagente especialista con razonamiento profundo y Thinking), aislamiento atómico de herramientas por fase, disparo de tareas ligeras en segundo plano durante flujos pesados y síntesis holística con auto-sanación.
 
 ## [v2.0.0] - 2026-10-19
 ### Añadido
