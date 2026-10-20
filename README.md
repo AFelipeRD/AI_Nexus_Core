@@ -1,49 +1,62 @@
 <div align="center">
 
-# AI Nexus Core — Autonomous, Local-First Multi-Agent Ecosystem
+# AI Nexus Core v2.0.0 — Autonomous Multi-Model Agentic OS
 
-**A decoupled, self-healing, multi-model intelligence architecture combining local hardware acceleration, arena consensus, and high-performance data engineering.**
+**An autonomous, self-improving, multi-model agentic operating system: Laya probabilistic decision engine, parallel DAG concurrency, non-destructive local RAG, holistic tool propagation, and GPU acceleration — built entirely from Markdown agents.**
 
-[![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Version](https://img.shields.io/badge/version-v2.0.0-0ea5e9?style=flat-square)](CHANGELOG.md)
+[![Laya AI](https://img.shields.io/badge/decision_engine-Laya_AI-8b5cf6?style=flat-square)](#laya-ai-decision-engine)
+[![DAG Engine](https://img.shields.io/badge/concurrency-Parallel_DAG_Engine-06b6d4?style=flat-square)](#parallel-multi-phase-dag-engine)
+[![Agents](https://img.shields.io/badge/squad-17_Markdown_Agents-10b981?style=flat-square)](#the-17-agent-squad)
 [![DuckDB](https://img.shields.io/badge/DuckDB-In--Memory_OLAP-FFF100?style=flat-square&logo=duckdb&logoColor=black)](https://duckdb.org/)
 [![Polars](https://img.shields.io/badge/Polars-DataFrames-CD7928?style=flat-square&logo=polars&logoColor=white)](https://pola.rs/)
-[![Playwright](https://img.shields.io/badge/Playwright-E2E_Testing-2EAD33?style=flat-square&logo=playwright&logoColor=white)](https://playwright.dev/)
-[![Ollama](https://img.shields.io/badge/Ollama-Qwen_2.5_Coder_7B-000000?style=flat-square&logo=ollama&logoColor=white)](https://ollama.com/)
-[![NVIDIA NIM](https://img.shields.io/badge/NVIDIA_NIM-Cloud_Fallback-76B900?style=flat-square&logo=nvidia&logoColor=white)](https://build.nvidia.com/)
-[![CUDA Ready](https://img.shields.io/badge/CUDA-Ready-76B900?style=flat-square&logo=nvidia&logoColor=white)](https://developer.nvidia.com/cuda-toolkit)
+[![CUDA](https://img.shields.io/badge/CUDA-GTX_1050_Ti_fp16-76B900?style=flat-square&logo=nvidia&logoColor=white)](https://developer.nvidia.com/cuda-toolkit)
+[![Zero-Leaks](https://img.shields.io/badge/security-Zero--Leaks-ef4444?style=flat-square)](#zero-leaks-security-policy)
 [![OpenCode](https://img.shields.io/badge/OpenCode-Agent_Native-7C3AED?style=flat-square)](https://opencode.ai/)
-[![Windows 11](https://img.shields.io/badge/Windows-11-0078D6?style=flat-square&logo=windows11&logoColor=white)](https://www.microsoft.com/windows/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+[![Playwright](https://img.shields.io/badge/Playwright-E2E_Testing-2EAD33?style=flat-square&logo=playwright&logoColor=white)](https://playwright.dev/)
 
 ![AI Nexus Core — Motion Showcase](assets/video/showcase.gif)
 
 **▶ Try the live interactive artifact: [`opus_neural_interactive.html`](assets/opus_neural_interactive.html)** — a 45-node particle-physics neural network with magnetic cursor gravity, click-triggered shockwaves, a glassmorphic telemetry panel (live 60 FPS monitor, DuckDB + Polars streaming widget, GTX 1050 Ti status) and three GPU-composited render modes: *Quantum Physics*, *Neural Network*, *Data Mesh*.
 
-*Above: the 10-second motion showcase — [HTML scene](assets/motion_showcase.html) · [raw WebM](assets/video/showcase_ai_nexus_core.webm)*
+*Above: the motion showcase — [HTML scene](assets/motion_showcase.html) · [raw WebM](assets/video/showcase_ai_nexus_core.webm)*
 
 </div>
 
 ---
 
-## Core Architectural Pillars
+## What's New in v2.0.0
 
-### 1. Hybrid Local/Cloud Compute
-Every routine task runs on-premise at **zero inference cost**: Ollama serves **Qwen 2.5 Coder 7B** on an NVIDIA GTX 1050 Ti with **CUDA acceleration, fp16 mixed precision and explicit VRAM cache management** — engineered to operate fluently within 4 GB. When quality or context demands exceed the local model, the orchestrator proposes escalation to **NVIDIA NIM Cloud APIs** (Llama 3.3 70B / GLM). The user decides — never the framework.
+| Capability | What it does |
+|---|---|
+| **Laya AI Decision Engine** | Every request is triaged in a single probabilistic pass by its technical vector — algorithmic complexity, risk, dependencies, RAM/GPU cost — in milliseconds. No rigid rules. The optimal model is selected autonomously from the live pool in `opencode.json`. |
+| **Parallel Multi-Phase DAG Engine** | Multi-point requests decompose into atomic work units (T1…Tn). Dependent units chain sequentially passing artifacts; independent units run **concurrently**, never blocking the session. |
+| **Dynamic Per-Phase Resource Matrix** | Each phase is scored (1-10) and gets an exclusive execution package — model + agent + skills + MCPs. Below 4: direct action on a light model. Seven or higher: specialist subagent with deep reasoning and Sequential Thinking. Atomic tool isolation per phase. |
+| **Recursive Self-Improvement Protocol (§13)** | Every new tool, script, connector or model propagates through all six repository levels — script → `SKILL.md` → agent matrices → central catalog → `MEMORY.md` → `docs/`. Orphan tools and stale assumptions are constitutionally banned by the Repository Coherence Gate. |
+| **Autonomous Model Ingestion & Pruning** | Documentation dropped in `data/inbox/` is assimilated, updates `opencode.json` and propagates to skills; deprecated or 404 models are pruned from the active pool. Zero burned models across all 17 agents — full provider rotation freedom. |
+| **Multimodal GPU Suite** | FLUX 3 Klein image generation (`scripts/nvidia_flux.py` → `output/images/`) and NVIDIA Cosmos video simulation (`scripts/nvidia_cosmos.py` → `output/videos/`), documented in skills and sealed in the specialists' tool matrices. |
 
-### 2. 100% Markdown-Native Agents
-Agents are not code. They are plain `.md` files implementing the **Linux Foundation `AGENTS.md` standard** and the **Anthropic Agent Skills specification** — zero `class Agent`, zero CrewAI, zero LangChain, zero monolithic frameworks. Every agent is a readable, versionable document with a mandatory tool-and-skill matrix: an agent can only use what its matrix declares. Zero lock-in, total portability.
+**Certified live benchmark:** the full traceability of a concurrent heterogeneous dispatch — DuckDB streaming, architecture audit and a multimodal brief-to-timeline chain — is published in [`output/trazabilidad_orquestacion_completa.md`](output/trazabilidad_orquestacion_completa.md).
 
-### 3. Arena Consensus (LLM Council)
-Small local models hallucinate; consensus fixes that. Critical decisions — architecture, security, destructive operations, ML design — enter a **tournament protocol**: subagents generate candidate variants from disparate approaches (minimalist, robust, ultra-fast), cross-critique each other's flaws, and an impartial arbiter scores them against a four-axis rubric (simplicity, speed, security, robustness). A security score ≤ 2 disqualifies a variant outright. Verdicts are persisted to long-term memory.
+---
 
-### 4. High-Speed OLAP Data Core
-**DuckDB + Polars** process CSV, Parquet and JSON in streaming, in-memory fashion — 100,000-record pipelines run under a **strict 500 MB RAM ceiling** on the local workstation. No servers, no clusters, no infrastructure.
+## Laya AI Decision Engine
 
-### 5. Anti-Slop Motion Engine (Opus-Level)
-Interactive interfaces are governed by an engineering-grade design system: deep OLED palettes (`#020617` / `#030712`), diffuse radial gradient meshes, real glassmorphism (`backdrop-blur-xl` + `border-white/10`), spring physics under 250 ms with `cubic-bezier(0.16, 1, 0.3, 1)`, GPU-composited canvas layers (`will-change: transform`) targeting stable 60 FPS — all validated visually with **Playwright E2E** in a real browser.
+> Rigid classification is prohibited. Laya evaluates the **technical vector** of every message — algorithmic complexity, risk, dependencies, RAM/GPU consumption, irreversibility, retry cost — in a **single probabilistic pass measured in milliseconds**.
 
-### 6. Knowledge Graph & Obsidian Vault
-The repository doubles as an **Obsidian vault**: decisions, entities and session logs persist as interlinked Markdown (`[[wikilinks]]`) and are indexed into an entity-relation + vector knowledge graph via **LightRAG** and **Claude-Mem**, with structural code mapping by **Graphify**. Memory survives sessions; context never starts from zero.
+- **Autonomous model-pool selection:** `opencode.json` is the single source of truth. Light tasks, utilities and terminal operations route to the high-speed/local pool (`small_model`); architecture, deep logic, Arena arbitration and security-critical work route to the most powerful frontier model connected (`model`); media generation (image, video, audio) is delegated to **executor scripts**, never to an LLM.
+- **Anti-sycophancy by constitution:** inefficient structures, deprecated libraries, RAM-hungry code and fragile architectures are flagged with technical evidence and a superior alternative — the final decision always belongs to the user.
+- **Deliberation is matricial, not narrative:** internal reasoning happens as a decision matrix; prose only appears in the final answer.
+
+## Parallel Multi-Phase DAG Engine
+
+Every multi-point request is a **directed acyclic graph of atomic work units**, never a linear queue:
+
+1. **Cognitive decomposition** — messages with phases, lists or multiple asks are segmented immediately into atomic units T1…Tn, each with a goal, an expected artifact and a termination criterion.
+2. **Dependency analysis** — if Tn depends on Tn-1, execution chains sequentially passing the artifact; if Tn is independent, it **fires concurrently right away** without making the user wait.
+3. **Per-phase resource matrix** — each phase is scored 1-10 and wakes only the subagents, skills and MCP servers it needs (atomic tool isolation; unrelated tools are banned from a phase's context).
+4. **Parallel dispatch** — a heavy pipeline (data, ML training) coexists with light secondary tasks from the same prompt (formatting, image generation, quick lookups): the light ones run in the background on the fast executor **while the heavy flow continues**.
+5. **Holistic synthesis** — the orchestrator collects every phase's output, checks for conflicts and syntax errors via the Self-Healing protocol, and delivers one clean, unified response.
 
 ---
 
@@ -51,88 +64,73 @@ The repository doubles as an **Obsidian vault**: decisions, entities and session
 
 ```mermaid
 flowchart TB
-    U([👤 User Request]) --> ORC
-
-    ORC{{"🧠 ORCHESTRATOR<br/>Triage · YAGNI pruning · Headroom compression<br/>Model routing · /arena convener"}}
-
-    subgraph SQUAD ["12 Markdown-Native Subagents — .opencode/agents"]
-        direction LR
-        SA["software-architect"]
-        DE["data-engineer"]
-        ML["ml-specialist"]
-        UI["ui-ux-director"]
-        SEC["code-reviewer"]
-        KG["knowledge-graph"]
-        AB["automation-browser"]
-        AR["auto-researcher"]
-        GS["github-scout"]
-        PG["portfolio-git"]
-    end
-
-    subgraph ARENA ["Arena Consensus — LLM Council"]
-        direction TB
-        CA["Variant A · minimalist"] <-.cross-critique.-> CB["Variant B · robust"]
-        CA --> ARB{"arena-arbiter<br/>4-axis rubric scoring"}
-        CB --> ARB
-        ARB --> V["Verdict / Synthesis → MEMORY.md"]
-    end
-
-    subgraph MCP ["MCP Servers"]
-        direction LR
-        ST["sequential-thinking"]
-        FS["filesystem"]
-        PW["playwright"]
-        GH["github"]
-    end
-
-    subgraph COMPUTE ["Hybrid Compute Layer"]
-        direction LR
-        OLL["Ollama · Qwen 2.5 Coder 7B<br/>CUDA · GTX 1050 Ti · fp16<br/>$0 per inference"]
-        NIM["NVIDIA NIM Cloud<br/>Llama 3.3 70B / GLM<br/>(user-approved fallback)"]
-    end
-
-    subgraph STORAGE ["Storage & Knowledge Layer"]
-        direction LR
-        DUCK["DuckDB + Polars<br/>in-memory OLAP · < 500 MB"]
-        OBS["Obsidian Vault<br/>LightRAG · Claude-Mem<br/>knowledge graph"]
-        GIT["Git / GitHub<br/>portfolio sync"]
-    end
-
-    ORC -->|"routine task"| OLL
-    ORC -->|"specialized task"| SQUAD
-    ORC -->|"critical decision"| ARENA
-    SQUAD <-->|"declared tools only"| MCP
-    MCP --> COMPUTE
-    SQUAD --> STORAGE
-    ARENA --> V
-    V --> OBS
-    PG --> GIT
+    U(["User request"]) --> ORC{{"ORCHESTRATOR · neuro-router<br/>intent distillation · YAGNI pruning · Headroom"}}
+    ORC --> LAYA{{"LAYA AI DECISION ENGINE<br/>single-pass technical-vector triage<br/>complexity · risk · RAM/GPU · milliseconds"}}
+    LAYA -->|"light tasks"| T0["small_model · local pool<br/>direct action in seconds"]
+    LAYA -->|"utility tasks"| T1["high-speed pool model"]
+    LAYA -->|"deep tasks"| T2["frontier model<br/>plus Sequential Thinking"]
+    T1 --> DAG["PARALLEL MULTI-PHASE DAG ENGINE<br/>atomic work units T1 to Tn"]
+    T2 --> DAG
+    T0 --> SYN
+    DAG -->|"dependent units"| SEQ["sequential chain<br/>artifact passing"]
+    DAG -->|"independent units"| PAR["concurrent dispatch<br/>zero session blocking"]
+    SEQ --> SQUAD["17 MARKDOWN AGENTS<br/>mandatory tool-and-skill matrices"]
+    PAR --> SQUAD
+    SQUAD --> RES["20 SKILLS · 18 COMMANDS · 9 MCP SERVERS<br/>DuckDB · Polars · PyTorch CUDA fp16 · FLUX · Cosmos · Playwright"]
+    RES --> SYN["HOLISTIC SYNTHESIS<br/>Self-Healing · conflict check · Zero-Leaks audit"]
+    SYN --> OUT(["unified verified output<br/>section 13 cascade · MEMORY.md · GitHub"])
 ```
 
+## The 17-Agent Squad
+
+Every agent is a single Markdown file with a mandatory tool matrix: an agent can only use what its matrix declares.
+
+| Agent | Domain | Role |
+|---|---|---|
+| `orchestrator` | Governance | Master router: intent distillation, Laya triage, DAG dispatch, §13 cascade, `/arena` convener |
+| `software-architect` | Architecture | Clean architecture, SOLID, minimalist design via the YAGNI ladder |
+| `fullstack-developer` | Web | Next.js, React, TypeScript, Tailwind, FastAPI/Node, SQLite/PostgreSQL/DuckDB |
+| `portfolio-git` | Git | Semantic commits in Spanish, GitHub portfolio synchronization |
+| `code-reviewer-security` | Security | OWASP Top 10, static analysis, credential-leak detection, release gate |
+| `auto-researcher` | Research | Model ingestion from `data/inbox/`, 404 pruning, official-docs validation, benchmarks radar |
+| `github-scout` | Trends | Viral AI repos, new model releases, deprecation alerts, Windows Toast notifications |
+| `data-engineer` | Data | DuckDB + Polars OLAP streaming pipelines under a strict 500 MB RAM ceiling |
+| `ml-deeplearning-specialist` | ML | PyTorch, CUDA fp16 on 4 GB VRAM, local embeddings, quantization, Hugging Face MCP |
+| `ui-ux-director` | Design | Anti-slop tokens, typography scale, spring-physics micro-animations |
+| `image-generative-designer` | Image | Art direction, prompt engineering, FLUX generation via `scripts/nvidia_flux.py` |
+| `audio-sound-engineer` | Audio | Web Audio API, TTS, Whisper, spectral analysis, micro-tactile sound design |
+| `video-media-engineer` | Video | Playwright capture, Cosmos generation via `scripts/nvidia_cosmos.py`, MoviePy/FFmpeg, 60 FPS |
+| `ai-multimodal-engineer` | GenAI | Frontier generative AI, multimodal RAG (text + image + audio), agentic flows |
+| `automation-browser` | Browser | Playwright E2E, Crawl4AI scraping, n8n workflows |
+| `knowledge-graph-agent` | Memory | LightRAG, Claude-Mem, Graphify, Obsidian graph, `MEMORY.md` curation |
+| `arena-arbiter` | Governance | Arena tournament judge: cross-critique moderation, rubric scoring, final verdict |
+
+## Core Architectural Pillars
+
+### Model-Agnostic Hybrid Compute
+No agent is bound to a provider: all 17 inherit dynamically from the active global model in `opencode.json` (live pool: NVIDIA Build NIM — GLM 5.3, Nemotron 3.5 Super VL, DeepSeek v4.1 Flash — plus Ollama local at **$0 per inference**). Rotating a provider is configuration, never code. GPU work runs on a GTX 1050 Ti with **CUDA, fp16 mixed precision and explicit VRAM cache management** inside 4 GB.
+
+### 100% Markdown-Native Agents
+Agents are not code. They are plain `.md` files implementing the **Linux Foundation `AGENTS.md` standard** and the **Anthropic Agent Skills specification** — zero `class Agent`, zero CrewAI, zero LangChain. Readable, versionable, portable, auditable.
+
+### Recursive Self-Improvement (§13)
+The constitution mandates a **Holistic Impact Mapping** on every evolution: a change propagates through six levels (script → skill manual → agent matrices → central catalog → dated memory record → architecture docs). The **Coherence Gate** rejects any delivery that leaves orphan tools, stale assumptions or deprecated parameters behind.
+
+### Arena Consensus (LLM Council)
+Critical decisions — architecture, security, destructive operations, ML design — enter a **tournament protocol**: subagents generate candidate variants, cross-critique each other's flaws, and an impartial arbiter scores them on a four-axis rubric (simplicity, speed, security, robustness). A security score of 2 or less disqualifies a variant outright. Verdicts are persisted to long-term memory.
+
+### High-Speed OLAP Data Core & Non-Destructive RAG
+**DuckDB + Polars** process CSV, Parquet and JSON in streaming fashion under a **strict 500 MB RAM ceiling**. Local RAG is non-destructive by constitution: `data/raw/` and `data/inbox/` are strictly read-only; indexes and outputs live only in `data/processed/` or `output/`.
+
+### Anti-Slop Motion Engine (Opus Level)
+Interfaces are governed by an engineering-grade design system: deep OLED palettes, radial gradient meshes, real glassmorphism, spring physics under 250 ms, GPU-composited canvas layers at stable 60 FPS — all validated with **Playwright E2E** in a real browser.
+
+### Knowledge Graph & Obsidian Vault
+The repository doubles as an **Obsidian vault**: decisions, entities and session logs persist as interlinked Markdown (`[[wikilinks]]`) and are indexed into an entity-relation + vector knowledge graph via **LightRAG** and **Claude-Mem**, with structural code mapping by **Graphify**.
+
 ---
 
-## The 12 Multi-Agent Squad Matrix
-
-Every agent is a single Markdown file with a mandatory tool matrix. All agents share the core skills `find-skills` (open-registry lookup before building anything new) and `headroom-context` (token budget compression).
-
-| Agent | Role | Specialty | Mode | Mandatory Skills |
-|---|---|---|---|---|
-| `orchestrator` | Master router | Request triage, YAGNI scope pruning, context compression, model routing | Always-on · entry point | `ponytail-yagni`, `arena-consensus`, `sequential-thinking` |
-| `software-architect` | Architect | Clean architecture, SOLID, minimalist design via the YAGNI ladder | On-demand · `/arena` variant | `ponytail-yagni`, `graphify-codebase`, `arena-consensus` |
-| `data-engineer` | Data engineer | High-speed OLAP pipelines over local CSV / Parquet | On-demand · `/analyze-data` | `duckdb-analytics`, `sequential-thinking` |
-| `ml-deeplearning-specialist` | ML engineer | PyTorch, Hugging Face MCP, VRAM/CUDA optimization, local embeddings | On-demand · `/train-model` | `neural-network-ml`, `sequential-thinking`, `auto-research` |
-| `ui-ux-director` | Design director | Anti-slop UI, design tokens, spring-physics micro-animations | On-demand · `/craft` | `ui-ux-design-suite`, `playwright-testing` |
-| `code-reviewer-security` | Security auditor | Static analysis, OWASP Top 10, credential-leak detection | Release gate · `/security-audit` | `ponytail-yagni`, `graphify-codebase`, `auto-research` |
-| `arena-arbiter` | Tournament judge | Cross-critique moderation, rubric scoring, verdict synthesis | Tournament · `/arena` | `arena-consensus` |
-| `knowledge-graph-agent` | Context guardian | LightRAG, Claude-Mem, Graphify, Obsidian graph sync | Persistent · session memory | `lightrag-knowledge`, `graphify-codebase` |
-| `automation-browser` | Browser automation | Playwright E2E, Crawl4AI scraping, n8n workflows | On-demand · `/browser-test` | `playwright-testing`, `auto-research` |
-| `auto-researcher` | Researcher | Official-docs validation, dependency & compatibility checks | Pre-adoption validation | `auto-research` |
-| `github-scout` | Trends sentinel | Viral AI repository detection, Windows Toast alerts | Sentinel · `/scout` | `windows-notifier`, `auto-research` |
-| `portfolio-git` | Portfolio manager | Semantic commits, GitHub portfolio synchronization | Release gate · `/commit` | `git-portfolio-sync`, `ponytail-yagni` |
-
----
-
-## Quickstart & Deployment Guide
+## Quickstart
 
 ### 1 · Clone and set up the environment
 
@@ -156,11 +154,11 @@ playwright install chromium   # E2E testing & video recording
 Create a `.env` file in the repository root (it is **git-ignored — never commit it**):
 
 ```bash
-# .env
-GITHUB_PERSONAL_ACCESS_TOKEN=ghp_your_token_here
-GITHUB_USERNAME=your_github_username
-NVIDIA_API_KEY=nvapi_your_key_here      # optional cloud fallback
-HF_TOKEN=hf_your_token_here             # optional, ML agent
+# .env — fill with your own values, never real tokens in docs or code
+GITHUB_PERSONAL_ACCESS_TOKEN=<your-github-token>
+GITHUB_USERNAME=<your-github-username>
+NVIDIA_API_KEY=<your-nvidia-key>        # optional cloud generation (read from .secrets/nvidia.key)
+HF_TOKEN=<your-hf-token>                # optional, ML agent
 OLLAMA_BASE_URL=http://127.0.0.1:11434/v1
 ```
 
@@ -170,44 +168,38 @@ OLLAMA_BASE_URL=http://127.0.0.1:11434/v1
 ollama pull qwen2.5-coder:7b
 
 npm install -g opencode-ai    # or: curl -fsSL https://opencode.ai/install | bash
-opencode                      # agents, skills and commands are discovered
-                              # automatically from .opencode/
+opencode                      # agents, skills and commands are discovered automatically
 ```
 
-### 4 · Drive the squad with slash commands
+First run: execute `/sync-catalog` to regenerate the agent/skill/command catalogs.
 
-| Command | Purpose |
-|---|---|
-| `/arena` | Critical-decision tournament: parallel variants, cross-critique, rubric verdict |
-| `/craft` | Opus-level UI build with design tokens and spring-physics motion |
-| `/analyze-data` | DuckDB + Polars OLAP session over local CSV / Parquet / JSON |
-| `/browser-test` | Playwright E2E validation in a real browser |
-| `/commit` | Semantic commit packaging and portfolio sync |
+### 4 · Drive the squad
 
-*Plus 12 more: `/think`, `/yagni`, `/headroom`, `/research`, `/critique`, `/taste`, `/animate`, `/graphify`, `/train-model`, `/scout`, `/security-audit`, `/sync-catalog` — see [`.opencode/commands/`](.opencode/commands/README.md).*
+Talk normally — the orchestrator distills, decomposes into a DAG and routes. Precision shortcuts: `/think` · `/arena` · `/yagni` · `/headroom` · `/craft` · `/analyze-data` · `/train-model` · `/browser-test` · `/security-audit` · `/commit` · `/evolve` — see [`.opencode/commands/`](.opencode/commands/README.md) for all 18.
 
 ---
 
-## Benchmarks & Operating Constraints
+## Operating Constraints & Benchmarks
 
 Honest engineering targets — enforced by the project constitution and validated where measurable:
 
 | Metric | Target | Status |
 |---|---|---|
-| Inference cost | **$0.00** — 100 % local (Ollama + CUDA) | Enforced by architecture |
+| Inference cost floor | **$0.00** — local fallback (Ollama + CUDA) always available | Enforced by architecture |
 | Motion performance | **60 FPS** on GPU-composited canvas | Validated E2E (Playwright, headless Chromium) |
-| Data pipeline RAM ceiling | **< 500 MB** streaming in-memory | Constitution-enforced constraint |
+| Data pipeline RAM ceiling | **< 500 MB** streaming in-memory (`SET memory_limit` enforced) | Constitution-enforced constraint |
 | GPU VRAM budget | **4 GB** — fp16 mixed precision + explicit cache flush | Constitution-enforced constraint |
-| Agent framework dependencies | **0** — 12 plain `.md` agents | By design (Linux Foundation `AGENTS.md`) |
+| Agent framework dependencies | **0** — 17 plain `.md` agents, 20 skills, 18 commands, 9 MCP servers | By design (Linux Foundation `AGENTS.md`) |
+| Burned-in models | **0** — dynamic inheritance across all 17 agents | Verified: zero `model:` anchors in agent frontmatter |
 | Credential leaks | **0** | Pre-push secret scan on every release |
 
 ---
 
-## Security Standards (Zero-Leaks Policy)
+## Zero-Leaks Security Policy
 
-- **`.env` is git-ignored and never committed** — `.gitignore` locks `.env`, `*.env`, `*.key`, `*.pem`; no agent may alter it to include sensitive files.
-- **Tokens never travel in URLs** — pushes use the OS credential manager; API calls read `GITHUB_TOKEN` / `GITHUB_PERSONAL_ACCESS_TOKEN` from environment variables.
-- **Pre-push secret scanning** — every release diff is scanned for `ghp_`, `github_pat_`, `hf_`, `nvapi_`, `sk-` patterns and private key blocks before it leaves the workstation.
+- **Secrets never enter the repo** — `.gitignore` locks `.env`, `*.env`, `*.key`, `*.pem`, `.secrets/` and `opencode.json`; no agent may alter it to include sensitive files.
+- **Tokens never travel in URLs** — pushes use the OS credential manager; API calls read `GITHUB_TOKEN` / `GITHUB_PERSONAL_ACCESS_TOKEN` from environment variables; generation scripts read `.secrets/nvidia.key` at runtime only.
+- **Pre-push secret scanning** — every release diff is scanned for token patterns and private key blocks before it leaves the workstation.
 - **OWASP-aware review gate** — `code-reviewer-security` audits static analysis, input validation and credential-leak detection before any merge.
 - **Validated dependencies** — `auto-researcher` verifies maintenance status, licensing and known vulnerabilities before any dependency is adopted.
 
@@ -219,4 +211,4 @@ Released under the **[MIT License](LICENSE)**.
 
 **AFelipeRD** — AI Engineer · [GitHub](https://github.com/AFelipeRD) · [afrsenju@outlook.com](mailto:afrsenju@outlook.com)
 
-> Built on Windows 11 with local models, zero inference cost, and a firm belief that agents should be documents — not frameworks.
+> Built on Windows 11 with a rotating multi-model pool, a probabilistic decision engine, and a firm belief that agents should be documents — not frameworks.
