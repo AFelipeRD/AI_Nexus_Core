@@ -56,3 +56,7 @@ opencode.json
 
 .secrets/
 *.key
+
+# Capturas de pantalla efímeras (percepción de pantalla: nunca se commitea)
+assets/temp_screen.png
+assets/temp_screen*.png

@@ -5,7 +5,7 @@ license: MIT
 compatibility: opencode
 metadata:
   idioma: es
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Headroom Context
@@ -41,3 +41,9 @@ Errores abiertos: 403 por límite de tasa · Próximo: probar notifier.ps1
 - Resumir sin conservar decisiones ni rutas.
 - Esperar al desborde para comprimir.
 - Comprimir información que aún se está editando.
+
+## Referencias comunitarias validadas (find-skills, v2.1.0)
+- `bobmatnyc/claude-mpm-skills@session-compression` — 639 instalaciones: compresión de sesión con preservación de decisiones.
+- `muratcankoylan/agent-skills-for-context-engineering@context-compression` — 431: patrones de compresión de contexto para agentes de larga duración.
+- `seb1n/awesome-ai-agent-skills@context-compression` — 132: recetas de poda de historial.
+- Cuando la tarea lo exija, profundiza con `npx -y skills find "context compression"`.

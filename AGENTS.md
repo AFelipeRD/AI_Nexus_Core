@@ -101,3 +101,33 @@ Tras añadir, renombrar o eliminar un agente, habilidad o comando ejecuta `/sync
    6. Manuales de arquitectura en `docs/` si cambia el flujo operativo.
 3. **Puerta de Coherencia del Repositorio**: ningún archivo puede quedar con suposiciones desactualizadas, herramientas rotas o parámetros deprecados; todo el ecosistema mantiene una comprensión unificada y sincronizada de su estado actual.
 4. **Directiva de Excelencia Proactiva**: ante cualquier tarea, la excelencia vence a la mediocridad — si una tarea sencilla puede enriquecerse con mejor tipado, validación de seguridad, aceleración en GPU (GTX 1050 Ti) o refinamiento estético sin sobrecoste absurdo, el sistema eleva la calidad por defecto.
+
+## 14. Constitución Maestra de Ingeniería, Razonamiento y Arquitectura (Frontier Level)
+
+> ⚠️ **Sección inmutable** — fuente canónica única de la constitución operativa. v2.1.0: los espejos de `MEMORY.md` y `.opencode/context/convenciones-codigo.md` fueron podados por latencia de arranque (esos archivos se inyectan en cada sesión); toda reforma constitucional se edita **solo aquí**. No derogable sin autorización explícita del usuario.
+
+1. **Protocolo de Razonamiento Profundo y Auto-Sanación (Self-Healing)**
+   - Prohibido generar código sin validación. Si un script o comando falla durante la ejecución, el agente responsable debe capturar el traceback, formular hipótesis mediante Sequential Thinking y auto-corregir el archivo antes de solicitar confirmación.
+   - Todo módulo nuevo nace bajo TDD estricto: pruebas unitarias escritas antes o junto al código, y validación de tipos estricta (mypy / type hinting completo).
+
+2. **Aceleración por Hardware y Cómputo Local (NVIDIA GeForce GTX 1050 Ti 4GB + Ryzen 5)**
+   - ML / Redes Neuronales: delegación forzada a CUDA (`device=cuda`) con precisión mixta (fp16) y limpieza explícita de VRAM (`torch.cuda.empty_cache()`) para operar fluidamente en 4 GB.
+   - Procesamiento de datos: datasets en streaming in-memory con DuckDB y Polars, límite estricto de 500 MB de RAM.
+   - Web / Canvas / Frontend: composición acelerada por GPU mediante capas 3D y `will-change: transform` para garantizar 60 FPS estables.
+
+3. **Estándar de Diseño y Motion Design (Opus Artifact Level)**
+   - Prohibido el AI-slop: paletas OLED profundas (`#020617` / `#030712`), mallas de gradiente radial difusas y glassmorphism real (`backdrop-blur-xl border-white/10`).
+   - Dinámica de fluidos y física de resortes: transiciones < 250 ms, `cubic-bezier(0.16, 1, 0.3, 1)`, micro-interacciones de retroalimentación inmediata y simulaciones en HTML5 Canvas reactivas al cursor.
+
+4. **Gobernanza Multiagente y Modo Arena**
+   - Ante decisiones arquitectónicas críticas, el Orquestador convoca `/arena`: los subagentes generan variantes (minimalista, robusta, ultra-rápida) y `arena-arbiter` sintetiza la solución óptima.
+
+5. **Seguridad y Zero-Leaks**
+   - Tolerancia cero a fugas de credenciales. Ningún agente modificará `.gitignore` para incluir archivos sensibles ni expondrá claves de `.env` en código o documentación.
+
+6. **Motor de Decisión Laya y Criterio Firme (Anti-Sycophancy)**
+   - Clasificación de tareas, selección de rutas y triage de intenciones: evaluación probabilística y matriz de decisión en un solo paso (milisegundos), sin texto conversacional redundante.
+   - Prohibido aceptar por complacencia: toda estructura ineficiente, librería deprecada, código que sature la RAM (> 500 MB) o arquitectura frágil se señala con fundamento técnico y se propone la alternativa superior.
+   - En `/arena`, `arena-arbiter` puntúa con criterios métricos objetivos (eficiencia de memoria, latencia, seguridad), neutralizando sesgos narrativos.
+
+Los ítems 7 (Auto-Mejora Recursiva y Propagación Holística) y 8 (Directiva de Excelencia Proactiva) viven en §13 y §13.4 de este manual.

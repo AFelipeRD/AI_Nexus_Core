@@ -4,7 +4,7 @@ Enlaces: [[MEMORY]] · [[01_MANUAL_ECOSISTEMA_OPENCODE]] · [[06_PROTOCOLO_ARENA
 
 > Guía integral y manual operativo de AI Nexus Core, generada en la Sesión Maestra de Presentación (2026-10-19).
 > Raíz: `D:\AI_Nexus_Core` · Windows 11 · terminal Warp · bóveda de Obsidian.
-> **17 agentes · 20 skills · 18 comandos slash · 9 servidores MCP (5 activos) · 2 proveedores de modelos · 7 manuales**
+> **17 agentes · 20 skills · 18 comandos slash · 11 servidores MCP (5 activos) · 2 proveedores de modelos · 7 manuales**
 
 ## Contenido
 
@@ -108,6 +108,10 @@ Las peticiones multi-punto se descomponen en **unidades atómicas de trabajo (T1
 
 Al 50 % de la ventana: resumir. Al 80 %: compactación obligatoria (`/headroom`). Se conserva el objetivo, las decisiones, las rutas de archivos, los errores abiertos y los próximos pasos; se descarta el ruido.
 
+### Latencia de arranque (v2.1.0)
+
+La Constitución Maestra vive una única vez — canónica en `AGENTS.md` §13-§14 — y `MEMORY.md` / `convenciones-codigo.md` solo la referencian por puntero con índice: el texto normativo ya no se triplica en cada arranque de sesión (~2/3 menos en la capa constitucional, recomendación del dictamen de `software-architect`). La navegación agéntica con poda de DOM (`observe`/`act`/`extract`) reduce además ~85 % los tokens por interacción de navegador.
+
 ---
 
 ## 3. Catálogo de capacidades y subagentes
@@ -135,7 +139,7 @@ Al 50 % de la ventana: resumir. Al 80 %: compactación obligatoria (`/headroom`)
 | `audio-sound-engineer` | Audio | Web Audio API, TTS, Whisper, diseño sonoro micro-táctil de baja latencia |
 | `video-media-engineer` | Video | Captura automatizada con Playwright, generación Cosmos (`scripts/nvidia_cosmos.py` → `output/videos/`), composición MoviePy/FFmpeg a 60 FPS |
 | `ai-multimodal-engineer` | GenAI | IA generativa de frontera, RAG multimodal (texto + imagen + audio), flujos agénticos avanzados |
-| `automation-browser` | Navegador | Pruebas E2E con Playwright, scraping con Crawl4AI, flujos de trabajo en n8n |
+| `automation-browser` | Navegador | Navegación agéntica browser-use (`observe`/`act`/`extract`, −85 % tokens), Playwright E2E, Crawl4AI, n8n, percepción de pantalla (`scripts/screen_watcher.py`) |
 | `knowledge-graph-agent` | Contexto | Grafo de dependencias y memoria persistente: LightRAG, Claude-Mem, Graphify, Obsidian, `MEMORY.md` |
 | `arena-arbiter` | Gobernanza | Juez del Modo Arena: puntúa con la rúbrica y emite el dictamen final |
 
@@ -181,7 +185,7 @@ Obligatorio (`/arena`) cuando la decisión: (a) define arquitectura o elige tecn
 ### Servidores MCP
 
 - **Activos (5)**: `github`, `filesystem`, `playwright`, `claude-mem`, `sequential-thinking`.
-- **Dormant (4)**: `n8n`, `figma`, `mem0`, `huggingface` — se activan con `"enabled": true` cuando el proyecto los necesita.
+- **Dormant (6)**: `n8n`, `figma`, `mem0`, `huggingface`, `context7` (documentación actualizada para LLMs), `magic-21st` (generación de componentes UI; requiere `MAGIC_API_KEY` en entorno) — se activan con `"enabled": true` cuando el proyecto los necesita, previa validación de `auto-researcher`.
 
 ### Aceleración por hardware (Constitución §2)
 

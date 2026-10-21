@@ -5,7 +5,7 @@ license: MIT
 compatibility: opencode
 metadata:
   idioma: es
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Ui Ux Design Suite
@@ -27,7 +27,7 @@ metadata:
 2. **Escala tipográfica**: razón modular (1,200–1,333), 2 familias como máximo, interlineado 1,4–1,6 en cuerpo, 60–75 caracteres por línea.
 3. **Criterio visual (Taste)**: jerarquía clara, un solo punto focal por vista, espacio en blanco generoso, alineación estricta, contraste AA (4,5:1 texto, 3:1 componentes).
 4. **Anti-slop**: sin degradados morados por defecto, sin tarjetas clonadas con sombra flotante, sin emojis como iconos (usa SVG), sin `lorem ipsum`, sin pesos de fuente aleatorios.
-5. **Movimiento (Emil Kowalski)**: duraciones < 300 ms; solo `transform` y `opacity`; entradas con `ease-out` fuerte `cubic-bezier(0.23, 1, 0.32, 1)`; resorte con rigidez 300–500 y amortiguación 25–40; pulsación `scale(0.97)`; nada nace de `scale(0)` (empieza en 0.95 con opacidad); orígenes de transformación coherentes con el disparador.
+5. **Movimiento (Emil Kowalski)**: duraciones < 300 ms; solo `transform` y `opacity`; entradas con `ease-out` fuerte `cubic-bezier(0.23, 1, 0.32, 1)`; resorte con rigidez 300–500 y amortiguación 25–40; pulsación `scale(0.97)`; nada nace de `scale(0)` (empieza en 0.95 con opacidad); orígenes de transformación coherentes con el disparador. Para transiciones entre vistas: View Transitions API (heurística Vercel, `vercel-react-view-transitions`); audita el coste de motion con `ibelick/ui-skills@fixing-motion-performance` (jank y main thread).
 6. **Accesibilidad**: foco visible, objetivos táctiles ≥ 44 px, `prefers-reduced-motion`, semántica HTML.
 7. **Figma → código**: lee el frame con el MCP `figma`, extrae variables y reconstruye con tokens, no con valores sueltos.
 8. **Verificar** en navegador real con `playwright-testing` (móvil 390 px y escritorio 1440 px).
@@ -66,4 +66,9 @@ Contramedidas validadas: **ancla el diseño en el dominio real** (la industria, 
 - `emilkowalski/skills` — Emil Kowalski oficial: `animation-vocabulary` (218 K), `pick-ui-library`, `animate-expo`.
 - `shadcn-ui/ui@shadcn` — 384 K: sistema de componentes de referencia.
 - `nextlevelbuilder/ui-ux-pro-max-skill` — 402 K y `leonxlnx/taste-skill` — 633 K: criterio visual de alto nivel.
+- `vercel-labs/agent-skills@web-design-guidelines` — **Vercel oficial, 762 K instalaciones**: directrices de diseño web moderno (integrada v2.1.0).
+- `heygen-com/hyperframes@hyperframes-animation` — **HeyGen oficial, 980 K**: gramática de animación narrativa de producto (integrada v2.1.0).
+- `vercel-labs/agent-skills@vercel-react-view-transitions` — 161 K: View Transitions en React.
+- `jakubantalik/transitions.dev@transitions-polish` — galería de transiciones de alta calidad (transitions.dev).
+- `101-skills/superpowers@app-store-screenshots` — 52 K: pipeline de capturas para App Store.
 - Cuando la tarea lo exija, profundiza con `npx -y skills find <término>`.

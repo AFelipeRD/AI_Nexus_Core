@@ -17,37 +17,11 @@
 
 ### CONSTITUCIÓN MAESTRA DE INGENIERÍA, RAZONAMIENTO Y ARQUITECTURA (FRONTIER LEVEL)
 
-1. **Protocolo de Razonamiento Profundo y Auto-Sanación (Self-Healing)**
-   - Prohibido generar código sin validación. Si un script o comando falla durante la ejecución, el agente responsable debe capturar el traceback, formular hipótesis mediante Sequential Thinking y auto-corregir el archivo antes de solicitar confirmación.
-   - Todo módulo nuevo nace bajo TDD estricto: pruebas unitarias escritas antes o junto al código, y validación de tipos estricta (mypy / type hinting completo).
-
-2. **Aceleración por Hardware y Cómputo Local (NVIDIA GeForce GTX 1050 Ti 4GB + Ryzen 5)**
-   - ML / Redes Neuronales: delegación forzada a CUDA (`device=cuda`) con precisión mixta (fp16) y limpieza explícita de VRAM (`torch.cuda.empty_cache()`) para operar fluidamente en 4 GB.
-   - Procesamiento de datos: datasets en streaming in-memory con DuckDB y Polars, límite estricto de 500 MB de RAM.
-   - Web / Canvas / Frontend: composición acelerada por GPU mediante capas 3D y `will-change: transform` para garantizar 60 FPS estables.
-
-3. **Estándar de Diseño y Motion Design (Opus Artifact Level)**
-   - Prohibido el AI-slop: paletas OLED profundas (`#020617` / `#030712`), mallas de gradiente radial difusas y glassmorphism real (`backdrop-blur-xl border-white/10`).
-   - Dinámica de fluidos y física de resortes: transiciones < 250 ms, `cubic-bezier(0.16, 1, 0.3, 1)`, micro-interacciones de retroalimentación inmediata y simulaciones en HTML5 Canvas reactivas al cursor.
-
-4. **Gobernanza Multiagente y Modo Arena**
-   - Ante decisiones arquitectónicas críticas, el Orquestador convoca `/arena`: los subagentes generan variantes (minimalista, robusta, ultra-rápida) y `arena-arbiter` sintetiza la solución óptima.
-
-5. **Seguridad y Zero-Leaks**
-   - Tolerancia cero a fugas de credenciales. Ningún agente modificará `.gitignore` para incluir archivos sensibles ni expondrá claves de `.env` en código o documentación.
-
-6. **Motor de Decisión Laya y Criterio Firme (Anti-Sycophancy)**
-   - Clasificación de tareas, selección de rutas y triage de intenciones: evaluación probabilística y matriz de decisión en un solo paso (milisegundos), sin texto conversacional redundante.
-   - Prohibido aceptar por complacencia: toda estructura ineficiente, librería deprecada, código que sature la RAM (> 500 MB) o arquitectura frágil se señala con fundamento técnico y se propone la alternativa superior.
-   - En `/arena`, `arena-arbiter` puntúa con criterios métricos objetivos (eficiencia de memoria, latencia, seguridad), neutralizando sesgos narrativos.
-
-7. **Protocolo de Auto-Mejora Recursiva y Propagación Holística**
-   - Bucle de auto-mejora: toda mejora, capacidad nueva, evolución vía `find-skills` o ingesta de modelos ejecuta un Mapeo de Impacto Holístico sobre el repositorio antes de cerrar la tarea.
-   - Propagación en cascada obligatoria (6 niveles): script/herramienta → `SKILL.md` → `MATRIZ DE HERRAMIENTAS` de los agentes que la aprovechen → catálogo `.opencode/skills/README.md` (`/sync-catalog`) → registro fechado en `MEMORY.md` → manuales de `docs/` si cambia el flujo operativo.
-   - Puerta de coherencia: prohibido cerrar una entrega con herramientas huérfanas, archivos ciegos, suposiciones desactualizadas o parámetros deprecados.
-
-8. **Directiva de Excelencia Proactiva**
-   - Ante cualquier tarea: si cabe mejor tipado, validación de seguridad, aceleración en GPU (GTX 1050 Ti) o refinamiento estético sin sobrecoste absurdo, se eleva la calidad por defecto. La mediocridad no es opción de entrega.
+> **Fuente canónica única: `AGENTS.md` §13-§14.** Poda de latencia v2.1.0 (2026-10-20): este espejo íntegro se eliminó porque tanto este archivo como `MEMORY.md` se inyectan en el arranque de cada sesión — el texto constitucional triplicaba el coste de tokens por arranque (hallazgo de la auditoría de latencia y del dictamen de `software-architect`).
+>
+> Índice de la constitución (texto íntegro en `AGENTS.md`): 1. Protocolo de Razonamiento Profundo y Auto-Sanación (TDD estricto) — §14.1 · 2. Aceleración por Hardware (GTX 1050 Ti, CUDA fp16, < 500 MB RAM, 60 FPS) — §14.2 · 3. Estándar de Diseño OLED y Motion de resortes — §14.3 · 4. Gobernanza Multiagente y Modo Arena — §14.4 · 5. Seguridad y Zero-Leaks — §14.5 · 6. Motor de Decisión Laya y Anti-Sycophancy — §14.6 · 7. Auto-Mejora Recursiva y Propagación Holística — §13 · 8. Directiva de Excelencia Proactiva — §13.4.
+>
+> Prohibido restaurar espejos: toda reforma constitucional se edita **solo** en `AGENTS.md`.
 
 ## Decisiones (formato: fecha · decisión · motivo · fuente)
 - 2026-10-16 · Adoptar ecosistema 100 % Markdown nativo de OpenCode · simplicidad y portabilidad · [[01_MANUAL_ECOSISTEMA_OPENCODE]]
@@ -69,6 +43,11 @@
 - 2026-10-19 · Release v2.0.0 publicada en GitHub con tag anotado v2.0.0 · versionamiento semántico formal bajo Keep a Changelog · CHANGELOG.md
 - 2026-10-20 · Parallel Multi-Phase DAG Engine: descomposición de peticiones multi-punto en unidades atómicas (T1…Tn), encadenado de dependientes con paso de artefactos, concurrencia inmediata de independientes, matriz granular de recursos por fase (complejidad 1-10, aislamiento atómico de herramientas) y síntesis holística con auto-sanación · reducción radical de latencia en sesiones multi-tarea · [[#Constitución Maestra (Frontier Level)]]
 - 2026-10-20 · Certificación de Trazabilidad Concurrente y Actualización de Metadatos GitHub v2.0.0: benchmark en vivo con despachos paralelos reales (streaming DuckDB Tier 1 con fallback dinámico de modelo por saturación del proveedor, auditoría de arquitectura Tier 2, cadena multimodal brief → timeline), README raíz v2.0.0 con badges y Mermaid, metadatos oficiales del repo vía API (descripción + 11 topics) y reporte de trazabilidad publicado en el repo · presencia pública y estado real sincronizados · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-20 · Navegación agéntica browser-use (observe/act/extract con poda de DOM, −85 % tokens) en playwright-testing y automation-browser; percepción de pantalla con scripts/screen_watcher.py para modelos con visión (efímera y bloqueada por .gitignore) · sesiones de navegador y arranques más ligeros sin perder criterio · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-20 · Poda de latencia v2.1.0: Constitución Maestra des-duplicada — fuente canónica única en AGENTS.md §13-§14, espejos de MEMORY.md y convenciones-codigo.md reducidos a puntero con índice · arranque de cada sesión ~2/3 más ligero en capa normativa (recomendación del dictamen de software-architect) · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-20 · Banner social Open Graph oficial (assets/social_preview.png, 1280×640, render PIL con spec de ui-ux-director) + skills comunitarias integradas con atribución (agent-browser, web-design-guidelines, hyperframes-animation, view-transitions, app-store-screenshots, session-compression) + MCP candidates context7 y magic-21st registrados dormants hasta validación de auto-researcher · find-skills v2.1.0 consultado (6 pasadas) · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-20 · Decisión YAGNI documentada: NO se crean agentes nuevos para los dominios web — la cuadrilla de 17 (fullstack-developer, ui-ux-director, automation-browser, ai-multimodal-engineer) ya los cubre; se fortalecen skills y matrices existentes en su lugar · evitar fricción de arranque contradictoria con el objetivo de latencia · [[#Constitución Maestra (Frontier Level)]]
+- 2026-10-20 · Release v2.1.0 publicada con tag anotado · 17-agent grid, social preview, browser-use, screen awareness y optimización de latencia · CHANGELOG.md
 
 ## Grafo de entidades
 | Entidad | Relación | Detalle |
@@ -92,6 +71,7 @@
 - 2026-10-19 · Reingeniería total v2.0.0: auto-mejora recursiva holística (§13 de AGENTS.md), Laya dinámico con enrutamiento autónomo de modelos, ingesta/poda de modelos desde `data/inbox/`, scripts multimodales conectados y reparados (`nvidia_cosmos.py` ya persiste el video), catálogos y manuales sincronizados, CHANGELOG v2.0.0, commit + tag anotado `v2.0.0` publicados en GitHub.
 - 2026-10-20 · Hito: AI Nexus Core: Parallel Multi-Phase DAG Engine and Dynamic Granular Resource Routing. El Orquestador descompone peticiones multi-punto en DAG, ejecuta en paralelo lo independiente, puntúa cada fase (1-10) para asignar su paquete exclusivo (modelo + subagente + skills + MCPs) y consolida la salida con Self-Healing.
 - 2026-10-20 · Hito: Certificación de Trazabilidad Concurrente y Actualización de Metadatos GitHub v2.0.0. Despacho concurrente real con modelos heterogéneos (DeepSeek v4.1 Flash saturado al primer intento → fallback dinámico al modelo de frontera activo), 3 subagentes en paralelo + 1 encadenado (brief → timeline), dictamen de arquitectura «aprobado con reservas», auditoría de colisiones y Constitución por `code-reviewer-security`, README v2.0.0 (badges + Mermaid + tabla de 17), metadatos oficiales vía API y publicación verificada en GitHub.
+- 2026-10-20 · Hito: v2.1.0 — 17-Agent Grid, LinkedIn Social Preview, Browser-Use Lightweight Agent, Screen Awareness & Latency Optimization. Poda quirúrgica de output/, banner OG renderizado programáticamente (spec ui-ux-director → ejecución image-generative-designer), navegación agéntica con poda de DOM y primitivas observe/act/extract, screen_watcher.py probado con captura real (1920×1080) y borrado efímero, Constitución des-duplicada (canónica en AGENTS.md §14) y find-skills ×6 consultado con integraciones atribuidas. Pipeline imagen→video de la mascota ejecutado y certificado antes del release (nexus_mascot_3d.png + nexus_mascot_motion.mp4, 300 frames · 60 FPS). Sin crear agentes nuevos: decisión YAGNI documentada.
 
 ## Cómo actualizar esta memoria
 1. Añade decisiones con fecha y enlace a la fuente.

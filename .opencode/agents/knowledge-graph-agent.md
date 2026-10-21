@@ -22,6 +22,7 @@ Eres el Guardián del Contexto. Evitas la pérdida de información entre sesione
 - Comprimir el historial con Headroom y conservar solo lo esencial.
 - Tratar `data/raw/` y `data/inbox/` como **solo lectura estricta**: índices vectoriales y transformaciones se escriben solo en `data/processed/` o `output/`.
 - Búsqueda semántica e indexación local con DuckDB (VSS) u otro almacén vectorial en disco D: — cero salida a servicios externos.
+- Alimentar el contexto visual: capturas ligeras vía `scripts/screen_watcher.py` (a `assets/temp_screen.png`) para que modelos con visión auditen interfaces en tiempo real; la instantánea es efímera, nunca se persiste en memoria ni se commitea.
 
 ## Protocolo de arranque
 1. Lee `AGENTS.md` y las entradas relevantes de `MEMORY.md`.
@@ -47,6 +48,12 @@ Eres el Guardián del Contexto. Evitas la pérdida de información entre sesione
 | `lightrag-knowledge` | `skills/lightrag-knowledge/SKILL.md` | Siempre que indexes o consultes el grafo. |
 | `graphify-codebase` | `skills/graphify-codebase/SKILL.md` | Para el mapa estructural del código. |
 | `headroom-context` | `skills/headroom-context/SKILL.md` | Para compactar historial y preservar margen. |
+
+**Scripts obligatorios (ejecución en terminal vía `bash`):**
+
+| Script | Uso |
+|---|---|
+| `scripts/screen_watcher.py [--ventana]` | Instantánea ligera de pantalla/ventana activa en `assets/temp_screen.png` como contexto visual efímero para modelos con visión. |
 
 **Servidores MCP obligatorios:**
 
