@@ -3,8 +3,10 @@
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y versionado semántico.
 
 ## [Sin publicar]
+
+## [v2.2.0] - 2026-10-24 — Doble Motor de Catálogo Vivo, Cuadrilla de Diseño, Remotion Local & muapi MCP
 ### Añadido
-- **MCP `muapi`** (24 herramientas: imagen, video, audio, lipsync, upscale, face swap, social publishing) cableado en `opencode.json` vía stdio (`npx -y muapi-cli mcp serve`, `MUAPI_API_KEY` por entorno) — **tier premium** de generación multimodal del doble motor (el stack NVIDIA NIM permanece como motor gratuito Tier 0); clave en `.secrets/muapi.key` (Zero-Leaks).
+- **MCP `muapi`** (25 herramientas: imagen, video, audio, lipsync, upscale, face swap, workflows, social publishing) cableado en `opencode.json` vía stdio con el CLI de **PyPI** (`muapi mcp serve`, binario del venv del proyecto) — autenticación propia del CLI en el **llavero del sistema** (`muapi auth configure`; sin interpolación `{env:}`, que OpenCode no aplica en `mcp.environment`) — **tier premium** de generación multimodal del doble motor (el stack NVIDIA NIM permanece como motor gratuito Tier 0); respaldo de la clave en `.secrets/muapi.key` (Zero-Leaks).
 - **Open Generative AI Studio** (Anil-matcha, MIT, 31k estrellas) instalado como proyecto externo (`%LocalAppData%\Programs\Open Generative AI`) — alternativa open-source a Higgsfield con 14 estudios, Cinema Studio y 420+ modelos vía muapi.
 - **Suite visual `mods-visuales`** (21 skills / 18 comandos): tema OLED cyberpunk para Open Code (tema `ai-nexus-core` + plugin `oc-plugin-rainbow`) y para Warp (tema y workflows en `assets/warp/`), aplicado de forma predeterminada y automática, sin comandos que ejecutar; instalador `scripts/instalar_mods_visuales.ps1` — 0 tokens, renderizado 100 % del lado del cliente.
 - **Cuadrilla de Diseño unificada**: canon de tokens compartido `.opencode/context/tokens-diseno.md` (paleta OLED, resortes, tipografía Impeccable) extendido a TODO medio (web, imagen, video, audio) con protocolo de equipo multiagente (`ui-ux-director` + especialistas) enrutable desde Laya.
@@ -16,6 +18,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y 
 ### Corregido
 - **Cascada §13 de `mods-visuales`** (hallazgo de la validación integral del 2026-10-23): recuentos reales 21/18 aplicados en `AGENTS.md`, `README.md` y `docs/07` (incluida la tabla de suites); suite registrada en `MEMORY.md`; fecha de v2.1.0 unificada con la del tag real (2026-10-20).
 - `.gitignore`: negación `!logs/evolve_task.log` para que el historial de auto-evolución sea auditable en el repo, y cobertura de los temporales `.playwright-mcp/`.
+- **MCP `muapi` caído al arrancar (exit 1 silencioso)**: causa raíz doble — el paquete npm `muapi-cli` instala su binario Windows por postinstall y el asset de GitHub releases no existe (HTTP 404; el propio instalador recomienda `pip install muapi-cli` como fallback oficial), y el bloque `mcp.environment` de OpenCode no interpola `{env:…}` (pasaba la cadena literal y el servidor autenticaba con credenciales inválidas → FORBIDDEN). Fix: CLI por PyPI instalado en el venv del proyecto con ruta absoluta en `opencode.json`, shims npm huérfanos purgados, `muapi-cli` declarada en `requirements.txt`, autenticación por **llavero del sistema** (`muapi auth configure`) y bloque `environment` eliminado; verificado con handshake JSON-RPC (25 herramientas) y `account balance` autenticado.
 
 ## [v2.1.0] - 2026-10-20 — 17-Agent Grid, LinkedIn Social Preview, Browser-Use Lightweight Agent, Screen Awareness & Latency Optimization
 ### Añadido
