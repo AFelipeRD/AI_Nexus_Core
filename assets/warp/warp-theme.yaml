@@ -1,0 +1,75 @@
+# Tema Warp — AI Nexus Core (OLED oscuro, anti-slop)
+# Instalar: copiar a ~/.warp/themes/ai-nexus-core.yaml
+# Activar: Warp → Ajustes → Apariencia → Temas → "AI Nexus Core"
+
+name: "AI Nexus Core"
+author: "AFelipeRD"
+variant: "dark"
+
+# Paleta OLED profunda (base #020617 / #030712), acento cian neón
+# Contraste WCAG AA garantizado para texto y componentes.
+
+colors:
+  # Fondo principal y paneles
+  background: "#020617"
+  foreground: "#f8fafc"
+
+  # Texto
+  text: "#f8fafc"
+  text_dim: "#94a3b8"
+  text_inverse: "#020617"
+
+  # Acento principal (cian neón)
+  accent: "#22d3ee"
+  accent_foreground: "#020617"
+
+  # Éxito / advertencia / error (sutil, sin saturación excesiva)
+  success: "#34d399"
+  warning: "#fbbf24"
+  error: "#f87171"
+
+  # Bordes y divisores
+  border: "#1e293b"
+  border_focus: "#22d3ee"
+
+  # Selección y cursor
+  selection: "#1e293b"
+  cursor: "#22d3ee"
+
+  # Sugerencias / autocomplete
+  suggestion: "#334155"
+  suggestion_foreground: "#94a3b8"
+
+  # Colores de tipo de archivo (sutil)
+  file_types:
+    markdown: "#8b5cf6"
+    python: "#3b82f6"
+    json: "#22d3ee"
+    yaml: "#a855f7"
+    shell: "#10b981"
+    image: "#ef4444"
+    video: "#f97316"
+
+  # Semantic tokens (leve, sin degradados morados por defecto)
+  semantic:
+    keyword: "#c084fc"
+    function: "#22d3ee"
+    string: "#34d399"
+    number: "#fbbf24"
+    comment: "#64748b"
+    type: "#f87171"
+
+  # Barra de comandos y sugerencias de Warp
+  command_palette:
+    background: "#030712"
+    border: "#1e293b"
+    text: "#f8fafc"
+    accent: "#22d3ee"
+
+# Transparencia y difuminado (Warp soporta blur en Windows 11)
+opacity: 0.92
+blur: true
+
+# Tipografía (Warp usa JetBrains Mono por defecto; se mantiene para legibilidad)
+font_family: "JetBrainsMono Nerd Font"
+font_size: 12

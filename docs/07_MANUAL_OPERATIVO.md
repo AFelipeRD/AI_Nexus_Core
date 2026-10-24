@@ -4,7 +4,7 @@ Enlaces: [[MEMORY]] · [[01_MANUAL_ECOSISTEMA_OPENCODE]] · [[06_PROTOCOLO_ARENA
 
 > Guía integral y manual operativo de AI Nexus Core, generada en la Sesión Maestra de Presentación (2026-10-19).
 > Raíz: `D:\AI_Nexus_Core` · Windows 11 · terminal Warp · bóveda de Obsidian.
-> **17 agentes · 20 skills · 18 comandos slash · 11 servidores MCP (5 activos) · 2 proveedores de modelos · 7 manuales**
+> **17 agentes · 21 skills · 18 comandos slash · 11 servidores MCP (5 activos) · 2 proveedores de modelos · 7 manuales**
 
 ## Contenido
 
@@ -152,7 +152,7 @@ Obligatorio (`/arena`) cuando la decisión: (a) define arquitectura o elige tecn
 3. **Arbitraje**: `arena-arbiter` puntúa con la rúbrica (simplicidad, velocidad, seguridad, robustez). Seguridad ≤ 2 descalifica.
 4. **Dictamen**: ganador claro o síntesis de lo mejor de cada variante, registrada en `MEMORY.md`.
 
-### Habilidades (20 skills nativas)
+### Habilidades (21 skills nativas)
 
 | Suite | Skills |
 |---|---|
@@ -161,6 +161,7 @@ Obligatorio (`/arena`) cuando la decisión: (a) define arquitectura o elige tecn
 | ML | `neural-network-ml` · `auto-research` |
 | Diseño | `ui-ux-design-suite` · `image-creative-suite` |
 | Web y media | `fullstack-architecture` · `playwright-testing` · `video-processing-suite` · `audio-sound-suite` · `ai-multimodal-ops` |
+| Visualización | `mods-visuales` |
 | Utilidades | `git-portfolio-sync` · `windows-notifier` |
 
 ### Comandos slash (18)

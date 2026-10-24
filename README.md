@@ -38,7 +38,7 @@ An agentic operating system built entirely from **Markdown documents** — no `c
 
 | **$0** | **60 FPS** | **< 500 MB** | **17** | **−85 %** |
 |:---:|:---:|:---:|:---:|:---:|
-| inference cost floor — local Ollama fallback, always available | GPU-composited canvas, validated E2E (headless Chromium) | streaming DuckDB/Polars RAM ceiling — `SET memory_limit` enforced | Markdown agents · 20 skills · 18 commands · **0 frameworks** | tokens per browser interaction — DOM-pruned `observe` / `act` / `extract` navigation (browser-use methodology) |
+| inference cost floor — local Ollama fallback, always available | GPU-composited canvas, validated E2E (headless Chromium) | streaming DuckDB/Polars RAM ceiling — `SET memory_limit` enforced | Markdown agents · 21 skills · 18 commands · **0 frameworks** | tokens per browser interaction — DOM-pruned `observe` / `act` / `extract` navigation (browser-use methodology) |
 
 ## What's new in v2.1.0
 

@@ -1,0 +1,15 @@
+# Workflow Warp — Open Code rápido (consulta directa)
+# Instalar: copiar a ~/.warp/workflows/opencode-rapido.yaml
+
+name: "Open Code: consulta rápida"
+description: "Lanza Open Code con una pregunta directa desde Warp."
+command: "opencode \"$pregunta\""
+tags:
+  - opencode
+  - consulta
+  - rapido
+arguments:
+  - name: pregunta
+    description: "Pregunta o instrucción para Open Code"
+    required: true
+    example: "explica el DAG Engine del proyecto"

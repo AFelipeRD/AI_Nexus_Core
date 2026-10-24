@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "theme": {
+    "name": "ai-nexus-core",
+    "mode": "dark"
+  },
+  "plugin": [
+    ["oc-plugin-rainbow", { "enabled": true, "fg": true, "bg": false, "speed": 0.006, "turns": 3, "glow": 0.04 }]
+  ],
+  "truecolor": true,
+  "ui": {
+    "panels": true,
+    "structured-output": true,
+    "animations": true,
+    "reduce-motion": false
+  }
+}

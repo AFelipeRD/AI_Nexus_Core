@@ -25,6 +25,7 @@ output/*
 !output/modelos/
 logs/*
 *.log
+!logs/evolve_task.log
 !.gitkeep
 
 # Modelos y pesos
@@ -60,3 +61,6 @@ opencode.json
 # Capturas de pantalla efímeras (percepción de pantalla: nunca se commitea)
 assets/temp_screen.png
 assets/temp_screen*.png
+
+# Temporales de sesiones Playwright MCP (nunca se commitean)
+.playwright-mcp/

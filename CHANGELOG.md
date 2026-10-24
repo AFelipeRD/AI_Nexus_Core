@@ -3,8 +3,13 @@
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y versionado semántico.
 
 ## [Sin publicar]
+### Añadido
+- **Suite visual `mods-visuales`** (21 skills / 18 comandos): tema OLED cyberpunk para Open Code (tema `ai-nexus-core` + plugin `oc-plugin-rainbow`) y para Warp (tema y workflows en `assets/warp/`), aplicado de forma predeterminada y automática, sin comandos que ejecutar; instalador `scripts/instalar_mods_visuales.ps1` — 0 tokens, renderizado 100 % del lado del cliente.
+### Corregido
+- **Cascada §13 de `mods-visuales`** (hallazgo de la validación integral del 2026-10-23): recuentos reales 21/18 aplicados en `AGENTS.md`, `README.md` y `docs/07` (incluida la tabla de suites); suite registrada en `MEMORY.md`; fecha de v2.1.0 unificada con la del tag real (2026-10-20).
+- `.gitignore`: negación `!logs/evolve_task.log` para que el historial de auto-evolución sea auditable en el repo, y cobertura de los temporales `.playwright-mcp/`.
 
-## [v2.1.0] - 2026-10-19 — 17-Agent Grid, LinkedIn Social Preview, Browser-Use Lightweight Agent, Screen Awareness & Latency Optimization
+## [v2.1.0] - 2026-10-20 — 17-Agent Grid, LinkedIn Social Preview, Browser-Use Lightweight Agent, Screen Awareness & Latency Optimization
 ### Añadido
 - **Browser-Use Agentic Navigation** en `playwright-testing` y `automation-browser`: poda de DOM (árbol de accesibilidad / elementos interactivos numerados), primitivas `observe()` / `act(indice, accion)` / `extract(esquema)` con objetivo de −85 % de tokens por interacción, y supervisión Laya contra clics destructivos y extracción de datos privados.
 - **Screen Awareness**: `scripts/screen_watcher.py` — instantáneas ligeras y efímeras de pantalla o ventana activa (`assets/temp_screen.png`) para auditoría visual por modelos con visión (Nemotron 3.5 Super VL); probado con captura real 1920×1080; sellado en las matrices de `automation-browser` y `knowledge-graph-agent`.
@@ -46,4 +51,4 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y 
 - Estructura inicial del ecosistema AI_Nexus_Core, 100 % Markdown, nativa para OpenCode.
 - 12 agentes con matriz de herramientas obligatorias, 14 habilidades, 17 comandos slash.
 - Configuración `opencode.json` con Ollama local, OmniRoute como fallback y 8 servidores MCP.
-- Manuales `docs/01` a `docs/06`, con
+- Manuales `docs/01` a `docs/06`, contexto estable y utilerías en `scripts/`.

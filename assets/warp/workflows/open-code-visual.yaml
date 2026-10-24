@@ -1,0 +1,16 @@
+# Workflow Warp — Open Code con salida visual
+# Instalar: copiar a ~/.warp/workflows/open-code-visual.yaml
+# Uso: Warp → Workflows → "Open Code: analizar con mods visuales"
+
+name: "Open Code: analizar con mods visuales"
+description: "Ejecuta Open Code con una orden y pide que aplique mods visuales (paneles, Mermaid, tablas) sin consumir tokens."
+command: "opencode \"$direccion\" /visuales aplique mods visuales: paneles, diagramas Mermaid, tablas y callouts. Cero tokens, salida estructurada."
+tags:
+  - opencode
+  - visuales
+  - analisis
+arguments:
+  - name: direccion
+    description: "Ruta del proyecto o tema a analizar con Open Code"
+    required: true
+    example: "D:\\AI_Nexus_Core"
