@@ -4,7 +4,7 @@ Enlaces: [[MEMORY]] · [[01_MANUAL_ECOSISTEMA_OPENCODE]] · [[06_PROTOCOLO_ARENA
 
 > Guía integral y manual operativo de AI Nexus Core, generada en la Sesión Maestra de Presentación (2026-10-19).
 > Raíz: `D:\AI_Nexus_Core` · Windows 11 · terminal Warp · bóveda de Obsidian.
-> **17 agentes · 21 skills · 18 comandos slash · 11 servidores MCP (5 activos) · 2 proveedores de modelos · 7 manuales**
+> **19 agentes · 23 skills · 19 comandos slash · 12 servidores MCP (6 activos) · 2 proveedores de modelos · 7 manuales**
 
 ## Contenido
 
@@ -18,7 +18,7 @@ Enlaces: [[MEMORY]] · [[01_MANUAL_ECOSISTEMA_OPENCODE]] · [[06_PROTOCOLO_ARENA
 
 ## 1. ¿Qué es AI Nexus Core?
 
-**Un sistema operativo autónomo de ingeniería con IA**: una cuadrilla de 17 agentes especializados que piensan, verifican y se auto-corrigen, coordinada por un Orquestador que clasifica cada petición, destila la orden técnica pura y la enruta al especialista correcto. No es un chatbot con plugins: es una arquitectura cognitiva completa.
+**Un sistema operativo autónomo de ingeniería con IA**: una cuadrilla de 19 agentes especializados que piensan, verifican y se auto-corrigen, coordinada por un Orquestador que clasifica cada petición, destila la orden técnica pura y la enruta al especialista correcto. No es un chatbot con plugins: es una arquitectura cognitiva completa.
 
 ### Propósito
 
@@ -94,7 +94,7 @@ Ningún código se entrega sin validación. Si un script falla, el subagente res
 | Tier 1 | Alta velocidad y utilidad | pool dinámico |
 | Tier 2 | Frontera / razonamiento profundo | `model` (activo global) |
 
-El triage no usa reglas rígidas: el **Motor de Decisión Laya AI** evalúa en un solo paso (milisegundos) el **vector técnico** de cada mensaje — complejidad algorítmica, riesgo, dependencias, consumo de RAM y GPU, criticidad irreversible — y selecciona el modelo óptimo del pool de `opencode.json`. La generación de medios (imagen, video, audio) no pasa por un LLM: se delega a los scripts ejecutores del catálogo (`scripts/nvidia_flux.py` → `output/images/`, `scripts/nvidia_cosmos.py` → `output/videos/`).
+El triage no usa reglas rígidas: el **Motor de Decisión Laya AI** evalúa en un solo paso (milisegundos) el **vector técnico** de cada mensaje — complejidad algorítmica, riesgo, dependencias, consumo de RAM y GPU, criticidad irreversible — y selecciona el modelo óptimo del pool de `opencode.json`. La generación de medios (imagen, video, audio) no pasa por un LLM: funciona con un **doble motor**. El **Tier 0 — motor gratuito (por defecto, costo $0)** es el **motor de medios de catálogo vivo, modelo-agnóstico** (`scripts/media_catalogo.py` consulta el catálogo NVCF de la cuenta; cero modelos quemados — rotación por `--modelo`): `scripts/nvidia_flux.py` (imagen multi-modelo, default FLUX 3 Klein 1024×1024 — probada en vivo con flux-3-image-klein y flux.2-klein-4b vía pexec por function_id) y `scripts/nvidia_cosmos.py` (video de catálogo NIM (`--modelo`; hoy 0 funciones entitled en la cuenta — cosmos3-nano retirado por NVIDIA; rutas de desbloqueo: entitlement en build.nvidia.com, MCP muapi premium, trials WaveSpeed/ApiPass, lanes manuales gratuitas Kling/Krea/Flow)), que llaman a NVIDIA NIM con los créditos de desarrollador gratuitos y la misma clave de `.secrets/nvidia.key` que el proveedor nvidia de `opencode.json` (leída en tiempo de ejecución, Zero-Leaks). El **Tier premium — MCP `muapi`** ofrece kling/veo/seedance/lipsync/upscale/face swap/social para variaciones creativas avanzadas: requiere saldo (chequeo previo con `muapi_account_balance`) y poll de resultados vía `muapi_predict_result` → `output/images/`, `output/videos/` y `output/`. El proveedor nvidia de los LLM en `opencode.json` es independiente de este motor y no se toca.
 
 ### Auto-mejora recursiva y propagación holística (§13 de `AGENTS.md`)
 
@@ -135,13 +135,15 @@ La Constitución Maestra vive una única vez — canónica en `AGENTS.md` §13-�
 | `data-engineer` | Datos | Pipelines OLAP con DuckDB + Polars sobre CSV/Parquet locales, streaming < 500 MB de RAM |
 | `ml-deeplearning-specialist` | ML | PyTorch, embeddings locales, CUDA fp16 y control de VRAM para la GTX 1050 Ti de 4 GB |
 | `ui-ux-director` | Diseño | Tokens, criterio visual, micro-animaciones con física de resorte. Adaptativo a cualquier dominio estilístico |
-| `image-generative-designer` | Imagen | Dirección artística, generación FLUX en NVIDIA Build (`scripts/nvidia_flux.py` → `output/images/`), Pillow/Canvas, SVG paramétrico |
+| `image-generative-designer` | Imagen | Dirección artística, doble motor de imagen (gratuito `nvidia_flux.py` multi-modelo con `--modelo` por defecto + `muapi_image_generate` premium → `output/images/`), Pillow/Canvas, SVG paramétrico |
 | `audio-sound-engineer` | Audio | Web Audio API, TTS, Whisper, diseño sonoro micro-táctil de baja latencia |
-| `video-media-engineer` | Video | Captura automatizada con Playwright, generación Cosmos (`scripts/nvidia_cosmos.py` → `output/videos/`), composición MoviePy/FFmpeg a 60 FPS |
+| `video-media-engineer` | Video | Captura automatizada con Playwright, doble motor de video (gratuito `nvidia_cosmos.py` de catálogo NIM con `--modelo` por defecto — hoy 0 funciones entitled en la cuenta, rutas de desbloqueo informadas por el propio script — + `muapi_video_generate` premium → `output/videos/`), composición MoviePy/FFmpeg a 60 FPS |
 | `ai-multimodal-engineer` | GenAI | IA generativa de frontera, RAG multimodal (texto + imagen + audio), flujos agénticos avanzados |
 | `automation-browser` | Navegador | Navegación agéntica browser-use (`observe`/`act`/`extract`, −85 % tokens), Playwright E2E, Crawl4AI, n8n, percepción de pantalla (`scripts/screen_watcher.py`) |
 | `knowledge-graph-agent` | Contexto | Grafo de dependencias y memoria persistente: LightRAG, Claude-Mem, Graphify, Obsidian, `MEMORY.md` |
 | `arena-arbiter` | Gobernanza | Juez del Modo Arena: puntúa con la rúbrica y emite el dictamen final |
+| `self-improvement-auditor` | Auto-mejora | Audita sesiones de Open Code (fallos, tasa de reintento, re-explicaciones), registra aprendizajes en `MEMORY.md` y propone mejoras concretas a skills, prompts y agentes |
+| `devops-engineer` | DevOps | CI/CD con GitHub Actions, pipelines de despliegue, gestión de secretos y release engineering con idempotencia y cero dependencias de Docker |
 
 ### Modo Arena — coordinación autónoma
 
@@ -152,19 +154,19 @@ Obligatorio (`/arena`) cuando la decisión: (a) define arquitectura o elige tecn
 3. **Arbitraje**: `arena-arbiter` puntúa con la rúbrica (simplicidad, velocidad, seguridad, robustez). Seguridad ≤ 2 descalifica.
 4. **Dictamen**: ganador claro o síntesis de lo mejor de cada variante, registrada en `MEMORY.md`.
 
-### Habilidades (21 skills nativas)
+### Habilidades (23 skills nativas)
 
 | Suite | Skills |
 |---|---|
-| Gobernanza | `find-skills` · `ponytail-yagni` · `arena-consensus` · `sequential-thinking` · `headroom-context` · `ecosystem-evolution` |
+| Gobernanza | `find-skills` · `ponytail-yagni` · `arena-consensus` · `sequential-thinking` · `headroom-context` · `ecosystem-evolution` · `self-improvement-audit` |
 | Datos | `duckdb-analytics` · `graphify-codebase` · `lightrag-knowledge` |
 | ML | `neural-network-ml` · `auto-research` |
-| Diseño | `ui-ux-design-suite` · `image-creative-suite` |
+| Diseño | `ui-ux-design-suite` · `image-creative-suite` · `kanban-design` |
 | Web y media | `fullstack-architecture` · `playwright-testing` · `video-processing-suite` · `audio-sound-suite` · `ai-multimodal-ops` |
 | Visualización | `mods-visuales` |
 | Utilidades | `git-portfolio-sync` · `windows-notifier` |
 
-### Comandos slash (18)
+### Comandos slash (19)
 
 | Comando | Propósito |
 |---|---|
@@ -182,10 +184,11 @@ Obligatorio (`/arena`) cuando la decisión: (a) define arquitectura o elige tecn
 | `/graphify` | Mapeo del grafo de dependencias |
 | `/evolve` | Barrido de auto-evolución del ecosistema |
 | `/sync-catalog` | Regenerar los `README.md` de catálogo |
+| `/improve` | Auditoría de auto-mejora de la sesión (máximo 3 hallazgos con evidencia) |
 
 ### Servidores MCP
 
-- **Activos (5)**: `github`, `filesystem`, `playwright`, `claude-mem`, `sequential-thinking`.
+- **Activos (6)**: `github`, `filesystem`, `playwright`, `claude-mem`, `sequential-thinking`, `muapi` (generación **premium** de imagen/video/audio en la nube; requiere `MUAPI_API_KEY` en entorno; el motor gratuito por defecto son los scripts NVIDIA NIM, que no son MCP).
 - **Dormant (6)**: `n8n`, `figma`, `mem0`, `huggingface`, `context7` (documentación actualizada para LLMs), `magic-21st` (generación de componentes UI; requiere `MAGIC_API_KEY` en entorno) — se activan con `"enabled": true` cuando el proyecto los necesita, previa validación de `auto-researcher`.
 
 ### Aceleración por hardware (Constitución §2)

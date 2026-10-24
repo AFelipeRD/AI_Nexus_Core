@@ -5,7 +5,7 @@ license: MIT
 compatibility: opencode
 metadata:
   idioma: es
-  version: "1.1"
+  version: "1.2"
 ---
 
 # Ui Ux Design Suite
@@ -23,7 +23,7 @@ metadata:
 | `plataforma` | web, móvil o ambas |
 
 ## Procedimiento
-1. **Tokens primero**: define variables CSS/Tailwind para color (base, acento, estados), tipografía, espaciado (rejilla de 4/8 px), radios, sombras y movimiento.
+1. **Tokens primero**: canon único del ecosistema: `.opencode/context/tokens-diseno.md` — compartido por web, imagen y video (Cuadrilla de Diseño). Define variables CSS/Tailwind para color (base, acento, estados), tipografía, espaciado (rejilla de 4/8 px), radios, sombras y movimiento.
 2. **Escala tipográfica**: razón modular (1,200–1,333), 2 familias como máximo, interlineado 1,4–1,6 en cuerpo, 60–75 caracteres por línea.
 3. **Criterio visual (Taste)**: jerarquía clara, un solo punto focal por vista, espacio en blanco generoso, alineación estricta, contraste AA (4,5:1 texto, 3:1 componentes).
 4. **Anti-slop**: sin degradados morados por defecto, sin tarjetas clonadas con sombra flotante, sin emojis como iconos (usa SVG), sin `lorem ipsum`, sin pesos de fuente aleatorios.

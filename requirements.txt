@@ -14,7 +14,7 @@ litellm
 playwright
 crawl4ai
 rich
-requests
 pydantic
+requests  # scripts de generación NVIDIA NIM (nvidia_flux.py, nvidia_cosmos.py)
 graphifyy
 # Después de instalar: `playwright install chromium`

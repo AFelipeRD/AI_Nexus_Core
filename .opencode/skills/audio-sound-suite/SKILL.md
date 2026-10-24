@@ -5,7 +5,7 @@ license: MIT
 compatibility: opencode
 metadata:
   idioma: es
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Audio Sound Suite
@@ -14,6 +14,13 @@ metadata:
 - Diseñar sonido de interfaz o micro-interacciones.
 - Sintetizar audio en el navegador (Web Audio API).
 - Procesar voz: TTS o transcripción (Whisper).
+- Generar música o audio completo en la nube (Suno, MMAudio) cuando la síntesis local no basta.
+
+## Generación en la nube vía MCP muapi
+Para música completa o bandas sonoras cuando la síntesis local no alcanza (la Web Audio local sigue siendo la base de esta skill):
+- `muapi_audio_create` (Suno): música completa con voz e instrumentos desde un prompt.
+- `muapi_audio_from_text` (MMAudio): audio generado desde texto.
+- Chequeo previo de saldo con `muapi_account_balance`; los artefactos se descargan a `output/`.
 
 ## Parámetros de entrada
 | Parámetro | Descripción |

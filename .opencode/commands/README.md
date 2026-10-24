@@ -55,6 +55,7 @@ En OpenCode escribe `/` seguido del nombre. Ejemplos:
 | `/evolve` | `auto-researcher` | Barrido de evolución del ecosistema: busca oro comunitario en find-skills, lo evalúa e integra con atribución. |
 | `/graphify` | `knowledge-graph-agent` | Genera o actualiza el grafo de dependencias del repositorio. |
 | `/headroom` | `knowledge-graph-agent` | Inspecciona el uso de tokens y comprime el contexto activo. |
+| `/improve` | `self-improvement-auditor` | Audita la sesión actual (o las últimas N) con el agente self-improvement-auditor: mide fallos, correcciones e iteraciones desperdiciadas, y aplica mejoras concretas al sistema. |
 | `/research` | `auto-researcher` | Ejecuta investigación técnica autónoma para contrastar una solución con fuentes oficiales. |
 | `/scout` | `github-scout` | Busca repositorios virales de IA en GitHub y emite una notificación Toast. |
 | `/security-audit` | `code-reviewer-security` | Ejecuta una auditoría estricta de seguridad y parámetros antes de confirmar cambios. |

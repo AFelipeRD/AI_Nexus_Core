@@ -13,9 +13,9 @@
 D:\AI_Nexus_Core\
 ├── AGENTS.md  CLAUDE.md  MEMORY.md  opencode.json  requirements.txt
 ├── .opencode\
-│   ├── agents\     17 agentes (.md con frontmatter YAML)
-│   ├── skills\     21 habilidades (<slug>\SKILL.md, especificación Anthropic)
-│   ├── commands\   18 comandos slash (.md)
+│   ├── agents\     19 agentes (.md con frontmatter YAML)
+│   ├── skills\     23 habilidades (<slug>\SKILL.md, especificación Anthropic)
+│   ├── commands\   19 comandos slash (.md)
 │   └── context\    contexto estable (rúbrica, convenciones, stack)
 ├── docs\           7 manuales numerados
 ├── memoria\        notas de entidades para el grafo de Obsidian

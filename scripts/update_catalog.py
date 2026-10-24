@@ -68,9 +68,15 @@ def main():
     escribir_bloque(BASE / "agents" / "README.md", tabla(["Agente", "Modo", "Modelo", "Descripción"], filas), a.dry_run)
     n_ag = len(filas)
 
-    # Habilidades
+    # Habilidades: nativas (.opencode/skills) + instaladas del registro (.agents/skills)
     filas = []
-    for f in sorted((BASE / "skills").glob("*/SKILL.md")):
+    vistos = set()
+    rutas = sorted((BASE / "skills").glob("*/SKILL.md")) + \
+        sorted((RAIZ / ".agents" / "skills").glob("*/SKILL.md"))
+    for f in rutas:
+        if f.parent.name in vistos:
+            continue
+        vistos.add(f.parent.name)
         d = frontmatter(f)
         if d.get("name") != f.parent.name:
             avisos.append("El name de %s no coincide con su carpeta" % f.parent.name)

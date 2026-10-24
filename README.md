@@ -5,7 +5,7 @@
 [![Version](https://img.shields.io/badge/version-v2.1.0-0ea5e9?style=flat-square)](CHANGELOG.md)
 [![Laya AI](https://img.shields.io/badge/decision_engine-Laya_AI-8b5cf6?style=flat-square)](#laya-ai-decision-engine)
 [![DAG Engine](https://img.shields.io/badge/concurrency-Parallel_DAG_Engine-06b6d4?style=flat-square)](#parallel-multi-phase-dag-engine)
-[![Agents](https://img.shields.io/badge/squad-17_Markdown_Agents-10b981?style=flat-square)](#the-17-agent-squad)
+[![Agents](https://img.shields.io/badge/squad-19_Markdown_Agents-10b981?style=flat-square)](#the-19-agent-squad)
 [![Browser-Use](https://img.shields.io/badge/navigation-Browser--Use_Agent-22D3EE?style=flat-square)](#whats-new-in-v210)
 [![DuckDB](https://img.shields.io/badge/DuckDB-In--Memory_OLAP-FFF100?style=flat-square&logo=duckdb&logoColor=black)](https://duckdb.org/)
 [![Polars](https://img.shields.io/badge/Polars-DataFrames-CD7928?style=flat-square&logo=polars&logoColor=white)](https://pola.rs/)
@@ -38,7 +38,7 @@ An agentic operating system built entirely from **Markdown documents** — no `c
 
 | **$0** | **60 FPS** | **< 500 MB** | **17** | **−85 %** |
 |:---:|:---:|:---:|:---:|:---:|
-| inference cost floor — local Ollama fallback, always available | GPU-composited canvas, validated E2E (headless Chromium) | streaming DuckDB/Polars RAM ceiling — `SET memory_limit` enforced | Markdown agents · 21 skills · 18 commands · **0 frameworks** | tokens per browser interaction — DOM-pruned `observe` / `act` / `extract` navigation (browser-use methodology) |
+| inference cost floor — local Ollama fallback, always available | GPU-composited canvas, validated E2E (headless Chromium) | streaming DuckDB/Polars RAM ceiling — `SET memory_limit` enforced | Markdown agents · 23 skills · 19 commands · **0 frameworks** | tokens per browser interaction — DOM-pruned `observe` / `act` / `extract` navigation (browser-use methodology) |
 
 ## What's new in v2.1.0
 
@@ -60,7 +60,7 @@ An agentic operating system built entirely from **Markdown documents** — no `c
 | **Dynamic Per-Phase Resource Matrix** | Each phase scored 1-10 with an exclusive package (model + agent + skills + MCPs). Below 4: direct action on a light model. Seven or higher: specialist subagent with deep reasoning + Sequential Thinking. |
 | **Recursive Self-Improvement (§13)** | Every tool, script, connector or model propagates through six repository levels. The Coherence Gate bans orphan tools and stale assumptions. |
 | **Autonomous Model Ingestion & Pruning** | Docs dropped in `data/inbox/` are assimilated into `opencode.json` and propagated; deprecated/404 models are pruned. Zero burned models across all 17 agents. |
-| **Multimodal GPU Suite** | FLUX 3 Klein image generation (`scripts/nvidia_flux.py` → `output/images/`) and NVIDIA Cosmos video simulation (`scripts/nvidia_cosmos.py` → `output/videos/`), sealed in skills and agent matrices. |
+| **Dual-Engine Media Suite** | Media generation runs on two tiers: the **free Tier 0 NVIDIA NIM engine by default — a live-catalog, model-agnostic media engine** (`scripts/media_catalogo.py` queries the account's NVCF catalog; zero burned models — rotation via `--modelo`): multi-model image generation live-tested (flux-3-image-klein and flux.2-klein-4b) via pexec by function_id, and catalog-driven video ready — today 0 entitled video functions on the account (cosmos3-nano retired by NVIDIA), with unlock paths reported by the script itself — plus the **premium `muapi` MCP** (flux, kontext, veo3, kling, suno + `muapi_predict_result` polling → `output/`) for advanced creative variations; both sealed in skills and agent matrices. Open Generative AI Studio (MIT, 31k stars) installed as the external creative desktop. |
 
 **Certified live benchmark:** full traceability of a concurrent heterogeneous dispatch in [`output/trazabilidad_orquestacion_completa.md`](output/trazabilidad_orquestacion_completa.md).
 
@@ -92,7 +92,7 @@ flowchart TB
     DAG -->|"independent units"| PAR["concurrent dispatch<br/>zero session blocking"]
     SEQ --> SQUAD["17 MARKDOWN AGENTS<br/>mandatory tool-and-skill matrices"]
     PAR --> SQUAD
-    SQUAD --> RES["20 SKILLS · 18 COMMANDS · 11 MCP SERVERS<br/>DuckDB · Polars · PyTorch CUDA fp16 · FLUX · Cosmos · Playwright · screen watcher"]
+    SQUAD --> RES["21 SKILLS · 18 COMMANDS · 12 MCP SERVERS<br/>DuckDB · Polars · PyTorch CUDA fp16 · dual media engine: free NVIDIA NIM + premium muapi · Playwright · screen watcher"]
     RES --> SYN["HOLISTIC SYNTHESIS<br/>Self-Healing · conflict check · Zero-Leaks audit"]
     SYN --> OUT(["unified verified output<br/>section 13 cascade · MEMORY.md · GitHub"])
 ```
@@ -107,7 +107,7 @@ Every agent is a single Markdown file with a mandatory tool matrix: an agent can
 - **`ai-multimodal-engineer`** — frontier generative AI and multimodal RAG.
 
 <details>
-<summary><b>Full 17-agent grid</b></summary>
+<summary><b>Full 19-agent grid</b></summary>
 
 | Agent | Domain | Role |
 |---|---|---|
@@ -121,13 +121,15 @@ Every agent is a single Markdown file with a mandatory tool matrix: an agent can
 | `data-engineer` | Data | DuckDB + Polars OLAP streaming pipelines under a strict 500 MB RAM ceiling |
 | `ml-deeplearning-specialist` | ML | PyTorch, CUDA fp16 on 4 GB VRAM, local embeddings, quantization, Hugging Face MCP |
 | `ui-ux-director` | Design | Anti-slop tokens, typography scale, spring-physics micro-animations |
-| `image-generative-designer` | Image | Art direction, prompt engineering, FLUX generation via `scripts/nvidia_flux.py` |
+| `image-generative-designer` | Image | Art direction, prompt engineering, dual-engine image generation — free NVIDIA NIM live-catalog multi-model engine (`nvidia_flux.py --modelo`, default flux_3_image_klein) by default + `muapi` MCP premium (flux, kontext, midjourney) |
 | `audio-sound-engineer` | Audio | Web Audio API, TTS, Whisper, spectral analysis, micro-tactile sound design |
-| `video-media-engineer` | Video | Playwright capture, Cosmos generation via `scripts/nvidia_cosmos.py`, MoviePy/FFmpeg, 60 FPS |
+| `video-media-engineer` | Video | Playwright capture, dual-engine video generation — free NVIDIA NIM live-catalog engine (`nvidia_cosmos.py --modelo`; today 0 entitled video functions on the account — unlock paths reported by the script) by default + `muapi` MCP premium (veo3, kling, seedance), MoviePy/FFmpeg, 60 FPS |
 | `ai-multimodal-engineer` | GenAI | Frontier generative AI, multimodal RAG (text + image + audio), agentic flows |
 | `automation-browser` | Browser | Browser-use agentic navigation (`observe`/`act`/`extract`), Playwright E2E, Crawl4AI, n8n, screen awareness |
 | `knowledge-graph-agent` | Memory | LightRAG, Claude-Mem, Graphify, Obsidian graph, `MEMORY.md` curation, visual context ingestion |
 | `arena-arbiter` | Governance | Arena tournament judge: cross-critique moderation, rubric scoring, final verdict |
+| `self-improvement-auditor` | Self-improvement | Session audits: failed tools, wasted iterations, re-explanations; learnings to `MEMORY.md`; concrete fixes to skills, prompts and agents |
+| `devops-engineer` | DevOps | CI/CD with GitHub Actions, deployment pipelines, secrets management, idempotent release engineering, zero Docker |
 
 </details>
 
