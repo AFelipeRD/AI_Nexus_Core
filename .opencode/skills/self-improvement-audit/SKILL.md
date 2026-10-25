@@ -26,7 +26,7 @@ metadata:
 ## Procedimiento
 
 ### 1. Recolectar evidencia
-- Ejecuta `python scripts/auto_diagnostico.py --sesiones`: precalcula métricas desde la telemetría del plugin `.opencode/plugins/telemetria.js` (`logs/telemetria.jsonl`: sesiones creadas, turnos, fallos, permisos, compactaciones) y desde la base local de OpenCode (`opencode.db`).
+- Ejecuta `python scripts/auto_diagnostico.py --sesiones`: precalcula métricas directamente desde la base local de OpenCode (`opencode.db`: sesiones, reanudaciones, intentos, correcciones, compactaciones y permisos).
 - Lee el historial de la sesión (mensajes del usuario y del agente) para completar la evidencia.
 - Marca cada mensaje del usuario como: `intento` (primera vez), `corrección` (redirige o repite), `confirmación` (aval del resultado), o `nuevo_tema`.
 - Marca cada error de herramienta/script/MCP como `fallo_herramienta`.

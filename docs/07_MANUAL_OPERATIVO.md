@@ -4,7 +4,7 @@ Enlaces: [[MEMORY]] · [[01_MANUAL_ECOSISTEMA_OPENCODE]] · [[06_PROTOCOLO_ARENA
 
 > Guía integral y manual operativo de AI Nexus Core, generada en la Sesión Maestra de Presentación (2026-10-19).
 > Raíz: `D:\AI_Nexus_Core` · Windows 11 · terminal Warp · bóveda de Obsidian.
-> **19 agentes · 23 skills · 19 comandos slash · 12 servidores MCP (6 activos) · 2 proveedores de modelos · 7 manuales**
+> **20 agentes · 51 skills (23 nativas + 28 del registro abierto) · 19 comandos slash · 12 servidores MCP (8 activos) · 2 proveedores de modelos · 7 manuales**
 
 ## Contenido
 

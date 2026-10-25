@@ -12,7 +12,7 @@
 | **GIF para Slack, sticker animado** | `slack-gif-creator` | `ui-ux-director` | — |
 | **Imagen, logo, dirección artística** | `image-creative-suite` | `image-generative-designer` | — |
 | **Video, clip, motion** | `video-processing-suite` | `video-media-engineer` | — |
-| **Sonido, TTS, audio de interfaz** | `audio-sound-suite` | `audio-sound-engineer` | — |
+| **Voz y audio: hablar, clonar voz, transcribir, doblar video, audiolibro** | `voicestudio` + `audio-sound-suite` (VoiceStudio local vía MCP/API `:3900` · NIM TTS en preparación · muapi premium) | `audio-sound-engineer` | — |
 | **Pipeline multimodal (texto+imagen+audio), RAG** | `ai-multimodal-ops` | `ai-multimodal-engineer` | — |
 | **CI/CD, workflows, despliegue, secretos, automatización** («pipeline», «GitHub Action», «deploy», «automatiza») | `ci-cd-and-automation` + `github-actions-templates` + `secrets-management` + `bash-defensive-patterns` | `devops-engineer` | `/security-audit` |
 | **Nuevo servidor MCP o conector** | `mcp-builder` + `find-skills` | `fullstack-developer` | `/research` |
@@ -27,6 +27,7 @@
 | **Recordar proyectos y sesiones** (Cloud Mem) | `mem-search` (MCP `claude-mem`) | cualquier agente | — |
 | **Commit, historial, publicar** | `git-portfolio-sync` | `portfolio-git` | `/commit` |
 | **Arquitectura, decisión estructural** | `sequential-thinking` + `arena-consensus` | `software-architect` | `/arena` |
+| **«Hazlo todo de principio a fin»: plan → construir → verificar → integrar, un solo entregable** | flujo superpowers completo (`brainstorming` → `writing-plans` → `executing-plans`/`subagent-driven-development` → `verification-before-completion`) | `chief-engineer` | `/think` |
 | **¿Por qué falló la sesión? Auditar el sistema, aprender de fallos** | `self-improvement-audit` + `diagnosing-superpowers` | `self-improvement-auditor` | `/improve` |
 | **Documentación actualizada de una librería/framework** (Context7) | MCP `context7` (resolver librería + extraer docs) | el agente activo de la tarea | — |
 | **Notificar al terminar** | `windows-notifier` | el agente ejecutor | — |

@@ -22,6 +22,12 @@ Para música completa o bandas sonoras cuando la síntesis local no alcanza (la 
 - `muapi_audio_from_text` (MMAudio): audio generado desde texto.
 - Chequeo previo de saldo con `muapi_account_balance`; los artefactos se descargan a `output/`.
 
+## Voz y TTS — triple motor (directiva: gratuito y local por defecto)
+1. **VoiceStudio (100 % local, motor primario)** — app de escritorio alternativa open source a ElevenLabs (AGPL-3.0, 84.6K estrellas). Con la app abierta expone: MCP `voicestudio` en `http://127.0.0.1:3900/mcp/` (tools `generate_speech`, `clone_voice`, `design_voice`, `transcribe`, `list_voices`, `check_health`) y API OpenAI-compatible en `127.0.0.1:3900` (`/v1/audio/speech`, `/v1/audio/transcriptions`). Clonación de voz con permiso del dueño. Hardware GTX 1050 Ti 4 GB: usa el motor por defecto OmniVoice (k2-fsa) o los del catálogo que quepan en 4 GB VRAM / CPU; la app detecta el hardware y marca compatibilidad por motor. Skill de agente: `voicestudio`.
+2. **NVIDIA NIM (cloud gratuita, en preparación)** — `scripts/nvidia_tts.py` resuelve los modelos de voz del catálogo vivo, pero las funciones TTS están publicadas con `apiBodyFormat=CUSTOM` (Triton/gRPC): pendiente el protocolo binario. Hoy no producen audio; cuando NVIDIA habilite JSON o se implemente Triton HTTP, el script las usará solo. Mientras tanto: VoiceStudio (local) o muapi (premium).
+3. **muapi (premium)** — variaciones avanzadas de voz/música con chequeo de saldo previo.
+**Regla de elección**: si VoiceStudio está abierto → local (privacidad total, voces propias); si no → NIM cloud; premium solo a petición explícita.
+
 ## Parámetros de entrada
 | Parámetro | Descripción |
 |---|---|

@@ -60,6 +60,7 @@ Eres el Desarrollador Fullstack. Construyes aplicaciones completas y desacoplada
 | `finishing-a-development-branch` | `skills/finishing-a-development-branch/SKILL.md` | Con la implementación completa y tests en verde. |
 | `mcp-builder` | `skills/mcp-builder/SKILL.md` | Al construir un servidor o conector MCP nuevo. |
 | `skill-creator` | `skills/skill-creator/SKILL.md` | Al crear, editar o evaluar una skill. |
+| `writing-skills` | `skills/writing-skills/SKILL.md` | Metodología de creación y verificación de skills antes de desplegarlas. |
 | `playwright-testing` | `skills/playwright-testing/SKILL.md` | Verificación E2E de la app (equivale a Web App Testing). |
 | `mem-search` | `skills/mem-search/SKILL.md` | Buscar contexto persistido de proyectos (MCP `claude-mem`). |
 | `ponytail-yagni` | `skills/ponytail-yagni/SKILL.md` | Para evitar capas y abstracciones superfluas. |
@@ -72,7 +73,9 @@ Eres el Desarrollador Fullstack. Construyes aplicaciones completas y desacoplada
 |---|---|
 | `filesystem` | Leer y escribir código del proyecto. |
 | `sequential-thinking` | Planificar la integración por capas. |
-| `github` | Consultar patrones y issues de referencia. |
+| `github` | Consultar patrones e issues de referencia. |
+| `context7` | Documentación actualizada de frameworks y librerías (resolve-library-id → get-library-docs). |
+| `claude-mem` | Memoria persistente de proyectos y sesiones (con la skill `mem-search`). |
 
 **Comandos slash que debes invocar o recomendar:**
 

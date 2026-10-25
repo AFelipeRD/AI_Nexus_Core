@@ -1,11 +1,11 @@
 <div align="center">
 
-# AI Nexus Core v2.1.0 — Autonomous Multi-Model Agentic OS
+# AI Nexus Core v2.3.0 — Autonomous Multi-Model Agentic OS
 
-[![Version](https://img.shields.io/badge/version-v2.1.0-0ea5e9?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-v2.3.0-0ea5e9?style=flat-square)](CHANGELOG.md)
 [![Laya AI](https://img.shields.io/badge/decision_engine-Laya_AI-8b5cf6?style=flat-square)](#laya-ai-decision-engine)
 [![DAG Engine](https://img.shields.io/badge/concurrency-Parallel_DAG_Engine-06b6d4?style=flat-square)](#parallel-multi-phase-dag-engine)
-[![Agents](https://img.shields.io/badge/squad-19_Markdown_Agents-10b981?style=flat-square)](#the-19-agent-squad)
+[![Agents](https://img.shields.io/badge/squad-20_Markdown_Agents-10b981?style=flat-square)](#the-20-agent-squad)
 [![Browser-Use](https://img.shields.io/badge/navigation-Browser--Use_Agent-22D3EE?style=flat-square)](#whats-new-in-v210)
 [![DuckDB](https://img.shields.io/badge/DuckDB-In--Memory_OLAP-FFF100?style=flat-square&logo=duckdb&logoColor=black)](https://duckdb.org/)
 [![Polars](https://img.shields.io/badge/Polars-DataFrames-CD7928?style=flat-square&logo=polars&logoColor=white)](https://pola.rs/)
@@ -15,10 +15,10 @@
 [![Playwright](https://img.shields.io/badge/Playwright-E2E_Testing-2EAD33?style=flat-square&logo=playwright&logoColor=white)](https://playwright.dev/)
 
 <p align="center">
-  <img src="assets/social_preview.png" width="640" alt="AI Nexus Core v2.1.0 — Autonomous Multi-Model Agentic OS">
+  <img src="assets/social_preview.png" width="640" alt="AI Nexus Core v2.3.0 - Autonomous Multi-Model Agentic OS">
 </p>
 
-**An autonomous, self-improving, multi-model agentic operating system: 17 Markdown agents, a probabilistic decision engine (Laya), parallel DAG concurrency, non-destructive local RAG, GPU acceleration, and browser-use agentic navigation.**
+**An autonomous, self-improving, multi-model agentic operating system: 20 Markdown agents, a probabilistic decision engine (Laya), parallel DAG concurrency, a local voice/video engine on your GPU, non-destructive local RAG, and an iterative refinement protocol that never ships the first version.**
 
 ![AI Nexus Core — Motion Showcase](assets/video/showcase.gif)
 
@@ -36,9 +36,22 @@ An agentic operating system built entirely from **Markdown documents** — no `c
 
 ## Verified operating metrics
 
-| **$0** | **60 FPS** | **< 500 MB** | **17** | **−85 %** |
+| **$0** | **60 FPS** | **< 500 MB** | **20** | **−85 %** |
 |:---:|:---:|:---:|:---:|:---:|
-| inference cost floor — local Ollama fallback, always available | GPU-composited canvas, validated E2E (headless Chromium) | streaming DuckDB/Polars RAM ceiling — `SET memory_limit` enforced | Markdown agents · 23 skills · 19 commands · **0 frameworks** | tokens per browser interaction — DOM-pruned `observe` / `act` / `extract` navigation (browser-use methodology) |
+| inference cost floor — local Ollama fallback, always available | GPU-composited canvas, validated E2E (headless Chromium) | streaming DuckDB/Polars RAM ceiling — `SET memory_limit` enforced | Markdown agents · 52 skills · 19 commands · **0 frameworks** | tokens per browser interaction — DOM-pruned `observe` / `act` / `extract` navigation (browser-use methodology) |
+
+## What's new in v2.3.0
+
+| Feature | What it does |
+|---|---|
+| **Chief-Engineer (20th agent)** | One agent runs the whole cycle: plans (`writing-plans`), orchestrates (delegates phases to subagents, picks the model by technical vector), builds with TDD, verifies with evidence, integrates. `mode: all` — user-selectable in OpenCode's Tab switcher **and** dispatchable by the orchestrator. |
+| **Local Voice Engine — VoiceStudio** | Fully-local ElevenLabs alternative (AGPL, 84.6k stars): desktop app + OpenAI-compatible API on `:3900` + 7-tool `voicestudio` MCP running with CUDA on the local GPU. **`nexus-presentador`** — the house voice, cloned from the tutorial's closing line — narrates every future video. |
+| **Iterative Refinement Protocol** | Constitutional skill `refinamiento-iterativo`: Laya complexity ≥ 7 → generate **5 versions** with a programmatic, evidence-based critique between each (frames / variance / palette / tests / latency), keep only the last, delete the rest. Faster **and** more discerning. |
+| **28 registry skills** | `obra/superpowers` (15), `anthropics/skills` (skill-creator, mcp-builder, frontend-design, web-artifacts-builder, algorithmic-art, slack-gif-creator), `ui-ux-pro-max`, `mem-search`, the DevOps set (addyosmani + wshobson) and `voicestudio` — wired into the specialist matrices. |
+| **Context7 + mechanized self-audit** | Live library-docs MCP (pinned 2.0.2 + keychain launcher) and the §13.3 Coherence Gate (`scripts/auto_diagnostico.py`: sessions, retries and re-explanations read from `opencode.db`) feeding the `/improve` loop — plus the installation tutorial video rendered 100% locally (voice + motion, 86.7 s, five versions deep). |
+
+<details>
+<summary><b>v2.1.0 highlights (previous release)</b></summary>
 
 ## What's new in v2.1.0
 
@@ -49,6 +62,8 @@ An agentic operating system built entirely from **Markdown documents** — no `c
 | **Social Preview (Open Graph)** | Official 1280×640 banner [`assets/social_preview.png`](assets/social_preview.png): wordmark, the 17-agent grid in glass cards, and Laya AI · DuckDB · CUDA · Multi-Model chips. Programmatic PIL render, razor-sharp text. |
 | **Latency Pruning** | The Master Constitution lived 3× in session-injected files. Now canonicalized in `AGENTS.md` §14 with pointer-only mirrors — ~2/3 of the normative boot cost recovered on every session. |
 | **find-skills sweep** | Integrated with attribution: `vercel-labs/agent-browser` (1.1M installs), `web-design-guidelines` (762K), `hyperframes-animation` (980K), `vercel-react-view-transitions` (161K), `transitions.dev`, `app-store-screenshots` (52K), and context-compression connectors. |
+
+</details>
 
 <details>
 <summary><b>v2.0.0 core capabilities (deep dive)</b></summary>
@@ -90,14 +105,14 @@ flowchart TB
     T0 --> SYN
     DAG -->|"dependent units"| SEQ["sequential chain<br/>artifact passing"]
     DAG -->|"independent units"| PAR["concurrent dispatch<br/>zero session blocking"]
-    SEQ --> SQUAD["17 MARKDOWN AGENTS<br/>mandatory tool-and-skill matrices"]
+    SEQ --> SQUAD["20 MARKDOWN AGENTS<br/>mandatory tool-and-skill matrices"]
     PAR --> SQUAD
-    SQUAD --> RES["21 SKILLS · 18 COMMANDS · 12 MCP SERVERS<br/>DuckDB · Polars · PyTorch CUDA fp16 · dual media engine: free NVIDIA NIM + premium muapi · Playwright · screen watcher"]
+    SQUAD --> RES["52 SKILLS · 19 COMMANDS · 12 MCP SERVERS<br/>DuckDB · Polars · PyTorch CUDA fp16 · dual media engine: free NVIDIA NIM + premium muapi · local VoiceStudio voice · Remotion video · Playwright · screen watcher"]
     RES --> SYN["HOLISTIC SYNTHESIS<br/>Self-Healing · conflict check · Zero-Leaks audit"]
     SYN --> OUT(["unified verified output<br/>section 13 cascade · MEMORY.md · GitHub"])
 ```
 
-## The 17-Agent Squad
+## The 20-Agent Squad
 
 Every agent is a single Markdown file with a mandatory tool matrix: an agent can only use what its matrix declares. Four pillars of the grid:
 
@@ -107,7 +122,7 @@ Every agent is a single Markdown file with a mandatory tool matrix: an agent can
 - **`ai-multimodal-engineer`** — frontier generative AI and multimodal RAG.
 
 <details>
-<summary><b>Full 19-agent grid</b></summary>
+<summary><b>Full 20-agent grid</b></summary>
 
 | Agent | Domain | Role |
 |---|---|---|
@@ -130,6 +145,7 @@ Every agent is a single Markdown file with a mandatory tool matrix: an agent can
 | `arena-arbiter` | Governance | Arena tournament judge: cross-critique moderation, rubric scoring, final verdict |
 | `self-improvement-auditor` | Self-improvement | Session audits: failed tools, wasted iterations, re-explanations; learnings to `MEMORY.md`; concrete fixes to skills, prompts and agents |
 | `devops-engineer` | DevOps | CI/CD with GitHub Actions, deployment pipelines, secrets management, idempotent release engineering, zero Docker |
+| `chief-engineer` | Full-cycle | Plans (`writing-plans`), orchestrates (subagent dispatch + model selection by technical vector), builds with TDD, verifies with evidence, integrates — Tab-switcher selectable, coral-coded |
 
 </details>
 

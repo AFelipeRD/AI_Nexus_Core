@@ -7,7 +7,7 @@ Audita y mejora el sistema analizando $ARGUMENTS (por defecto: la sesión actual
 
 Pasos:
 1. Carga la skill `self-improvement-audit`.
-2. Ejecuta `python scripts/auto_diagnostico.py --sesiones` para métricas precalculadas (telemetría del plugin `telemetria.js` + base local de OpenCode) y úsalas como base de evidencia.
+2. Ejecuta `python scripts/auto_diagnostico.py --sesiones` para métricas precalculadas desde la base local de OpenCode y úsalas como base de evidencia.
 3. Lee el historial de la sesión y marca cada mensaje del usuario: intento, corrección, confirmación o nuevo tema.
 4. Calcula las métricas: intentos, correcciones, tasa_reintento, fallos_herramienta, re_explicaciones.
 5. Identifica máximo 3 hallazgos con evidencia citada (qué pasó, por qué, cómo se evita); usa `diagnosing-superpowers` si la sesión salió muy mal.

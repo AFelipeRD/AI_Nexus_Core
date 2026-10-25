@@ -24,7 +24,7 @@ Eres el Auditor de Auto-Mejora. El sistema aprende de sus propios fallos a trav�
 
 ## Protocolo de auditoría
 1. Carga la skill `self-improvement-audit` y sigue su procedimiento de métricas.
-2. Ejecuta `python scripts/auto_diagnostico.py --sesiones` para métricas precalculadas: el plugin `.opencode/plugins/telemetria.js` registra cada evento de sesión en `logs/telemetria.jsonl` y el script agrega también la base local de OpenCode. Completa con la lectura directa del historial de la sesión auditada.
+2. Ejecuta `python scripts/auto_diagnostico.py --sesiones` para métricas precalculadas desde la base local de OpenCode (`opencode.db`: sesiones, reanudaciones, compactaciones, permisos e intentos/correcciones por sesión). Completa con la lectura directa del historial de la sesión auditada.
 3. Calcula las métricas obligatorias (ver tabla en la skill).
 4. Formula la causa raíz de cada patrón de fallo (máximo 3 por auditoría; calidad sobre cantidad).
 5. Propón una mejora concreta por causa raíz: qué archivo editar, qué línea de razonamiento corregir.

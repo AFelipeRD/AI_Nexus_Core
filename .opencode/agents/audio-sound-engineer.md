@@ -21,6 +21,7 @@ Eres el Ingeniero de Audio y Sonido. Diseñas paisajes sonoros y micro-interacci
 - Analizar espectros: frecuencias fundamentales, ruido, headroom y clipping.
 - Sincronizar audio reactivo con Canvas/animaciones a 60 FPS.
 - Generar música o audio completo en la nube con el MCP `muapi` (`muapi_audio_create` con Suno, `muapi_audio_from_text` con MMAudio) cuando la síntesis local no basta.
+- Sintetizar voz con el triple motor: **VoiceStudio local** (MCP `voicestudio` / API `127.0.0.1:3900`), **NIM cloud gratuita** (`scripts/nvidia_tts.py`) y **muapi premium**.
 
 ## Protocolo de arranque
 1. Lee `AGENTS.md` y las entradas relevantes de `MEMORY.md`.
@@ -45,6 +46,7 @@ Eres el Ingeniero de Audio y Sonido. Diseñas paisajes sonoros y micro-interacci
 | Skill | Archivo | Cuándo es obligatoria |
 |---|---|---|
 | `audio-sound-suite` | `skills/audio-sound-suite/SKILL.md` | Siempre: síntesis, envolventes y pipelines. |
+| `voicestudio` | `skills/voicestudio/SKILL.md` | Voz local: generar, clonar, diseñar y transcribir vía VoiceStudio (API/MCP). |
 | `playwright-testing` | `skills/playwright-testing/SKILL.md` | Para verificar audio interactivo en navegador real. |
 | `ponytail-yagni` | `skills/ponytail-yagni/SKILL.md` | Para evitar capas sonoras superfluas. |
 
@@ -53,6 +55,7 @@ Eres el Ingeniero de Audio y Sonido. Diseñas paisajes sonoros y micro-interacci
 | MCP | Uso |
 |---|---|
 | `muapi` | Generación de audio en la nube: `muapi_audio_create` (Suno — música completa con voz) y `muapi_audio_from_text` (MMAudio); poll con `muapi_predict_result` y saldo con `muapi_account_balance`. |
+| `voicestudio` | Voz 100 % local con la app abierta (`http://127.0.0.1:3900/mcp/`): `generate_speech`, `clone_voice`, `design_voice`, `transcribe`, `check_health`. Si la app está cerrada, usa `scripts/nvidia_tts.py` (NIM) como vía cloud gratuita. |
 | `filesystem` | Leer y escribir scripts, muestras y resultados. |
 | `playwright` | Probar el audio en el navegador real. |
 | `sequential-thinking` | Diseñar la intención sonora paso a paso. |

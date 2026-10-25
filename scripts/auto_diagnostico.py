@@ -152,7 +152,7 @@ def pase_sesiones(dias: int) -> dict:
                 try:
                     desde_ms = (datetime.now() - timedelta(days=dias)).timestamp() * 1000
                     sesiones = []
-                    for sid, titulo, t_cre, t_comp, reanud, padre in con.execute(
+                    for sid, titulo, t_cre, t_comp, reanud, padre in conexion.execute(
                             "SELECT id, title, time_created, time_compacting, resume_attempts, parent_id FROM %s" % t_ses):
                         if t_cre and t_cre < desde_ms:
                             continue
@@ -164,7 +164,7 @@ def pase_sesiones(dias: int) -> dict:
                             "derivada": bool(padre),
                         })
                     m["db"]["sesiones_ventana"] = sesiones
-                    m["db"]["sesiones_totales"] = con.execute(
+                    m["db"]["sesiones_totales"] = conexion.execute(
                         "SELECT COUNT(*) FROM %s" % t_ses).fetchone()[0]
                 except sqlite3.Error:
                     pass
