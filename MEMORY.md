@@ -101,3 +101,5 @@
 2. Crea una nota en `memoria/<Entidad>.md` solo si la entidad se usará más de una vez.
 3. Enlaza siempre con `[[Nombre]]`; evita duplicar contenido, enlaza.
 4. Pide al `knowledge-graph-agent` que sincronice el grafo (`/graphify`).
+
+- 2026-10-27 · Entrega tutorial v9 final (`output/videos/nexus_tutorial.mp4`, 48.3 s, 1446 frames, h264/aac) · doble juez de ritmo CUMPLE: 98.8 % vivos @5fps (umbral 3.5), racha 0.2 s (≤0.6), 0 cortes secos, costura 11/11; 100 % vivos @10fps (umbral 1.0), racha 0.0 s; audio pico −3.1 dB, clipping_riesgo=false (loudnorm TP=−1.5 después del limitador por overshoot de AAC) · pipeline: scripts/auditar_ms.py, scripts/mezclar_v9.py, segmentos_reales.ts, 8 SFX Pixabay, storyboard v9 con mecánicas de skillry Opus 5.5 · sobrescribe v8.1 · [[#video-director]] · [[docs/lecciones-video.md]]
