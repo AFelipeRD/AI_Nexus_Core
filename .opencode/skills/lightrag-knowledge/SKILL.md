@@ -74,3 +74,11 @@ asyncio.run(main())
 - `mattpocock/skills@obsidian-vault` — 195 K instalaciones: gestión de bóvedas Obsidian.
 - `graphify-labs/graphify@graphify` — **Graphify oficial** (la herramienta estructural que ya usa este ecosistema).
 - Cuando la tarea lo exija, profundiza con `npx -y skills find <término>`.
+
+## Referencias comunitarias validadas (find-skills 2026-10-27)
+- **Transclusión con embeds** `![[Nota#Sección]]`: compón notas de índice y de entidad reutilizando secciones de otras notas sin duplicar bytes — materializa el «enlaza, no dupliques» de `MEMORY.md` con un mecanismo real: la bóveda renderiza el contenido enlazado en el punto del embed.
+- **Enlaces con nombre de sección** `[[Nota#Sección]]`: cita el apartado exacto, no la nota entera, al referenciar una decisión concreta; la regla de elección del paso 5 se mantiene (wikilinks solo para notas internas — Obsidian re-rastrea renombres —, `[texto](url)` solo para URLs externas).
+- **Block IDs** `^id` (al final del párrafo, o en línea propia tras listas y citas): ancla estable para citar una decisión exacta de `MEMORY.md` desde `memoria/*.md` (`[[MEMORY#^id]]`) aunque los headings cambien — más fino que `[[Nota#Heading]]`, que se rompe al renombrar un título.
+- **Callouts tipados y plegables** `> [!info]`, `> [!warning]`, `> [!danger]` (con `-`/`+` tras el tipo se pliegan por defecto): semántica visual dentro de las notas de la bóveda, en lugar de blockquotes planos sin tipo.
+
+_Atribución: kepano/obsidian-skills@obsidian-markdown (oficial de Obsidian)._

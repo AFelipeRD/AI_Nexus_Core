@@ -56,6 +56,15 @@ Mapear las 5 capas con las herramientas REALES de la sesión (tabla de arriba). 
 ## Salto v7 — fotorrealismo por intercambio de capa
 El storyboard y los prompts EN de `estilo-video-editorial.md` son agnósticos al motor: al conectar Higgsfield, cargar saldo en muapi o conseguir metraje entitled en NIM, cambia SOLO la capa de render por plano (keyframes IA con Ken Burns para escenas de vida real; Remotion para interfaz, texto y transiciones) y vuelve a pasar la autoevaluación — audio y storyboard no se tocan. Así un video de cero converge en pocas versiones, no en cincuenta.
 
+## Contrato de render determinista (vale para Remotion Y HyperFrames)
+- **Nada de azar ni reloj**: prohibidos `Date.now()`, `Math.random()` sin semilla, fetch de red, timers y bucles infinitos — todo lo visible es función del tiempo del timeline; así cada render es idéntico y reproducible.
+- **Cada elemento temporal** declara inicio y duración explícitos (en HyperFrames: `class="clip"` + `data-start`/`data-duration`) y **aterriza su estado final justo antes de cerrar** (nada se queda a medias al congelar).
+- **La duración total la fija la raíz** (un solo `data-duration`/`durationInFrames` real — nunca hardcodear la duración en un componente: usar `useVideoConfig()` en Remotion).
+- Nunca animar `display`/`visibility`/`opacity` de un clip contenedor (anima un hijo); animar `transform`, no `left/top/width/height`.
+- **Safe areas**: contenido dentro de la caja de acción segura del 90 %; captions y texto clave dentro del 80 % (vía `caption.py --platform` de ffmpeg-skill o los guides del estudio).
+- **Registro antes que artesanía**: antes de construir a mano cualquier efecto con nombre (glitch, film grain, kinetic type, CRT, chart), buscarlo en el registro de HyperFrames (`hyperframes-registry`, ~450 bloques instalables como fuente editable) — si existe, úsalo y edítalo.
+- **EditPlan para montajes con música** (formato validado de beat-sync): declara un JSON con `audio_start`, `audio_duration` y `clips[]` (`video_start` + `duration` cada uno, suma = `audio_duration` ± 0.5 s, orden NO cronológico intencional), valídalo, y compón los cortes con `trim/setpts/concat` — o usa `cut.py --snap beats` de ffmpeg-skill para que los in/out caigan sobre el beat medido. `scenes.py --beats` te da el grid (tempo, tiempos de beat, confianza) de la pista.
+
 ## Errores a evitar
 - Generar sin storyboard aprobado («APROBADO, GENERA»).
 - **Arrancar lento**: el gancho es en los primeros 2 s o el video no sirve en redes; prohibido el aire en blanco inicial y las escenas que tardan en cambiar.

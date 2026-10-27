@@ -65,3 +65,6 @@ assets/temp_screen*.png
 
 # Temporales de sesiones Playwright MCP (nunca se commitean)
 .playwright-mcp/
+
+# Modelos binarios locales (Kokoro, futuros carriles) - viven en disco, no en git
+.modelos/

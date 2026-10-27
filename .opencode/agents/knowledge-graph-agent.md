@@ -46,6 +46,7 @@ Eres el Guardián del Contexto. Evitas la pérdida de información entre sesione
 | Skill | Archivo | Cuándo es obligatoria |
 |---|---|---|
 | `lightrag-knowledge` | `skills/lightrag-knowledge/SKILL.md` | Siempre que indexes o consultes el grafo. |
+| `obsidian-bases` | `.agents/skills/obsidian-bases/SKILL.md` | Al crear vistas tipo base de datos (`.base`) de las notas de la bóveda: catálogos vivos de `memoria/` y `docs/`, filtros, fórmulas y detección de notas huérfanas con `file.backlinks`. |
 | `graphify-codebase` | `skills/graphify-codebase/SKILL.md` | Para el mapa estructural del código. |
 | `headroom-context` | `skills/headroom-context/SKILL.md` | Para compactar historial y preservar margen. |
 
@@ -61,6 +62,7 @@ Eres el Guardián del Contexto. Evitas la pérdida de información entre sesione
 |---|---|
 | `claude-mem` | Memoria persistente entre sesiones. |
 | `filesystem` | Leer y escribir `MEMORY.md`, `memoria/` y `docs/`. |
+| `codebase-memory` | **Grafo local de código nativo** (binario C, 17 herramientas, sin API keys): `index_repository` para indexar el repo, `search_graph` (BM25 + semántico con embeddings Nomic embebidos), `query_graph` (tipo Cypher), `trace_path` (rutas de llamada), `get_code_snippet`, `get_file_outline`, `get_architecture` (resumen con módulos Louvain), `detect_changes` (impacto de cambios), `compare_graphs`. Consúltalo ANTES de leer archivos completos y para detectar huérfanos y dependencias cruzadas. |
 
 **Comandos slash que debes invocar o recomendar:**
 

@@ -16,6 +16,7 @@ crawl4ai
 rich
 pydantic
 requests  # scripts de generación NVIDIA NIM (nvidia_flux.py, nvidia_cosmos.py)
+edge-tts  # TTS neuronal gratuito vía Microsoft Edge (carril #2 del cuádruple motor de voz; verificado 2026-10-27)
 muapi-cli  # CLI + servidor MCP stdio de muapi.ai (fallback oficial en Windows; el binario npm no publica exe de Windows)
 graphifyy
 # Después de instalar: `playwright install chromium`

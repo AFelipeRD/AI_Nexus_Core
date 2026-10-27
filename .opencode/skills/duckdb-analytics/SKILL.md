@@ -45,10 +45,17 @@ ORDER BY ingresos DESC;
 - `SELECT *` sobre archivos enormes.
 - Exceder 500 MB de RAM: particiona en lotes y procesa en streaming.
 - Copiar datos entre DuckDB y Polars sin Apache Arrow (copia materializada).
+- Concatenar entradas del usuario dentro del SQL.
+- Escribir en `data/raw/`.
 
 ## Referencias comunitarias validadas (find-skills)
 - `duckdb/duckdb-skills` — **DuckDB oficial** (`query`, `duckdb-docs`, `read-file`, `attach-db`): SQL Friendly, sesiones con estado vía `ATTACH` y verificación de accesibilidad.
 - `k-dense-ai/scientific-agent-skills@polars` — patrones Polars para computación científica.
 - Cuando la tarea lo exija, profundiza con `npx -y skills find <término>`.
-- Concatenar entradas del usuario dentro del SQL.
-- Escribir en `data/raw/`.
+- **Sandbox de seguridad para SQL ad-hoc** (antes de consultar archivos no confiables): `SET allowed_paths=['<archivo>']; SET enable_external_access=false; SET allow_persistent_secrets=false; SET lock_configuration=true;` — blinda la lectura de archivos arbitrarios y los secretos persistentes durante la consulta.
+- **Puerta de presupuesto de tokens ANTES de ejecutar**: nunca lances una consulta que devolvería >1 M de filas sin `LIMIT` ni agregación — estima el tamaño del resultado primero y pide confirmación al usuario; >10 GB de datos de entrada → avisa del coste en tiempo. Es el headroom 50/80 aplicado a consultas de datos.
+- **Idiomas Friendly SQL modernos**: `FROM`-first, `GROUP BY ALL` / `ORDER BY ALL`, `SELECT * EXCLUDE/REPLACE`, `LIMIT 10%`, `COLUMNS(*)` con regex y lambdas, `count() FILTER (WHERE ...)`, top-N por grupo con `max(col, 3)`, `SUMMARIZE`, `PIVOT`/`UNPIVOT`, joins `ASOF`/`POSITIONAL`/`LATERAL`, dot-chaining (`'x'.trim()`), list comprehensions e `INSERT ... BY NAME` — SQL más breve y legible que el clásico.
+- **Taxonomía de errores con recuperación**: clasifica el fallo (sintaxis / extensión no instalada / tabla inexistente / archivo ilegible) → localiza la función o tabla con `find` y reintenta; usa heredocs `<<'SQL'` para evitar el quoting de shell en consultas largas.
+- **Excel como fuente de datos válida**: lee hojas con openpyxl o pandas (`pd.read_excel`) para explorar y cargar; al leer un modelo, `data_only=True` devuelve valores calculados sin fórmulas y la carga por defecto devuelve las fórmulas sin valores — recarga dos veces si necesitas ambos.
+
+_Atribuciones: duckdb/duckdb-skills@query (oficial de DuckDB) · anthropics/skills@xlsx._

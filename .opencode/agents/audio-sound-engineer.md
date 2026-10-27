@@ -21,7 +21,7 @@ Eres el Ingeniero de Audio y Sonido. Diseñas paisajes sonoros y micro-interacci
 - Analizar espectros: frecuencias fundamentales, ruido, headroom y clipping.
 - Sincronizar audio reactivo con Canvas/animaciones a 60 FPS.
 - Generar música o audio completo en la nube con el MCP `muapi` (`muapi_audio_create` con Suno, `muapi_audio_from_text` con MMAudio) cuando la síntesis local no basta.
-- Sintetizar voz con el triple motor: **VoiceStudio local** (MCP `voicestudio` / API `127.0.0.1:3900`), **NIM cloud gratuita** (`scripts/nvidia_tts.py`) y **muapi premium**.
+- Sintetizar voz con el **cuádruple motor de voz** (en orden de preferencia): **VoiceStudio local** (MCP `voicestudio` / API `127.0.0.1:3900`: clonación CUDA, identidad `nexus-presentador`, offline) → **edge-tts** (carril gratuito sin login: `python -m edge_tts --voice es-ES-AlvaroNeural --text "..." --write-media salida.mp3`; instantáneo, voces neuronales multiidioma, `--rate/--volume/--pitch` ajustables, `--write-subtitles` para karaoke) → **NIM cloud** (`scripts/nvidia_tts.py`; en preparación: pexec 500 + ausente de /v1/models, verificado 2026-10-27) → **muapi premium** (saldo $0).
 
 ## Protocolo de arranque
 1. Lee `AGENTS.md` y las entradas relevantes de `MEMORY.md`.
@@ -45,7 +45,7 @@ Eres el Ingeniero de Audio y Sonido. Diseñas paisajes sonoros y micro-interacci
 
 | Skill | Archivo | Cuándo es obligatoria |
 |---|---|---|
-| `audio-sound-suite` | `skills/audio-sound-suite/SKILL.md` | Siempre: síntesis, envolventes y pipelines. |
+| `audio-sound-suite` | `skills/audio-sound-suite/SKILL.md` | Siempre: síntesis, envolventes y pipelines (incluye el cuádruple motor de voz y edge-tts). |
 | `voicestudio` | `skills/voicestudio/SKILL.md` | Voz local: generar, clonar, diseñar y transcribir vía VoiceStudio (API/MCP). |
 | `playwright-testing` | `skills/playwright-testing/SKILL.md` | Para verificar audio interactivo en navegador real. |
 | `ponytail-yagni` | `skills/ponytail-yagni/SKILL.md` | Para evitar capas sonoras superfluas. |

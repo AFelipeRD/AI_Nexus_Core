@@ -204,7 +204,8 @@ Obligatorio (`/arena`) cuando la decisión: (a) define arquitectura o elige tecn
 ### Libertad de modelos — confirmada
 
 - El ecosistema **no tiene modelos fijos**: `opencode.json` es la única fuente de verdad (`model`, `small_model` y el pool de proveedores).
-- Proveedores configurados: NVIDIA Build NIM (GLM 5.3, Nemotron 3.5 Super VL 120B, DeepSeek v4.1 Flash) y Ollama local (Qwen2.5 Coder 7B); el pool rota con `/evolve` y la ingesta desde `data/inbox/`.
+- Proveedores configurados: NVIDIA Build NIM (GLM 5.3, Nemotron 3.5 Super VL 120B, DeepSeek v4.1 Flash) y Ollama local (Qwen2.5 Coder 7B, Gemma 4 E4B con visión — primera vista local del ecosistema, 2026-10-27); el pool rota con `/evolve` y la ingesta desde `data/inbox/`.
+- **Carril de decisión local (2026-10-27)**: los modelos de decisión `d3` de Ollama v0.40.11 (2B/4B) responden en `http://127.0.0.1:11434/v1/systemone` con puntuaciones y probabilidades puras (0 tokens de salida) — verificado E2E para el triage del Motor Laya: `d3:2b` clasificó «anuncio viral de 30 s con voz y música» → `video 100%`.
 - Cambiar de proveedor: editar `opencode.json` → **todos los agentes heredan al instante**, sin tocar una línea de código de ningún agente.
 - Escalera de fallback: modelo activo → Ollama local. El sistema nunca queda sin cerebro.
 - Tras editar `opencode.json`, reinicia el servicio (`opencode service restart`) o reabre la terminal para que el cambio surta efecto: la configuración la posee el servicio en segundo plano.

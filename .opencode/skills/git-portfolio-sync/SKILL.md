@@ -24,7 +24,7 @@ metadata:
 ## Procedimiento
 1. **Estado**: `git status --short` y `git diff --staged --stat`.
 2. **Seguridad**: ejecuta `/security-audit`; sin secretos ni archivos de datos pesados en el diff.
-3. **Atomicidad**: un commit por propósito; usa `git add -p` para separar cambios mezclados.
+3. **Atomicidad**: un commit por propósito; separa cambios mezclados por rutas explícitas (`git add <rutas>` con globs entre comillas) — nunca `git add -p`/`-i` en modo agéntico (esperan input humano).
 4. **Mensaje**: `tipo(ámbito): descripción` en español, ≤ 72 caracteres, sin punto final; cuerpo opcional con el porqué.
 5. **Confirmar**: `git commit -m "..."`.
 6. **Sincronizar** solo con confirmación del usuario: `git push` (credenciales del Administrador de credenciales de Git; nunca el token en la URL). Usa el MCP `github` para crear el repositorio o el PR.
@@ -49,3 +49,13 @@ perf(datos): leer Parquet en modo lazy
 - `getsentry/skills@commit` — Sentry oficial: convenciones de commit de producción.
 - `github/awesome-copilot@conventional-commit` — GitHub oficial: formato conventional commits.
 - Cuando la tarea lo exija, profundiza con `npx -y skills find <término>`.
+
+## Referencias comunitarias validadas (find-skills 2026-10-27)
+- **`git add --resolved`** (Git 2.56+): tras resolver un merge, prepara SOLO los archivos resueltos y se detiene si quedan marcadores de conflicto — sustituye el `git add` a ciegas post-conflicto.
+- **Mensajes multi-párrafo portables**: cada párrafo con su propio `-m` (Git inserta la línea en blanco; funciona igual en Bash y PowerShell) y `git commit -F <archivo>` para mensajes largos.
+- **Cambios rompientes**: `!` tras el tipo o el ámbito (`feat(api)!: ...`) o pie `BREAKING CHANGE: <motivo>` — convenión que nuestro formato base no cubría.
+- **Trailers con dos puntos**: Git solo procesa `Token: value` como trailer real (`Closes: #123`); `Token #value` queda en texto plano — si la tooling debe leerlo, usa los dos puntos.
+- **Staging en modo agéntico**: prohibido `git add -p` / `git add -i` (esperan input humano y cuelgan al agente) — corrige el paso 3: separa cambios mezclados por rutas explícitas o con `--resolved`. Los globs van SIEMPRE entre comillas (la shell los expande y no encuentra archivos en subdirectorios).
+- **Seguridad y verificación post-commit**: jamás `--no-verify` (los hooks son la puerta de calidad del paso 7) ni `--amend`; tras confirmar, verifica con `git log -1 --stat` + `git status --porcelain` antes de declarar el commit bueno.
+
+_Atribución: github/awesome-copilot@git-commit (GitHub oficial)._

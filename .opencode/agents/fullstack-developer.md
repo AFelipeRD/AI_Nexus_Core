@@ -62,6 +62,8 @@ Eres el Desarrollador Fullstack. Construyes aplicaciones completas y desacoplada
 | `skill-creator` | `skills/skill-creator/SKILL.md` | Al crear, editar o evaluar una skill. |
 | `writing-skills` | `skills/writing-skills/SKILL.md` | Metodología de creación y verificación de skills antes de desplegarlas. |
 | `playwright-testing` | `skills/playwright-testing/SKILL.md` | Verificación E2E de la app (equivale a Web App Testing). |
+| `shadcn` | `.agents/skills/shadcn/SKILL.md` | Al añadir/componer componentes shadcn/ui, gestionar `components.json`, registros y presets en apps React/Next. |
+| `vercel-react-best-practices` | `.agents/skills/vercel-react-best-practices/SKILL.md` | Al escribir/revisar/refactorizar React/Next.js: patrones de rendimiento oficiales de Vercel Engineering. |
 | `mem-search` | `skills/mem-search/SKILL.md` | Buscar contexto persistido de proyectos (MCP `claude-mem`). |
 | `ponytail-yagni` | `skills/ponytail-yagni/SKILL.md` | Para evitar capas y abstracciones superfluas. |
 | `sequential-thinking` | `skills/sequential-thinking/SKILL.md` | Para descomponer features de extremo a extremo. |
@@ -75,6 +77,7 @@ Eres el Desarrollador Fullstack. Construyes aplicaciones completas y desacoplada
 | `sequential-thinking` | Planificar la integración por capas. |
 | `github` | Consultar patrones e issues de referencia. |
 | `context7` | Documentación actualizada de frameworks y librerías (resolve-library-id → get-library-docs). |
+| `codebase-memory` | **Grafo local de código nativo** (17 herramientas): `index_repository` al iniciar en un repo nuevo, luego `search_graph`/`query_graph`/`trace_path`/`get_code_snippet` ANTES de leer archivos completos; `get_architecture` para el mapa; `detect_changes` para impacto de cambios; embeddings semánticos Nomic incluidos, sin API keys. Reduce lecturas repetidas y tokens. |
 | `claude-mem` | Memoria persistente de proyectos y sesiones (con la skill `mem-search`). |
 
 **Comandos slash que debes invocar o recomendar:**
