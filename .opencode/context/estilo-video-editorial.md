@@ -23,6 +23,11 @@
 - Grano de papel (feTurbulence 5 %) + vignette suave en todo el frame.
 - Voz narradora: perfil `nexus-presentador` (VoiceStudio, 100 % local).
 
+## Elementos procedurales (menos texto fijo)
+- Contadores de dígitos tipo flip (rotateX con overshoot), líneas de velocidad radiales, barras de onda sincronizadas al frame, tarjetas con paralaje 3D (`rotateY` + escala), filas que se desplazan, trazos SVG que se dibujan (`strokeDashoffset`), tipografía que se escribe sola.
+- **Timeline maestra**: una función de tiempo por escena gobierna todos los elementos; el trazo coral conecta las escenas como transición de identidad.
+- **Gancho**: acción plena desde el frame 0; la escena cambia AL MENCIONAR el concepto.
+
 ## Iluminación
 - Plano tipo impresión (flat print), sombras duras geométricas, cero glow; el «brillo» lo da el coral.
 

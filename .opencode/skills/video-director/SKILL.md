@@ -37,14 +37,15 @@ Mapear las 5 capas con las herramientas REALES de la sesión (tabla de arriba). 
 1. Pedir (o asumir declarándolo en 1 línea): producto, público, plataforma, formato (9:16/16:9), duración, tono.
 2. Escribir/consultar la hoja de estilo (capa 4) con bloque de prompt base EN INGLÉS para el motor.
 3. Proponer storyboard de 4-6 planos: duración, composición, movimiento, acción y prompt EN. **SHOW-DON'T-TELL**: cada sustantivo de la narración se construye en pantalla (una página → la página armándose; un tablero → el tablero con tarjetas cayendo). **CANVAS COMPLETO**: cada plano llena el frame; los espacios muertos son defecto.
-4. **ESPERAR aprobación humana antes de generar.**
+4. **ESPERAR aprobación humana antes de generar** — palabra clave del gate: «APROBADO, GENERA». Nada de código antes.
 5. Generar con el carril más económico que resuelva el plano (Remotion local → NIM $0 → premium solo si justifica). Nombrar `proyecto_plano_vX`.
 6. Con feedback: ajustar el PROMPT BASE y no solo el plano. Registrar cada lección en `docs/lecciones-video.md`.
 7. Varios motores disponibles → mismo brief en cada uno; anotar coherencia, iteraciones, tiempo y costo. La narración usa SIEMPRE el perfil `nexus-presentador` (VoiceStudio) por defecto del ecosistema.
 
 ## Errores a evitar
-- Generar sin storyboard aprobado.
-- Slides de solo-texto (anti-PowerPoint): si la narración nombra algo, se muestra construyéndose.
+- Generar sin storyboard aprobado («APROBADO, GENERA»).
+- **Arrancar lento**: el gancho es en los primeros 2 s o el video no sirve en redes; prohibido el aire en blanco inicial y las escenas que tardan en cambiar.
+- **Texto fijo**: todo lo que pueda ser animación procedimental (contadores flip, líneas de velocidad, barras de onda, paralaje, trazos que se dibujan, la escena cambia AL MENCIONAR) es animación; los slides de solo-texto son defecto.
 - Inventar capacidades o motores no conectados.
 - Estilo de plantilla en vez de estilo propio del producto.
 - Mezclar «observación con evidencia» con «preferencia» en la revisión.
