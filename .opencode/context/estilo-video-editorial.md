@@ -31,6 +31,15 @@
 ## Iluminación
 - Plano tipo impresión (flat print), sombras duras geométricas, cero glow; el «brillo» lo da el coral.
 
+## Costura del video (conector único)
+El trazo coral: línea con punta luminosa que sale de cada escena, se transforma (curva, contorno, onda, abanico) y entra en la siguiente — definido UNA vez, reutilizado en todas. Su presencia por tramos la mide `criticar_ritmo.py`.
+
+## Ritmo (disciplina medida)
+Escenas de 1.0–2.8 s, ninguna > 3 s; algo cambia cada 0.2–0.4 s; transiciones solapadas 0.2–0.4 s con vector de salida = entrada; entradas escalonadas ~0.2 s; easing con sobrepaso; texto por máscara 0.4–0.6 s; cámara jamás fija (empuje/diagonal/perspectiva/zoom-out); paralaje 3D en paneles; un foco por escena.
+
+## Salto fotorrealista (v7)
+Keyframes IA por plano para escenas de vida real (NIM/muapi/Higgsfield cuando exista carril) animados con Ken Burns + Remotion para UI/texto; el prompt base EN de abajo alimenta directamente esos keyframes — solo cambia la capa de render.
+
 ## Prompt base (inglés, para motores de video externos)
 ```
 Editorial print style, cream paper background #F4EFE4, bold ink black #161310

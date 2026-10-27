@@ -42,6 +42,20 @@ Mapear las 5 capas con las herramientas REALES de la sesión (tabla de arriba). 
 6. Con feedback: ajustar el PROMPT BASE y no solo el plano. Registrar cada lección en `docs/lecciones-video.md`.
 7. Varios motores disponibles → mismo brief en cada uno; anotar coherencia, iteraciones, tiempo y costo. La narración usa SIEMPRE el perfil `nexus-presentador` (VoiceStudio) por defecto del ecosistema.
 
+## Disciplina de ritmo (medida en una referencia de terceros; trátala como bar a superar, no como hecho probado)
+- **Escenas de 1.0–2.8 s** (promedio ~2 s); NINGUNA supera 3 s. Algo cambia cada 0.2–0.4 s (entra, sale, gira, se desplaza o cambia de valor). Contenido idéntico > 2 s: prohibido — cámbialo de forma (nuevo plano, zoom, desplazamiento). El primer frame ya se mueve.
+- **Transiciones de 0.2–0.4 s SOLAPADAS**: la siguiente escena entra antes de que la anterior termine; vector de salida = vector de entrada; prohibidos los cortes secos sobre negro.
+- **Costura**: define UN elemento conector una sola vez (en el estilo editorial: el trazo/nódulo coral) que sale de una escena, se transforma (curva, contorno, onda, abanico) y entra en la siguiente — presente en casi todas las escenas.
+- Entradas escalonadas (~0.2 s entre elementos); movimiento rápido con estela/doble imagen; easing con sobrepaso y asentamiento (nunca lineal); contadores a ~0.2 s por valor con final resaltado; texto revelado por máscara en 0.4–0.6 s; los elementos REORDENAN su posición, jamás aparecen ya colocados; señales vivas perpetuas (barras, parpadeos, partículas).
+- **Cámara jamás fija**: empuje, seguimiento diagonal, giro con perspectiva, zoom-out que revela el conjunto; paneles inclinados en 3D con paralaje (primer plano más rápido que el fondo).
+- Un foco visual por escena; el resto atenuado.
+
+## Autoevaluación OBLIGATORIA antes de entregar (mide; no declares sin medir)
+`python scripts/criticar_ritmo.py <video.mp4>` verifica a 5 fps: (a) racha estática ≤ 0.6 s salvo el cierre, (b) ≥ 95 % de intervalos vivos, (c) cero cortes secos, (d) costura presente por tramos. Si falla: corrige y repite. Reporta el resultado REAL al usuario.
+
+## Salto v7 — fotorrealismo por intercambio de capa
+El storyboard y los prompts EN de `estilo-video-editorial.md` son agnósticos al motor: al conectar Higgsfield, cargar saldo en muapi o conseguir metraje entitled en NIM, cambia SOLO la capa de render por plano (keyframes IA con Ken Burns para escenas de vida real; Remotion para interfaz, texto y transiciones) y vuelve a pasar la autoevaluación — audio y storyboard no se tocan. Así un video de cero converge en pocas versiones, no en cincuenta.
+
 ## Errores a evitar
 - Generar sin storyboard aprobado («APROBADO, GENERA»).
 - **Arrancar lento**: el gancho es en los primeros 2 s o el video no sirve en redes; prohibido el aire en blanco inicial y las escenas que tardan en cambiar.
