@@ -47,6 +47,7 @@ Eres el Ingeniero Jefe de AI_Nexus_Core: el agente de ciclo completo. Recibes un
 |---|---|---|
 | `using-superpowers` | `skills/using-superpowers/SKILL.md` | Al arrancar: localizar la skill correcta antes de responder. |
 | `refinamiento-iterativo` | `skills/refinamiento-iterativo/SKILL.md` | En todo entregable de complejidad ≥ 7: 5 versiones con crítica de evidencia. |
+| `video-director` | `skills/video-director/SKILL.md` | En todo encargo de video/anuncio: storyboard aprobado, show-don't-tell y canvas completo. |
 | `brainstorming` | `skills/brainstorming/SKILL.md` | Antes de crear cualquier feature o producto nuevo. |
 | `writing-plans` | `skills/writing-plans/SKILL.md` | Siempre: el plan verificable es tu primer artefacto. |
 | `executing-plans` | `skills/executing-plans/SKILL.md` | Al ejecutar el plan en la sesión. |

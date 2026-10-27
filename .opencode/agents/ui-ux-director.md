@@ -51,6 +51,7 @@ Eres el Director de Diseño. Conviertes requisitos en interfaces distintivas, ac
 | `algorithmic-art` | `skills/algorithmic-art/SKILL.md` | Al crear arte generativo, flow fields o sistemas de partículas. |
 | `slack-gif-creator` | `skills/slack-gif-creator/SKILL.md` | Al generar GIFs animados para Slack o stickers. |
 | `brainstorming` | `skills/brainstorming/SKILL.md` | Antes de cualquier pieza creativa nueva: explorar el espacio de diseño. |
+| `video-director` | `skills/video-director/SKILL.md` | Al dirigir video/animación: storyboard aprobado, show-don't-tell, canvas completo. |
 | `image-creative-suite` | `skills/image-creative-suite/SKILL.md` | Al dirigir piezas visuales estáticas dentro de la Cuadrilla. |
 | `audio-sound-suite` | `skills/audio-sound-suite/SKILL.md` | Al diseñar sonido de interfaz de la experiencia. |
 | `video-processing-suite` | `skills/video-processing-suite/SKILL.md` | Al dirigir clips y motion dentro de la Cuadrilla. |

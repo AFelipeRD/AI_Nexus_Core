@@ -11,7 +11,7 @@
 | **Tablero kanban, backlog, pipeline de tareas** | `kanban-design` | `ui-ux-director` | — |
 | **GIF para Slack, sticker animado** | `slack-gif-creator` | `ui-ux-director` | — |
 | **Imagen, logo, dirección artística** | `image-creative-suite` | `image-generative-designer` | — |
-| **Video, clip, motion** | `video-processing-suite` | `video-media-engineer` | — |
+| **Video, anuncio o animación (producción completa)** | `video-director` (storyboard aprobado, show-don't-tell, canvas completo) + `video-processing-suite` + `refinamiento-iterativo` | `video-media-engineer` (Cuadrilla) | — |
 | **Voz y audio: hablar, clonar voz, transcribir, doblar video, audiolibro** | `voicestudio` + `audio-sound-suite` (VoiceStudio local vía MCP/API `:3900` · NIM TTS en preparación · muapi premium) | `audio-sound-engineer` | — |
 | **Pipeline multimodal (texto+imagen+audio), RAG** | `ai-multimodal-ops` | `ai-multimodal-engineer` | — |
 | **CI/CD, workflows, despliegue, secretos, automatización** («pipeline», «GitHub Action», «deploy», «automatiza») | `ci-cd-and-automation` + `github-actions-templates` + `secrets-management` + `bash-defensive-patterns` | `devops-engineer` | `/security-audit` |

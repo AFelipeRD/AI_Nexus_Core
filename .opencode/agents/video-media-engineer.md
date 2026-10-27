@@ -46,6 +46,7 @@ Eres el Ingeniero de Video y Medios. Generas clips programáticos de alta calida
 | Skill | Archivo | Cuándo es obligatoria |
 |---|---|---|
 | `video-processing-suite` | `skills/video-processing-suite/SKILL.md` | Siempre: captura, composición y exportación. |
+| `video-director` | `skills/video-director/SKILL.md` | Antes de generar cualquier plano: storyboard aprobado, show-don't-tell, canvas completo y estilo propio (`estilo-video-editorial.md`). |
 | `playwright-testing` | `skills/playwright-testing/SKILL.md` | Para capturar en navegador real con esperas dinámicas. |
 | `ponytail-yagni` | `skills/ponytail-yagni/SKILL.md` | Para evitar pipelines de edición superfluos. |
 
