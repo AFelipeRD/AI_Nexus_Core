@@ -54,6 +54,10 @@ Eres el Ingeniero de Video y Medios. Generas clips programáticos de alta calida
 | `hyperframes-registry` | `.agents/skills/hyperframes-registry/SKILL.md` | ~450 bloques y componentes instalables como fuente editable: transiciones, overlays, títulos, kinetic type, captions, charts, mapas, 3D, cámara. Consúltalo SIEMPRE antes de construir un efecto con nombre. |
 | `media-use` | `.agents/skills/media-use/SKILL.md` | Resolver cualquier medio para un video: música (MusicGen local), SFX (Openverse), imágenes, logos, voz (Kokoro local), transcripción, cutouts, grading LUT — con libro contable de assets y `--local-only`. |
 | `remotion-best-practices` | `.agents/skills/remotion-best-practices/SKILL.md` | Toda composición React en `D:\Nexus_Remotion` (router oficial de skills de Remotion). |
+| `remotion-markup` | `.agents/skills/remotion-markup/SKILL.md` | Animaciones/efectos/tipografía en composiciones React (skill oficial de Remotion): usar antes de programar un efecto a mano. |
+| `gsap-timeline` + `gsap-core` | `.agents/skills/gsap-timeline/SKILL.md` y `.agents/skills/gsap-core/SKILL.md` | Secuenciación/timelines GSAP para el carril HTML y coreografías de keyframes. |
+| `motion-design` | `.agents/skills/motion-design/SKILL.md` | Timing, easing, coreografía y principios Disney en cualquier sistema (Remotion/GSAP/Lottie): aplicar como criterio de revisión de movimiento. |
+| Playbook de estilos | `docs/playbook-video-skillry.md` | Tabla maestra de 14 estilos con enrutamiento del pedido: clasificar CADA encargo antes de elegir mecánica. |
 | `ffmpeg-skill` | `.agents/skills/ffmpeg-skill/SKILL.md` (copia oficial en el repo; actualizar con `npx ffmpeg-skill` y recopiar) | Edición de material real: probe → editar (sin pérdida cuando se pueda) → verificar. Nunca decidas desde el nombre del archivo. |
 | `playwright-testing` | `skills/playwright-testing/SKILL.md` | Para capturar en navegador real con esperas dinámicas. |
 | `ponytail-yagni` | `skills/ponytail-yagni/SKILL.md` | Para evitar pipelines de edición superfluos. |

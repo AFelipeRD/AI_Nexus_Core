@@ -18,7 +18,7 @@ metadata:
 | 1. Planificación | LLM que redacta brief, guion, storyboard y prompts | Modelo activo global (GLM 5.3 / DeepSeek Flash / el del pool que Laya asigne) |
 | 2. Orquestación | El mecanismo que llama herramientas | OpenCode (tools/MCP/CLI) + scripts ejecutores |
 | 3. Render | El motor que produce píxeles | Remotion código-video (local) · NIM imagen $0 · muapi premium (si hay saldo) · Higgsfield/otro si se conecta |
-| 4. Estilo | Guía reutilizable que fija consistencia | `.opencode/context/estilo-video-editorial.md` + canon `tokens-diseno.md` |
+| 4. Estilo | Guía reutilizable que fija consistencia | `.opencode/context/estilo-video-editorial.md` + canon `tokens-diseno.md` + **playbook de estilos `docs/playbook-video-skillry.md`** (tabla maestra de 14 estilos con enrutamiento del pedido) |
 | 5. Revisión | Feedback + registro de lecciones | `refinamiento-iterativo` + `scripts/criticar_por_seccion.py` + `docs/lecciones-video.md` + feedback humano |
 
 **Regla 1**: el LLM NO genera video; planifica y opera las herramientas conectadas.
@@ -35,6 +35,7 @@ Mapear las 5 capas con las herramientas REALES de la sesión (tabla de arriba). 
 
 ### Fase 3 — Crear el video
 1. Pedir (o asumir declarándolo en 1 línea): producto, público, plataforma, formato (9:16/16:9), duración, tono.
+2. **Clasificar el pedido en la tabla del playbook** (`docs/playbook-video-skillry.md`): el estilo determina mecánica, duración, música y paleta — no reutilizar el mismo look por defecto.
 2. Escribir/consultar la hoja de estilo (capa 4) con bloque de prompt base EN INGLÉS para el motor.
 3. Proponer storyboard de 4-6 planos: duración, composición, movimiento, acción y prompt EN. **SHOW-DON'T-TELL**: cada sustantivo de la narración se construye en pantalla (una página → la página armándose; un tablero → el tablero con tarjetas cayendo). **CANVAS COMPLETO**: cada plano llena el frame; los espacios muertos son defecto.
 4. **ESPERAR aprobación humana antes de generar** — palabra clave del gate: «APROBADO, GENERA». Nada de código antes.

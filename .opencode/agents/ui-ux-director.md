@@ -54,6 +54,8 @@ Eres el Director de Diseño. Conviertes requisitos en interfaces distintivas, ac
 | `video-director` | `skills/video-director/SKILL.md` | Al dirigir video/animación: storyboard aprobado, show-don't-tell, canvas completo. |
 | `design-taste-frontend` | `.agents/skills/design-taste-frontend/SKILL.md` | En TODO diseño web público (landing, portfolio, dashboard): dirección anti-slop desde inventario del sujeto (8-12 cosas exclusivas del cliente) + house rules medidas sobre 247 sitios curados; nunca diseñar sin inventario previo. |
 | `gsap-core` | `.agents/skills/gsap-core/SKILL.md` | Toda animación con GSAP: API core oficial (tweens, easing, stagger, `matchMedia` con `prefers-reduced-motion`) — autoridad sobre los presets de ui-ux-pro-max. |
+| `gsap-timeline` | `.agents/skills/gsap-timeline/SKILL.md` | Secuenciación de timeline GSAP: position parameter, nesting, playback (skill oficial GreenSock). |
+| `motion-design` | `.agents/skills/motion-design/SKILL.md` | Principios de motion (timing, easing, coreografía, Disney) aplicables a cualquier sistema de animación: criterio de revisión de movimiento. |
 | `shadcn` | `.agents/skills/shadcn/SKILL.md` | Al construir/componer componentes shadcn/ui en apps React/Next (registros, presets, chat UI, DESIGN.md). |
 | `hyperframes` + `hyperframes-registry` + `media-use` | `.agents/skills/hyperframes*/SKILL.md` | Al dirigir clips HTML→video deterministas de la Cuadrilla: registro de 450 bloques (transiciones, kinetic type, captions, charts) antes de construir efectos a mano. |
 | `remotion-best-practices` | `.agents/skills/remotion-best-practices/SKILL.md` | Al dirigir composiciones React/Remotion del piso `D:\Nexus_Remotion`. |
