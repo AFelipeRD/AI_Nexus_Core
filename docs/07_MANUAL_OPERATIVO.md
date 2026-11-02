@@ -204,11 +204,19 @@ Obligatorio (`/arena`) cuando la decisión: (a) define arquitectura o elige tecn
 ### Libertad de modelos — confirmada
 
 - El ecosistema **no tiene modelos fijos**: `opencode.json` es la única fuente de verdad (`model`, `small_model` y el pool de proveedores).
-- Proveedores configurados: NVIDIA Build NIM (GLM 5.3, Nemotron 3.5 Super VL 120B, DeepSeek v4.1 Flash) y Ollama local (Qwen2.5 Coder 7B, Gemma 4 E4B con visión — primera vista local del ecosistema, 2026-10-27); el pool rota con `/evolve` y la ingesta desde `data/inbox/`.
-- **Carril de decisión local (2026-10-27)**: los modelos de decisión `d3` de Ollama v0.40.11 (2B/4B) responden en `http://127.0.0.1:11434/v1/systemone` con puntuaciones y probabilidades puras (0 tokens de salida) — verificado E2E para el triage del Motor Laya: `d3:2b` clasificó «anuncio viral de 30 s con voz y música» → `video 100%`.
-- Cambiar de proveedor: editar `opencode.json` → **todos los agentes heredan al instante**, sin tocar una línea de código de ningún agente.
-- Escalera de fallback: modelo activo → Ollama local. El sistema nunca queda sin cerebro.
-- Tras editar `opencode.json`, reinicia el servicio (`opencode service restart`) o reabre la terminal para que el cambio surta efecto: la configuración la posee el servicio en segundo plano.
+- **Proveedores configurados (8 proveedores, 40+ modelos free):**
+  - **NVIDIA Build NIM**: Nemotron 3 Ultra 550B (cerebro principal), Nemotron 3.5 Super VL, Nemotron 3.5 Lightning, DeepSeek v4.1 Flash, MiniMax M3.1 Flash, Step 5, Muse Glimmer, Laguna, GPT-OSS 20B/120B — pool rota con `/evolve`
+  - **Z.ai (GLM)**: GLM 4.7 Flash, GLM 4.5 Flash, GLM 4.6V Flash (visión) — **genuinamente free**, sin expiración, 200K ctx
+  - **OpenRouter**: Nemotron 3 Ultra/Super VL/Lightning :free, DeepSeek v4.1 Flash :free, GLM 5.3 Flash :free, Qwen3 8B :free, GPT-OSS :free, Mistral Large :free — gateway multi-proveedor
+  - **ModelScope (Alibaba)**: DeepSeek V4.1 Flash/Pro, GLM 5.2, MiniMax M3, Qwen 3.8 27B, Step 3.7 Flash — requiere real-name verification
+  - **ChinaAPI**: DeepSeek Flash/Pro, GLM 4.7 Flash, Qwen Flash, MiniMax M3.1 Flash, Step 3.5 Flash — gateway unificado
+  - **FreeInference**: GLM 4.7 Flash, MiniMax M3, Qwen3 8B, DeepSeek v4.1 Flash — $20/día créditos
+  - **Ollama (local)**: qwen2.5-coder:7b, gemma4:e4b (visión), d3:2b (decisión Laya 671ms), gemma4:31b, qwen3:32b, deepseek-r1:32b — costo cero, GPU local
+  - **FreeInference**: $20/día, 2 concurrent requests
+- **Carril de decisión local (2026-10-27)**: `d3:2b` de Ollama v0.40.11 responde en `http://127.0.0.1:11434/v1/systemone` con puntuaciones y probabilidades puras (0 tokens de salida) — verificado E2E para triage del Motor Laya.
+- **Cambiar de proveedor**: editar `opencode.json` → **todos los agentes heredan al instante**, sin tocar código.
+- **Escalera de fallback**: Nemotron 3 Ultra (NIM) → Nemotron :free (OpenRouter) → DeepSeek v4.1 Flash → Nemotron 3.5 Lightning → MiniMax M3.1 Flash → Ollama local (d3:2b para decisión, gemma4:e4b para visión). El sistema nunca queda sin cerebro.
+- **Rotación**: `/evolve` actualiza el pool contra catálogo vivo `media_catalogo.py` + `opencode.json`. Laya selecciona por vector técnico.
 
 ### Política Zero-Leaks de credenciales
 

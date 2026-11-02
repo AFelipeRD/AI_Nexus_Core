@@ -1,0 +1,17 @@
+# Job Search Automation — Requirements
+# pip install -r requirements-jobsearch.txt
+
+# Core
+aiohttp>=3.9.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Data
+pandas>=2.1.0
+
+# Optional: PDF conversion
+# weasyprint>=60.0
+# wkhtmltopdf (system package)
+
+# Optional: LinkedIn login automation
+# playwright>=1.40.0
