@@ -26,6 +26,7 @@
 | **Memoria, grafo, indexar documentos** | `lightrag-knowledge` + `graphify-codebase` + `obsidian-bases` (catálogos vivos de la bóveda) | `knowledge-graph-agent` | `/graphify` |
 | **Buscar código, dependencias, impacto de un cambio, rutas de llamada** («quién llama a X», «qué depende de este archivo») | MCP `codebase-memory` (grafo local: `index_repository` → `search_graph`/`query_graph`/`trace_path`/`get_architecture`/`detect_changes`) | `fullstack-developer` o `knowledge-graph-agent` | — |
 | **Búsqueda de empleo automatizada** («busca trabajo», «aplica a vacantes», «genera CV y carta», «trackea aplicaciones») | `job-search-automation` | `automation-browser` (orquesta scrapers, genera docs, trackea) | — |
+| **Control remoto empleo vía Telegram** («busca trabajo en el móvil», «avísame vacantes en Telegram», «acepta/rechaza desde el celular») | `job-telegram-bot` + `job-search-automation` | `automation-browser` (bot 24/7, webhook/polling, botones inline) | `/jobbot` |
 | **Editar video/audio real: cortar, silencios, captions, loudness, exportar a plataforma** («haz este video 60 s vertical», «quita los silencios», «captions estilo TikTok») | MCP `ffmpeg-skill` (probe → cut/silence/fit/caption/loudness → check/look) + `video-processing-suite` | `video-media-engineer` | — |
 | **Recordar proyectos y sesiones** (Cloud Mem) | `mem-search` (MCP `claude-mem`) | cualquier agente | — |
 | **Commit, historial, publicar** | `git-portfolio-sync` | `portfolio-git` | `/commit` |
@@ -73,3 +74,4 @@
 | Skill | Descripción | Agente | Archivos |
 |---|---|---|---|
 | `job-search-automation` | Búsqueda empleo multi-plataforma, CV/carta adaptados, tracking | `automation-browser` | `scripts/job_search_automation.py`, `.agents/skills/job-search-automation/` |
+| `job-telegram-bot` | Bot Telegram para control remoto: busca, acepta/rechaza, genera CV/carta, tracking 24/7 | `automation-browser` | `scripts/job_telegram_bot.py`, `scripts/setup_job_telegram.py`, `.agents/skills/job-telegram-bot/` |
